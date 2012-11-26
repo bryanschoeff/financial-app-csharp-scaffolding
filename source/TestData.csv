@@ -1,0 +1,7 @@
+Entity,Property,Type
+user,firstName,varchar(50)
+user,lastName,varchar(50)
+user,email,varchar(50)
+post,title,varchar(255)
+post,content,varchar(max)
+post,userId,int

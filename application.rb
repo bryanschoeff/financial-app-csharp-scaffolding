@@ -1,26 +1,36 @@
 require 'CSV'
-require 'ScaffoldingObject'
+require 'EntityFiling'
+require 'ERB'
+
+ApplicationPath = "#{Dir.pwd}/"
+SourcePath = "#{ApplicationPath}source/"
+OutputPath = "#{ApplicationPath}output/"
 
 def load_specs
-  Dir.chdir('source')
-  files = Dir.glob('*.csv')
+  filing = EntityFiling.new
+  files = Dir.glob("#{SourcePath}*.csv")
+
   files.each do |file|
+    next if File.directory? file
+
     table = ScaffoldingObject.new
-    table.name = file
-    
+    table.name = File.basename(file).gsub '.csv', ''
+    table.entity_type = "County"
+    table.filing_type = "GAAP"
+
     load_spec file, table
-    p table
+    File.open("#{OutputPath}#{table.name}.cs", 'w') {|f| f.write(table.print_csharp_class) }
   end
 end
 
 def load_spec file, table
-  puts file
-  CSV.foreach(Dir.pwd + '/' + file) do |line|
+  CSV.foreach(file) do |line|
     field = ScaffoldingField.new
-    field.name = line
+    field.name = line[1]
+    field.db_type = line[2]
+    
     table.add_field field
   end
 end
-
 
 load_specs

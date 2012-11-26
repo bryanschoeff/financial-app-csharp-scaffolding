@@ -1,0 +1,92 @@
+namespace <%= "#{@entity_type}.#{@filing_type}" %>
+{
+  public class <%= @name %>
+  {
+    int id { get; set; }
+    <% @fields.each do |field| %>
+    <%= "#{field.csharp_type} #{field.name} { get; set; }"  %><% end %>
+
+    public <%= @name %>()
+    {
+      this.id = -1;
+    }
+    
+    public void Load(int id)
+    {
+      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      {
+        SqlCommand command = new SqlCommand("<%= print_sql_sp_name_load %>", connection);
+        SqlDataReader reader;
+        
+        command.Parameters.AddWithValue("@<%= @name  %>Id", id);
+        <% @fields.each do |field| %>
+        command.Parameters.AddWithValue("<%= field.sql_parameter_name  %>", this.<%= field.name %>);<% end %>
+
+        connection.Open();
+        reader = command.ExecuteReader();                                                   
+        reader.Read();  
+        <% @fields.each do |field| %>
+        this.<%= field.name %> = reader["<%= field.sql_column_name %>"];<% end %>
+      
+        connection.Close();
+      }
+    }
+
+    public void Save()
+    {
+      if (this.id == -1)
+      {
+        SaveNew();
+      }
+      else
+      {
+        Update();
+      }
+    }
+
+    protected void SaveNew()
+    {
+      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      {
+        SqlCommand command = new SqlCommand("<%= print_sql_sp_name_save %>", connection);
+        
+        <% @fields.each do |field| %>
+        command.Parameters.AddWithValue("<%= field.sql_parameter_name  %>", this.<%= field.name %>);<% end %>
+
+        connection.Open();
+        this.id = command.ExecuteScalar();
+        connection.Close();
+      }
+    }
+
+    protected void Update()
+    {
+      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      {
+        SqlCommand command = new SqlCommand("<%= print_sql_sp_name_update %>", connection);
+
+        command.Parameters.AddWithValue("@<%= @name %>Id", this.id);
+        <% @fields.each do |field| %>
+        command.Parameters.AddWithValue("<%= field.sql_parameter_name  %>", this.<%= field.name %>);<% end %>
+
+        connection.Open();
+        command.ExecuteNonQuery();  
+        connection.Close();
+      }
+    }
+
+    protected void Delete()
+    {
+      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      {
+        SqlCommand command = new SqlCommand("<%= print_sql_sp_name_delete %>", connection);
+
+        command.Parameters.AddWithValue("@<%= @name %>Id", this.id);
+
+        connection.Open();
+        command.ExecuteNonQuery();  
+        connection.Close();
+      }
+    }
+  }
+}
