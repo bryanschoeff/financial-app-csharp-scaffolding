@@ -1,12 +1,13 @@
 require 'ScaffoldingField'
 
 class ScaffoldingObject
-  attr_accessor :name, :entity_type, :filing_type, :fields
+  attr_accessor :name, :database, :entity_type, :filing_type, :fields
 
   def initialize
     @fields = Array.new
     
     @template_erb_class = File.open('templates/Class.cs.erb') { |f| f.read }
+    @template_erb_sql = File.open('templates/SQL.sql.erb') { |f| f.read }
   end
 
   def add_field field
@@ -17,9 +18,18 @@ class ScaffoldingObject
     binding
   end
 
+  def print_sql_script
+    template = ERB.new @template_erb_sql
+    template.result(get_binding)
+  end
+
   def print_csharp_class
     template = ERB.new @template_erb_class
     template.result(get_binding)
+  end
+
+  def print_sql_table_name
+    "#{@entity_type}_#{@filing_type}_#{@name}"
   end
 
   def print_sql_sp_name_load
@@ -36,16 +46,6 @@ class ScaffoldingObject
  
   def print_sql_sp_name_delete
     "#{@entity_type}_#{@filing_type}_#{@name}Delete"
-  end
-
-
-  def print_sql_parameters
-  end
-
-  def print_sql_columns
-  end
-
-  def print_sql_column_assignments
   end
 
 end

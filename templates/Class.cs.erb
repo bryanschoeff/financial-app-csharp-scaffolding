@@ -4,7 +4,7 @@ namespace <%= "#{@entity_type}.#{@filing_type}" %>
   {
     int id { get; set; }
     <% @fields.each do |field| %>
-    <%= "#{field.csharp_type} #{field.name} { get; set; }"  %><% end %>
+    <%= "#{field.csharp_type} #{field.csharp_name} { get; set; }"  %><% end %>
 
     public <%= @name %>()
     {
@@ -19,14 +19,12 @@ namespace <%= "#{@entity_type}.#{@filing_type}" %>
         SqlDataReader reader;
         
         command.Parameters.AddWithValue("@<%= @name  %>Id", id);
-        <% @fields.each do |field| %>
-        command.Parameters.AddWithValue("<%= field.sql_parameter_name  %>", this.<%= field.name %>);<% end %>
 
         connection.Open();
         reader = command.ExecuteReader();                                                   
         reader.Read();  
         <% @fields.each do |field| %>
-        this.<%= field.name %> = reader["<%= field.sql_column_name %>"];<% end %>
+        this.<%= field.csharp_name %> = reader["<%= field.sql_column_name %>"];<% end %>
       
         connection.Close();
       }
@@ -51,7 +49,7 @@ namespace <%= "#{@entity_type}.#{@filing_type}" %>
         SqlCommand command = new SqlCommand("<%= print_sql_sp_name_save %>", connection);
         
         <% @fields.each do |field| %>
-        command.Parameters.AddWithValue("<%= field.sql_parameter_name  %>", this.<%= field.name %>);<% end %>
+        command.Parameters.AddWithValue("<%= field.sql_parameter  %>", this.<%= field.csharp_name %>);<% end %>
 
         connection.Open();
         this.id = command.ExecuteScalar();
@@ -67,7 +65,7 @@ namespace <%= "#{@entity_type}.#{@filing_type}" %>
 
         command.Parameters.AddWithValue("@<%= @name %>Id", this.id);
         <% @fields.each do |field| %>
-        command.Parameters.AddWithValue("<%= field.sql_parameter_name  %>", this.<%= field.name %>);<% end %>
+        command.Parameters.AddWithValue("<%= field.sql_parameter  %>", this.<%= field.csharp_name %>);<% end %>
 
         connection.Open();
         command.ExecuteNonQuery();  

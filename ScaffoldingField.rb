@@ -5,7 +5,9 @@ class ScaffoldingField
   end
 
   def csharp_type
-    if @db_type.include? 'varchar'
+    if @db_type.include? 'decimal'
+      "decimal"
+    elsif @db_type.include? 'varchar'
       "string"
     elsif @db_type.include? 'int'
       "int"
@@ -17,19 +19,20 @@ class ScaffoldingField
 
   end
 
-  def sql_parameter_name
-    "@#{@name}"
+  def sql_parameter
+    "@#{@name}".gsub(' ', '')
   end
 
-  def print_csharp_variable
+  def csharp_name
+    @name.gsub(' ', '')
   end
 
-  def print_sql_parameter
+  def sql_column
+    "[#{@name.gsub(' ', '')}]"
   end
 
   def sql_column_name
-    "#{@name}"
+    @name.gsub(' ', '')
   end
-
 
 end
