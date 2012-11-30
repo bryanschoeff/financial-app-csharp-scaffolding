@@ -124,8 +124,8 @@
   </div>
 
   <div class="fieldline">
-  	@Html.LabelFor(model => model.StatementOfNetPosition_GovernmentalActivities.Assets_Less:AccumulatedDepreciaion)
-  	@Html.EditorFor(model => model.StatementOfNetPosition_GovernmentalActivities.Assets_Less:AccumulatedDepreciaion)
+  	@Html.LabelFor(model => model.StatementOfNetPosition_GovernmentalActivities.Assets_LessAccumulatedDepreciaion)
+  	@Html.EditorFor(model => model.StatementOfNetPosition_GovernmentalActivities.Assets_LessAccumulatedDepreciaion)
   </div>
 
   <div class="fieldline">
@@ -1257,8 +1257,8 @@
   </div>
 
   <div class="fieldline">
-  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsWater.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets:)
-  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsWater.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets:)
+  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsWater.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets)
+  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsWater.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets)
   </div>
 
   <div class="fieldline">
@@ -1272,8 +1272,8 @@
   </div>
 
   <div class="fieldline">
-  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsWater.Assets_NoncurrentAsset_Less:AccumulatedDepreciation)
-  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsWater.Assets_NoncurrentAsset_Less:AccumulatedDepreciation)
+  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsWater.Assets_NoncurrentAsset_LessAccumulatedDepreciation)
+  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsWater.Assets_NoncurrentAsset_LessAccumulatedDepreciation)
   </div>
 
   <div class="fieldline">
@@ -1475,8 +1475,8 @@
   </div>
 
   <div class="fieldline">
-  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsSewer.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets:)
-  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsSewer.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets:)
+  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsSewer.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets)
+  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsSewer.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets)
   </div>
 
   <div class="fieldline">
@@ -1490,8 +1490,8 @@
   </div>
 
   <div class="fieldline">
-  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsSewer.Assets_NoncurrentAsset_Less:AccumulatedDepreciation)
-  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsSewer.Assets_NoncurrentAsset_Less:AccumulatedDepreciation)
+  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsSewer.Assets_NoncurrentAsset_LessAccumulatedDepreciation)
+  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsSewer.Assets_NoncurrentAsset_LessAccumulatedDepreciation)
   </div>
 
   <div class="fieldline">
@@ -1693,8 +1693,8 @@
   </div>
 
   <div class="fieldline">
-  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsLandfill.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets:)
-  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsLandfill.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets:)
+  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsLandfill.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets)
+  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsLandfill.Assets_NoncurrentAsset_CapitalAssets_CapitalAssets)
   </div>
 
   <div class="fieldline">
@@ -1708,8 +1708,8 @@
   </div>
 
   <div class="fieldline">
-  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsLandfill.Assets_NoncurrentAsset_Less:AccumulatedDepreciation)
-  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsLandfill.Assets_NoncurrentAsset_Less:AccumulatedDepreciation)
+  	@Html.LabelFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsLandfill.Assets_NoncurrentAsset_LessAccumulatedDepreciation)
+  	@Html.EditorFor(model => model.StatementOfNetPosition_ProprietaryFunds_EnterpriseFundsLandfill.Assets_NoncurrentAsset_LessAccumulatedDepreciation)
   </div>
 
   <div class="fieldline">

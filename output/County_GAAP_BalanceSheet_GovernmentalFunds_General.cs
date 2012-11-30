@@ -1,104 +1,107 @@
+using System.Data.SqlClient;
+using System.Configuration;
+
 namespace County.GAAP
 {
   public class BalanceSheet_GovernmentalFunds_General
   {
-    int id { get; set; }
+    public int Id { get; set; }
     
-    decimal Assets_CashAndCashEquivalents { get; set; }
-    decimal Assets_Investments { get; set; }
-    decimal Assets_InventoryHeldForResale { get; set; }
-    decimal Assets_MaterialsAndSuppliesInventory { get; set; }
-    decimal Assets_AccruedInterestReceivable { get; set; }
-    decimal Assets_AccountsReceivable { get; set; }
-    decimal Assets_InterfundReceivable { get; set; }
-    decimal Assets_DueFromOtherFunds { get; set; }
-    decimal Assets_IntergovernmentalReceivable { get; set; }
-    decimal Assets_PrepaidItems { get; set; }
-    decimal Assets_PropertyTaxesReceivable { get; set; }
-    decimal Assets_SalesTaxReceivable { get; set; }
-    decimal Assets_RevenueInLieuOfTaxesReceivable { get; set; }
-    decimal Assets_DueFromOtherGovernments { get; set; }
-    decimal Assets_NotesReceivable { get; set; }
-    decimal Assets_LoansReceivable { get; set; }
-    decimal Assets_OtherAssets { get; set; }
-    decimal Assets_TotalDeferredOutflowsOfResources { get; set; }
-    decimal Liabilities_AccountsPayable { get; set; }
-    decimal Liabilities_AccruedWagesAndBenefits { get; set; }
-    decimal Liabilities_ContractsPayable { get; set; }
-    decimal Liabilities_IntergovernmentalPayable { get; set; }
-    decimal Liabilities_DueToOtherGovernments { get; set; }
-    decimal Liabilities_MaturedInterestPayable { get; set; }
-    decimal Liabilities_MaturedBondsPayable { get; set; }
-    decimal Liabilities_RetainagePayable { get; set; }
-    decimal Liabilities_InterfundPayable { get; set; }
-    decimal Liabilities_DueToOtherFunds { get; set; }
-    decimal Liabilities_ClaimsPayable { get; set; }
-    decimal Liabilities_UnearnedRevenue { get; set; }
-    decimal Liabilities_NotesPayable { get; set; }
-    decimal Liabilities_OtherLiabilities { get; set; }
-    decimal Liabilities_TotalDeferredInflowsOfResources { get; set; }
-    decimal FundBalances_Nonspendable { get; set; }
-    decimal FundBalances_Restricted { get; set; }
-    decimal FundBalances_Committed { get; set; }
-    decimal FundBalances_Assigned { get; set; }
-    decimal FundBalances_Unassigned { get; set; }
+    public decimal Assets_CashAndCashEquivalents { get; set; }
+    public decimal Assets_Investments { get; set; }
+    public decimal Assets_InventoryHeldForResale { get; set; }
+    public decimal Assets_MaterialsAndSuppliesInventory { get; set; }
+    public decimal Assets_AccruedInterestReceivable { get; set; }
+    public decimal Assets_AccountsReceivable { get; set; }
+    public decimal Assets_InterfundReceivable { get; set; }
+    public decimal Assets_DueFromOtherFunds { get; set; }
+    public decimal Assets_IntergovernmentalReceivable { get; set; }
+    public decimal Assets_PrepaidItems { get; set; }
+    public decimal Assets_PropertyTaxesReceivable { get; set; }
+    public decimal Assets_SalesTaxReceivable { get; set; }
+    public decimal Assets_RevenueInLieuOfTaxesReceivable { get; set; }
+    public decimal Assets_DueFromOtherGovernments { get; set; }
+    public decimal Assets_NotesReceivable { get; set; }
+    public decimal Assets_LoansReceivable { get; set; }
+    public decimal Assets_OtherAssets { get; set; }
+    public decimal Assets_TotalDeferredOutflowsOfResources { get; set; }
+    public decimal Liabilities_AccountsPayable { get; set; }
+    public decimal Liabilities_AccruedWagesAndBenefits { get; set; }
+    public decimal Liabilities_ContractsPayable { get; set; }
+    public decimal Liabilities_IntergovernmentalPayable { get; set; }
+    public decimal Liabilities_DueToOtherGovernments { get; set; }
+    public decimal Liabilities_MaturedInterestPayable { get; set; }
+    public decimal Liabilities_MaturedBondsPayable { get; set; }
+    public decimal Liabilities_RetainagePayable { get; set; }
+    public decimal Liabilities_InterfundPayable { get; set; }
+    public decimal Liabilities_DueToOtherFunds { get; set; }
+    public decimal Liabilities_ClaimsPayable { get; set; }
+    public decimal Liabilities_UnearnedRevenue { get; set; }
+    public decimal Liabilities_NotesPayable { get; set; }
+    public decimal Liabilities_OtherLiabilities { get; set; }
+    public decimal Liabilities_TotalDeferredInflowsOfResources { get; set; }
+    public decimal FundBalances_Nonspendable { get; set; }
+    public decimal FundBalances_Restricted { get; set; }
+    public decimal FundBalances_Committed { get; set; }
+    public decimal FundBalances_Assigned { get; set; }
+    public decimal FundBalances_Unassigned { get; set; }
 
     public BalanceSheet_GovernmentalFunds_General()
     {
-      this.id = -1;
+      this.Id = -1;
     }
     
-    public void Load(int id)
+    public void Load(int Id)
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_BalanceSheet_GovernmentalFunds_GeneralGetByID", connection);
         SqlDataReader reader;
         
-        command.Parameters.AddWithValue("@BalanceSheet_GovernmentalFunds_GeneralId", id);
+        command.Parameters.AddWithValue("@BalanceSheet_GovernmentalFunds_GeneralId", Id);
 
         connection.Open();
         reader = command.ExecuteReader();                                                   
         reader.Read();  
         
-        this.Assets_CashAndCashEquivalents = reader["Assets_CashAndCashEquivalents"];
-        this.Assets_Investments = reader["Assets_Investments"];
-        this.Assets_InventoryHeldForResale = reader["Assets_InventoryHeldForResale"];
-        this.Assets_MaterialsAndSuppliesInventory = reader["Assets_MaterialsAndSuppliesInventory"];
-        this.Assets_AccruedInterestReceivable = reader["Assets_AccruedInterestReceivable"];
-        this.Assets_AccountsReceivable = reader["Assets_AccountsReceivable"];
-        this.Assets_InterfundReceivable = reader["Assets_InterfundReceivable"];
-        this.Assets_DueFromOtherFunds = reader["Assets_DueFromOtherFunds"];
-        this.Assets_IntergovernmentalReceivable = reader["Assets_IntergovernmentalReceivable"];
-        this.Assets_PrepaidItems = reader["Assets_PrepaidItems"];
-        this.Assets_PropertyTaxesReceivable = reader["Assets_PropertyTaxesReceivable"];
-        this.Assets_SalesTaxReceivable = reader["Assets_SalesTaxReceivable"];
-        this.Assets_RevenueInLieuOfTaxesReceivable = reader["Assets_RevenueInLieuOfTaxesReceivable"];
-        this.Assets_DueFromOtherGovernments = reader["Assets_DueFromOtherGovernments"];
-        this.Assets_NotesReceivable = reader["Assets_NotesReceivable"];
-        this.Assets_LoansReceivable = reader["Assets_LoansReceivable"];
-        this.Assets_OtherAssets = reader["Assets_OtherAssets"];
-        this.Assets_TotalDeferredOutflowsOfResources = reader["Assets_TotalDeferredOutflowsOfResources"];
-        this.Liabilities_AccountsPayable = reader["Liabilities_AccountsPayable"];
-        this.Liabilities_AccruedWagesAndBenefits = reader["Liabilities_AccruedWagesAndBenefits"];
-        this.Liabilities_ContractsPayable = reader["Liabilities_ContractsPayable"];
-        this.Liabilities_IntergovernmentalPayable = reader["Liabilities_IntergovernmentalPayable"];
-        this.Liabilities_DueToOtherGovernments = reader["Liabilities_DueToOtherGovernments"];
-        this.Liabilities_MaturedInterestPayable = reader["Liabilities_MaturedInterestPayable"];
-        this.Liabilities_MaturedBondsPayable = reader["Liabilities_MaturedBondsPayable"];
-        this.Liabilities_RetainagePayable = reader["Liabilities_RetainagePayable"];
-        this.Liabilities_InterfundPayable = reader["Liabilities_InterfundPayable"];
-        this.Liabilities_DueToOtherFunds = reader["Liabilities_DueToOtherFunds"];
-        this.Liabilities_ClaimsPayable = reader["Liabilities_ClaimsPayable"];
-        this.Liabilities_UnearnedRevenue = reader["Liabilities_UnearnedRevenue"];
-        this.Liabilities_NotesPayable = reader["Liabilities_NotesPayable"];
-        this.Liabilities_OtherLiabilities = reader["Liabilities_OtherLiabilities"];
-        this.Liabilities_TotalDeferredInflowsOfResources = reader["Liabilities_TotalDeferredInflowsOfResources"];
-        this.FundBalances_Nonspendable = reader["FundBalances_Nonspendable"];
-        this.FundBalances_Restricted = reader["FundBalances_Restricted"];
-        this.FundBalances_Committed = reader["FundBalances_Committed"];
-        this.FundBalances_Assigned = reader["FundBalances_Assigned"];
-        this.FundBalances_Unassigned = reader["FundBalances_Unassigned"];
+        this.Assets_CashAndCashEquivalents = (decimal)reader["Assets_CashAndCashEquivalents"];
+        this.Assets_Investments = (decimal)reader["Assets_Investments"];
+        this.Assets_InventoryHeldForResale = (decimal)reader["Assets_InventoryHeldForResale"];
+        this.Assets_MaterialsAndSuppliesInventory = (decimal)reader["Assets_MaterialsAndSuppliesInventory"];
+        this.Assets_AccruedInterestReceivable = (decimal)reader["Assets_AccruedInterestReceivable"];
+        this.Assets_AccountsReceivable = (decimal)reader["Assets_AccountsReceivable"];
+        this.Assets_InterfundReceivable = (decimal)reader["Assets_InterfundReceivable"];
+        this.Assets_DueFromOtherFunds = (decimal)reader["Assets_DueFromOtherFunds"];
+        this.Assets_IntergovernmentalReceivable = (decimal)reader["Assets_IntergovernmentalReceivable"];
+        this.Assets_PrepaidItems = (decimal)reader["Assets_PrepaidItems"];
+        this.Assets_PropertyTaxesReceivable = (decimal)reader["Assets_PropertyTaxesReceivable"];
+        this.Assets_SalesTaxReceivable = (decimal)reader["Assets_SalesTaxReceivable"];
+        this.Assets_RevenueInLieuOfTaxesReceivable = (decimal)reader["Assets_RevenueInLieuOfTaxesReceivable"];
+        this.Assets_DueFromOtherGovernments = (decimal)reader["Assets_DueFromOtherGovernments"];
+        this.Assets_NotesReceivable = (decimal)reader["Assets_NotesReceivable"];
+        this.Assets_LoansReceivable = (decimal)reader["Assets_LoansReceivable"];
+        this.Assets_OtherAssets = (decimal)reader["Assets_OtherAssets"];
+        this.Assets_TotalDeferredOutflowsOfResources = (decimal)reader["Assets_TotalDeferredOutflowsOfResources"];
+        this.Liabilities_AccountsPayable = (decimal)reader["Liabilities_AccountsPayable"];
+        this.Liabilities_AccruedWagesAndBenefits = (decimal)reader["Liabilities_AccruedWagesAndBenefits"];
+        this.Liabilities_ContractsPayable = (decimal)reader["Liabilities_ContractsPayable"];
+        this.Liabilities_IntergovernmentalPayable = (decimal)reader["Liabilities_IntergovernmentalPayable"];
+        this.Liabilities_DueToOtherGovernments = (decimal)reader["Liabilities_DueToOtherGovernments"];
+        this.Liabilities_MaturedInterestPayable = (decimal)reader["Liabilities_MaturedInterestPayable"];
+        this.Liabilities_MaturedBondsPayable = (decimal)reader["Liabilities_MaturedBondsPayable"];
+        this.Liabilities_RetainagePayable = (decimal)reader["Liabilities_RetainagePayable"];
+        this.Liabilities_InterfundPayable = (decimal)reader["Liabilities_InterfundPayable"];
+        this.Liabilities_DueToOtherFunds = (decimal)reader["Liabilities_DueToOtherFunds"];
+        this.Liabilities_ClaimsPayable = (decimal)reader["Liabilities_ClaimsPayable"];
+        this.Liabilities_UnearnedRevenue = (decimal)reader["Liabilities_UnearnedRevenue"];
+        this.Liabilities_NotesPayable = (decimal)reader["Liabilities_NotesPayable"];
+        this.Liabilities_OtherLiabilities = (decimal)reader["Liabilities_OtherLiabilities"];
+        this.Liabilities_TotalDeferredInflowsOfResources = (decimal)reader["Liabilities_TotalDeferredInflowsOfResources"];
+        this.FundBalances_Nonspendable = (decimal)reader["FundBalances_Nonspendable"];
+        this.FundBalances_Restricted = (decimal)reader["FundBalances_Restricted"];
+        this.FundBalances_Committed = (decimal)reader["FundBalances_Committed"];
+        this.FundBalances_Assigned = (decimal)reader["FundBalances_Assigned"];
+        this.FundBalances_Unassigned = (decimal)reader["FundBalances_Unassigned"];
       
         connection.Close();
       }
@@ -106,7 +109,7 @@ namespace County.GAAP
 
     public void Save()
     {
-      if (this.id == -1)
+      if (this.Id == -1)
       {
         SaveNew();
       }
@@ -118,7 +121,7 @@ namespace County.GAAP
 
     protected void SaveNew()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_BalanceSheet_GovernmentalFunds_GeneralAdd", connection);
         
@@ -163,18 +166,18 @@ namespace County.GAAP
         command.Parameters.AddWithValue("@FundBalances_Unassigned", this.FundBalances_Unassigned);
 
         connection.Open();
-        this.id = command.ExecuteScalar();
+        this.Id = (int)command.ExecuteScalar();
         connection.Close();
       }
     }
 
     protected void Update()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_BalanceSheet_GovernmentalFunds_GeneralUpdate", connection);
 
-        command.Parameters.AddWithValue("@BalanceSheet_GovernmentalFunds_GeneralId", this.id);
+        command.Parameters.AddWithValue("@BalanceSheet_GovernmentalFunds_GeneralId", this.Id);
         
         command.Parameters.AddWithValue("@Assets_CashAndCashEquivalents", this.Assets_CashAndCashEquivalents);
         command.Parameters.AddWithValue("@Assets_Investments", this.Assets_Investments);
@@ -221,13 +224,13 @@ namespace County.GAAP
       }
     }
 
-    protected void Delete()
+    public void Delete()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_BalanceSheet_GovernmentalFunds_GeneralDelete", connection);
 
-        command.Parameters.AddWithValue("@BalanceSheet_GovernmentalFunds_GeneralId", this.id);
+        command.Parameters.AddWithValue("@BalanceSheet_GovernmentalFunds_GeneralId", this.Id);
 
         connection.Open();
         command.ExecuteNonQuery();  

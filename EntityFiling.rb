@@ -1,4 +1,4 @@
-require 'ScaffoldingObject'
+require_relative 'ScaffoldingObject'
 
 class EntityFiling
   attr_accessor :entity_type, :filing_type, :sheets

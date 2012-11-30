@@ -1,106 +1,109 @@
+using System.Data.SqlClient;
+using System.Configuration;
+
 namespace County.GAAP
 {
   public class StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_General
   {
-    int id { get; set; }
+    public int Id { get; set; }
     
-    decimal Revenues_PropertyTaxes { get; set; }
-    decimal Revenues_SalesTaxes { get; set; }
-    decimal Revenues_Intergovernmental { get; set; }
-    decimal Revenues_Interest { get; set; }
-    decimal Revenues_LicensesAndPermits { get; set; }
-    decimal Revenues_FinesAndForfeitures { get; set; }
-    decimal Revenues_Rentals { get; set; }
-    decimal Revenues_ChargesForServices { get; set; }
-    decimal Revenues_ContributionsAndDonations { get; set; }
-    decimal Revenues_SpecialAssessments { get; set; }
-    decimal Revenues_OtherRevenues { get; set; }
-    decimal Expenditures_GeneralGovernment_LegislativeAndExecutive { get; set; }
-    decimal Expenditures_GeneralGovernment_Judicial { get; set; }
-    decimal Expenditures_PublicSafety { get; set; }
-    decimal Expenditures_PublicWorks { get; set; }
-    decimal Expenditures_Health { get; set; }
-    decimal Expenditures_HumanServices { get; set; }
-    decimal Expenditures_ConservationAndRecreation { get; set; }
-    decimal Expenditures_CapitalOutlay { get; set; }
-    decimal Expenditures_Intergovernmental { get; set; }
-    decimal Expenditures_DebtService_PrincipalRetirement { get; set; }
-    decimal Expenditures_DebtService_InterestAndFiscalCharges { get; set; }
-    decimal Expenditures_DebtService_BondIssuanceCosts { get; set; }
-    decimal Expenditures_DebtService_Other { get; set; }
-    decimal Expenditures_OtherExpenditures { get; set; }
-    decimal OtherFinancingSourcesUses_SaleOfCapitalAssets { get; set; }
-    decimal OtherFinancingSourcesUses_InceptionOfCapitalLease { get; set; }
-    decimal OtherFinancingSourcesUses_GeneralObligationBondsIssued { get; set; }
-    decimal OtherFinancingSourcesUses_RefundingBondsIssued { get; set; }
-    decimal OtherFinancingSourcesUses_PremiumOnDebtIssuance { get; set; }
-    decimal OtherFinancingSourcesUses_PaymentToRefundedBondEscrowAgent { get; set; }
-    decimal OtherFinancingSourcesUses_TransfersIn { get; set; }
-    decimal OtherFinancingSourcesUses_TransfersOut { get; set; }
-    decimal OtherFinancingSourcesUses_OtherFinancingSources { get; set; }
-    decimal OtherFinancingSourcesUses_OtherFinancingUses { get; set; }
-    decimal SpecialAndExtraordinaryItems_SpecialItem { get; set; }
-    decimal SpecialAndExtraordinaryItems_ExtraordinaryItem { get; set; }
-    decimal FundBalancesBeginningOfYear_FundBalancesBeginningOfYear { get; set; }
-    decimal IncreaseDecreaseInInventoryOrPrepaidAssets_IncreaseDecreaseInInventoryOrPrepaidAssets { get; set; }
+    public decimal Revenues_PropertyTaxes { get; set; }
+    public decimal Revenues_SalesTaxes { get; set; }
+    public decimal Revenues_Intergovernmental { get; set; }
+    public decimal Revenues_Interest { get; set; }
+    public decimal Revenues_LicensesAndPermits { get; set; }
+    public decimal Revenues_FinesAndForfeitures { get; set; }
+    public decimal Revenues_Rentals { get; set; }
+    public decimal Revenues_ChargesForServices { get; set; }
+    public decimal Revenues_ContributionsAndDonations { get; set; }
+    public decimal Revenues_SpecialAssessments { get; set; }
+    public decimal Revenues_OtherRevenues { get; set; }
+    public decimal Expenditures_GeneralGovernment_LegislativeAndExecutive { get; set; }
+    public decimal Expenditures_GeneralGovernment_Judicial { get; set; }
+    public decimal Expenditures_PublicSafety { get; set; }
+    public decimal Expenditures_PublicWorks { get; set; }
+    public decimal Expenditures_Health { get; set; }
+    public decimal Expenditures_HumanServices { get; set; }
+    public decimal Expenditures_ConservationAndRecreation { get; set; }
+    public decimal Expenditures_CapitalOutlay { get; set; }
+    public decimal Expenditures_Intergovernmental { get; set; }
+    public decimal Expenditures_DebtService_PrincipalRetirement { get; set; }
+    public decimal Expenditures_DebtService_InterestAndFiscalCharges { get; set; }
+    public decimal Expenditures_DebtService_BondIssuanceCosts { get; set; }
+    public decimal Expenditures_DebtService_Other { get; set; }
+    public decimal Expenditures_OtherExpenditures { get; set; }
+    public decimal OtherFinancingSourcesUses_SaleOfCapitalAssets { get; set; }
+    public decimal OtherFinancingSourcesUses_InceptionOfCapitalLease { get; set; }
+    public decimal OtherFinancingSourcesUses_GeneralObligationBondsIssued { get; set; }
+    public decimal OtherFinancingSourcesUses_RefundingBondsIssued { get; set; }
+    public decimal OtherFinancingSourcesUses_PremiumOnDebtIssuance { get; set; }
+    public decimal OtherFinancingSourcesUses_PaymentToRefundedBondEscrowAgent { get; set; }
+    public decimal OtherFinancingSourcesUses_TransfersIn { get; set; }
+    public decimal OtherFinancingSourcesUses_TransfersOut { get; set; }
+    public decimal OtherFinancingSourcesUses_OtherFinancingSources { get; set; }
+    public decimal OtherFinancingSourcesUses_OtherFinancingUses { get; set; }
+    public decimal SpecialAndExtraordinaryItems_SpecialItem { get; set; }
+    public decimal SpecialAndExtraordinaryItems_ExtraordinaryItem { get; set; }
+    public decimal FundBalancesBeginningOfYear_FundBalancesBeginningOfYear { get; set; }
+    public decimal IncreaseDecreaseInInventoryOrPrepaidAssets_IncreaseDecreaseInInventoryOrPrepaidAssets { get; set; }
 
     public StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_General()
     {
-      this.id = -1;
+      this.Id = -1;
     }
     
-    public void Load(int id)
+    public void Load(int Id)
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralGetByID", connection);
         SqlDataReader reader;
         
-        command.Parameters.AddWithValue("@StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralId", id);
+        command.Parameters.AddWithValue("@StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralId", Id);
 
         connection.Open();
         reader = command.ExecuteReader();                                                   
         reader.Read();  
         
-        this.Revenues_PropertyTaxes = reader["Revenues_PropertyTaxes"];
-        this.Revenues_SalesTaxes = reader["Revenues_SalesTaxes"];
-        this.Revenues_Intergovernmental = reader["Revenues_Intergovernmental"];
-        this.Revenues_Interest = reader["Revenues_Interest"];
-        this.Revenues_LicensesAndPermits = reader["Revenues_LicensesAndPermits"];
-        this.Revenues_FinesAndForfeitures = reader["Revenues_FinesAndForfeitures"];
-        this.Revenues_Rentals = reader["Revenues_Rentals"];
-        this.Revenues_ChargesForServices = reader["Revenues_ChargesForServices"];
-        this.Revenues_ContributionsAndDonations = reader["Revenues_ContributionsAndDonations"];
-        this.Revenues_SpecialAssessments = reader["Revenues_SpecialAssessments"];
-        this.Revenues_OtherRevenues = reader["Revenues_OtherRevenues"];
-        this.Expenditures_GeneralGovernment_LegislativeAndExecutive = reader["Expenditures_GeneralGovernment_LegislativeAndExecutive"];
-        this.Expenditures_GeneralGovernment_Judicial = reader["Expenditures_GeneralGovernment_Judicial"];
-        this.Expenditures_PublicSafety = reader["Expenditures_PublicSafety"];
-        this.Expenditures_PublicWorks = reader["Expenditures_PublicWorks"];
-        this.Expenditures_Health = reader["Expenditures_Health"];
-        this.Expenditures_HumanServices = reader["Expenditures_HumanServices"];
-        this.Expenditures_ConservationAndRecreation = reader["Expenditures_ConservationAndRecreation"];
-        this.Expenditures_CapitalOutlay = reader["Expenditures_CapitalOutlay"];
-        this.Expenditures_Intergovernmental = reader["Expenditures_Intergovernmental"];
-        this.Expenditures_DebtService_PrincipalRetirement = reader["Expenditures_DebtService_PrincipalRetirement"];
-        this.Expenditures_DebtService_InterestAndFiscalCharges = reader["Expenditures_DebtService_InterestAndFiscalCharges"];
-        this.Expenditures_DebtService_BondIssuanceCosts = reader["Expenditures_DebtService_BondIssuanceCosts"];
-        this.Expenditures_DebtService_Other = reader["Expenditures_DebtService_Other"];
-        this.Expenditures_OtherExpenditures = reader["Expenditures_OtherExpenditures"];
-        this.OtherFinancingSourcesUses_SaleOfCapitalAssets = reader["OtherFinancingSourcesUses_SaleOfCapitalAssets"];
-        this.OtherFinancingSourcesUses_InceptionOfCapitalLease = reader["OtherFinancingSourcesUses_InceptionOfCapitalLease"];
-        this.OtherFinancingSourcesUses_GeneralObligationBondsIssued = reader["OtherFinancingSourcesUses_GeneralObligationBondsIssued"];
-        this.OtherFinancingSourcesUses_RefundingBondsIssued = reader["OtherFinancingSourcesUses_RefundingBondsIssued"];
-        this.OtherFinancingSourcesUses_PremiumOnDebtIssuance = reader["OtherFinancingSourcesUses_PremiumOnDebtIssuance"];
-        this.OtherFinancingSourcesUses_PaymentToRefundedBondEscrowAgent = reader["OtherFinancingSourcesUses_PaymentToRefundedBondEscrowAgent"];
-        this.OtherFinancingSourcesUses_TransfersIn = reader["OtherFinancingSourcesUses_TransfersIn"];
-        this.OtherFinancingSourcesUses_TransfersOut = reader["OtherFinancingSourcesUses_TransfersOut"];
-        this.OtherFinancingSourcesUses_OtherFinancingSources = reader["OtherFinancingSourcesUses_OtherFinancingSources"];
-        this.OtherFinancingSourcesUses_OtherFinancingUses = reader["OtherFinancingSourcesUses_OtherFinancingUses"];
-        this.SpecialAndExtraordinaryItems_SpecialItem = reader["SpecialAndExtraordinaryItems_SpecialItem"];
-        this.SpecialAndExtraordinaryItems_ExtraordinaryItem = reader["SpecialAndExtraordinaryItems_ExtraordinaryItem"];
-        this.FundBalancesBeginningOfYear_FundBalancesBeginningOfYear = reader["FundBalancesBeginningOfYear_FundBalancesBeginningOfYear"];
-        this.IncreaseDecreaseInInventoryOrPrepaidAssets_IncreaseDecreaseInInventoryOrPrepaidAssets = reader["IncreaseDecreaseInInventoryOrPrepaidAssets_IncreaseDecreaseInInventoryOrPrepaidAssets"];
+        this.Revenues_PropertyTaxes = (decimal)reader["Revenues_PropertyTaxes"];
+        this.Revenues_SalesTaxes = (decimal)reader["Revenues_SalesTaxes"];
+        this.Revenues_Intergovernmental = (decimal)reader["Revenues_Intergovernmental"];
+        this.Revenues_Interest = (decimal)reader["Revenues_Interest"];
+        this.Revenues_LicensesAndPermits = (decimal)reader["Revenues_LicensesAndPermits"];
+        this.Revenues_FinesAndForfeitures = (decimal)reader["Revenues_FinesAndForfeitures"];
+        this.Revenues_Rentals = (decimal)reader["Revenues_Rentals"];
+        this.Revenues_ChargesForServices = (decimal)reader["Revenues_ChargesForServices"];
+        this.Revenues_ContributionsAndDonations = (decimal)reader["Revenues_ContributionsAndDonations"];
+        this.Revenues_SpecialAssessments = (decimal)reader["Revenues_SpecialAssessments"];
+        this.Revenues_OtherRevenues = (decimal)reader["Revenues_OtherRevenues"];
+        this.Expenditures_GeneralGovernment_LegislativeAndExecutive = (decimal)reader["Expenditures_GeneralGovernment_LegislativeAndExecutive"];
+        this.Expenditures_GeneralGovernment_Judicial = (decimal)reader["Expenditures_GeneralGovernment_Judicial"];
+        this.Expenditures_PublicSafety = (decimal)reader["Expenditures_PublicSafety"];
+        this.Expenditures_PublicWorks = (decimal)reader["Expenditures_PublicWorks"];
+        this.Expenditures_Health = (decimal)reader["Expenditures_Health"];
+        this.Expenditures_HumanServices = (decimal)reader["Expenditures_HumanServices"];
+        this.Expenditures_ConservationAndRecreation = (decimal)reader["Expenditures_ConservationAndRecreation"];
+        this.Expenditures_CapitalOutlay = (decimal)reader["Expenditures_CapitalOutlay"];
+        this.Expenditures_Intergovernmental = (decimal)reader["Expenditures_Intergovernmental"];
+        this.Expenditures_DebtService_PrincipalRetirement = (decimal)reader["Expenditures_DebtService_PrincipalRetirement"];
+        this.Expenditures_DebtService_InterestAndFiscalCharges = (decimal)reader["Expenditures_DebtService_InterestAndFiscalCharges"];
+        this.Expenditures_DebtService_BondIssuanceCosts = (decimal)reader["Expenditures_DebtService_BondIssuanceCosts"];
+        this.Expenditures_DebtService_Other = (decimal)reader["Expenditures_DebtService_Other"];
+        this.Expenditures_OtherExpenditures = (decimal)reader["Expenditures_OtherExpenditures"];
+        this.OtherFinancingSourcesUses_SaleOfCapitalAssets = (decimal)reader["OtherFinancingSourcesUses_SaleOfCapitalAssets"];
+        this.OtherFinancingSourcesUses_InceptionOfCapitalLease = (decimal)reader["OtherFinancingSourcesUses_InceptionOfCapitalLease"];
+        this.OtherFinancingSourcesUses_GeneralObligationBondsIssued = (decimal)reader["OtherFinancingSourcesUses_GeneralObligationBondsIssued"];
+        this.OtherFinancingSourcesUses_RefundingBondsIssued = (decimal)reader["OtherFinancingSourcesUses_RefundingBondsIssued"];
+        this.OtherFinancingSourcesUses_PremiumOnDebtIssuance = (decimal)reader["OtherFinancingSourcesUses_PremiumOnDebtIssuance"];
+        this.OtherFinancingSourcesUses_PaymentToRefundedBondEscrowAgent = (decimal)reader["OtherFinancingSourcesUses_PaymentToRefundedBondEscrowAgent"];
+        this.OtherFinancingSourcesUses_TransfersIn = (decimal)reader["OtherFinancingSourcesUses_TransfersIn"];
+        this.OtherFinancingSourcesUses_TransfersOut = (decimal)reader["OtherFinancingSourcesUses_TransfersOut"];
+        this.OtherFinancingSourcesUses_OtherFinancingSources = (decimal)reader["OtherFinancingSourcesUses_OtherFinancingSources"];
+        this.OtherFinancingSourcesUses_OtherFinancingUses = (decimal)reader["OtherFinancingSourcesUses_OtherFinancingUses"];
+        this.SpecialAndExtraordinaryItems_SpecialItem = (decimal)reader["SpecialAndExtraordinaryItems_SpecialItem"];
+        this.SpecialAndExtraordinaryItems_ExtraordinaryItem = (decimal)reader["SpecialAndExtraordinaryItems_ExtraordinaryItem"];
+        this.FundBalancesBeginningOfYear_FundBalancesBeginningOfYear = (decimal)reader["FundBalancesBeginningOfYear_FundBalancesBeginningOfYear"];
+        this.IncreaseDecreaseInInventoryOrPrepaidAssets_IncreaseDecreaseInInventoryOrPrepaidAssets = (decimal)reader["IncreaseDecreaseInInventoryOrPrepaidAssets_IncreaseDecreaseInInventoryOrPrepaidAssets"];
       
         connection.Close();
       }
@@ -108,7 +111,7 @@ namespace County.GAAP
 
     public void Save()
     {
-      if (this.id == -1)
+      if (this.Id == -1)
       {
         SaveNew();
       }
@@ -120,7 +123,7 @@ namespace County.GAAP
 
     protected void SaveNew()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralAdd", connection);
         
@@ -166,18 +169,18 @@ namespace County.GAAP
         command.Parameters.AddWithValue("@IncreaseDecreaseInInventoryOrPrepaidAssets_IncreaseDecreaseInInventoryOrPrepaidAssets", this.IncreaseDecreaseInInventoryOrPrepaidAssets_IncreaseDecreaseInInventoryOrPrepaidAssets);
 
         connection.Open();
-        this.id = command.ExecuteScalar();
+        this.Id = (int)command.ExecuteScalar();
         connection.Close();
       }
     }
 
     protected void Update()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralUpdate", connection);
 
-        command.Parameters.AddWithValue("@StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralId", this.id);
+        command.Parameters.AddWithValue("@StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralId", this.Id);
         
         command.Parameters.AddWithValue("@Revenues_PropertyTaxes", this.Revenues_PropertyTaxes);
         command.Parameters.AddWithValue("@Revenues_SalesTaxes", this.Revenues_SalesTaxes);
@@ -225,13 +228,13 @@ namespace County.GAAP
       }
     }
 
-    protected void Delete()
+    public void Delete()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralDelete", connection);
 
-        command.Parameters.AddWithValue("@StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralId", this.id);
+        command.Parameters.AddWithValue("@StatementOfRevenuesExpendituresAndChangesInFundBalances_GovernmentalFunds_GeneralId", this.Id);
 
         connection.Open();
         command.ExecuteNonQuery();  

@@ -125,8 +125,8 @@
   </div>
 
   <div class="fieldline">
-  	<label for="txtAssets_Less:AccumulatedDepreciaion"></label>
-  	<asp:TextBox ID="txtAssets_Less:AccumulatedDepreciaion" runat="server" CssClass="moneyinput money"></asp:TextBox>
+  	<label for="txtAssets_LessAccumulatedDepreciaion"></label>
+  	<asp:TextBox ID="txtAssets_LessAccumulatedDepreciaion" runat="server" CssClass="moneyinput money"></asp:TextBox>
   </div>
 
   <div class="fieldline">
@@ -1264,8 +1264,8 @@
   </div>
 
   <div class="fieldline">
-  	<label for="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets:"></label>
-  	<asp:TextBox ID="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets:" runat="server" CssClass="moneyinput money"></asp:TextBox>
+  	<label for="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets"></label>
+  	<asp:TextBox ID="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets" runat="server" CssClass="moneyinput money"></asp:TextBox>
   </div>
 
   <div class="fieldline">
@@ -1279,8 +1279,8 @@
   </div>
 
   <div class="fieldline">
-  	<label for="txtAssets_NoncurrentAsset_Less:AccumulatedDepreciation"></label>
-  	<asp:TextBox ID="txtAssets_NoncurrentAsset_Less:AccumulatedDepreciation" runat="server" CssClass="moneyinput money"></asp:TextBox>
+  	<label for="txtAssets_NoncurrentAsset_LessAccumulatedDepreciation"></label>
+  	<asp:TextBox ID="txtAssets_NoncurrentAsset_LessAccumulatedDepreciation" runat="server" CssClass="moneyinput money"></asp:TextBox>
   </div>
 
   <div class="fieldline">
@@ -1483,8 +1483,8 @@
   </div>
 
   <div class="fieldline">
-  	<label for="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets:"></label>
-  	<asp:TextBox ID="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets:" runat="server" CssClass="moneyinput money"></asp:TextBox>
+  	<label for="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets"></label>
+  	<asp:TextBox ID="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets" runat="server" CssClass="moneyinput money"></asp:TextBox>
   </div>
 
   <div class="fieldline">
@@ -1498,8 +1498,8 @@
   </div>
 
   <div class="fieldline">
-  	<label for="txtAssets_NoncurrentAsset_Less:AccumulatedDepreciation"></label>
-  	<asp:TextBox ID="txtAssets_NoncurrentAsset_Less:AccumulatedDepreciation" runat="server" CssClass="moneyinput money"></asp:TextBox>
+  	<label for="txtAssets_NoncurrentAsset_LessAccumulatedDepreciation"></label>
+  	<asp:TextBox ID="txtAssets_NoncurrentAsset_LessAccumulatedDepreciation" runat="server" CssClass="moneyinput money"></asp:TextBox>
   </div>
 
   <div class="fieldline">
@@ -1702,8 +1702,8 @@
   </div>
 
   <div class="fieldline">
-  	<label for="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets:"></label>
-  	<asp:TextBox ID="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets:" runat="server" CssClass="moneyinput money"></asp:TextBox>
+  	<label for="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets"></label>
+  	<asp:TextBox ID="txtAssets_NoncurrentAsset_CapitalAssets_CapitalAssets" runat="server" CssClass="moneyinput money"></asp:TextBox>
   </div>
 
   <div class="fieldline">
@@ -1717,8 +1717,8 @@
   </div>
 
   <div class="fieldline">
-  	<label for="txtAssets_NoncurrentAsset_Less:AccumulatedDepreciation"></label>
-  	<asp:TextBox ID="txtAssets_NoncurrentAsset_Less:AccumulatedDepreciation" runat="server" CssClass="moneyinput money"></asp:TextBox>
+  	<label for="txtAssets_NoncurrentAsset_LessAccumulatedDepreciation"></label>
+  	<asp:TextBox ID="txtAssets_NoncurrentAsset_LessAccumulatedDepreciation" runat="server" CssClass="moneyinput money"></asp:TextBox>
   </div>
 
   <div class="fieldline">

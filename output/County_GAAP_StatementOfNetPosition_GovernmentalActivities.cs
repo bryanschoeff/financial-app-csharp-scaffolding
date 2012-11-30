@@ -1,114 +1,117 @@
+using System.Data.SqlClient;
+using System.Configuration;
+
 namespace County.GAAP
 {
   public class StatementOfNetPosition_GovernmentalActivities
   {
-    int id { get; set; }
+    public int Id { get; set; }
     
-    decimal Assets_CashAndCashEquivalents { get; set; }
-    decimal Assets_Investments { get; set; }
-    decimal Assets_InventoryHeldForResale { get; set; }
-    decimal Assets_MaterialsAndSuppliesInventory { get; set; }
-    decimal Assets_AccruedInterestReceivable { get; set; }
-    decimal Assets_AccountsReceivable { get; set; }
-    decimal Assets_InternalBalances { get; set; }
-    decimal Assets_IntergovernmentalReceivable { get; set; }
-    decimal Assets_PrepaidItems { get; set; }
-    decimal Assets_PropertyTaxesReceivable { get; set; }
-    decimal Assets_SpecialAssessmentsReceivable { get; set; }
-    decimal Assets_SalesTaxReceivable { get; set; }
-    decimal Assets_RevenueInLieuOfTaxesReceivable { get; set; }
-    decimal Assets_DueFromOtherGovernments { get; set; }
-    decimal Assets_NotesReceivable { get; set; }
-    decimal Assets_LoansReceivable { get; set; }
-    decimal Assets_InvestmentInJointVenture { get; set; }
-    decimal Assets_RestrictedAssets { get; set; }
-    decimal Assets_AdvancesToOtherFunds { get; set; }
-    decimal Assets_NondepreciableCapitalAssets { get; set; }
-    decimal Assets_DepreciableCapitalAssets { get; set; }
-    decimal Assets_Less:AccumulatedDepreciaion { get; set; }
-    decimal Assets_OtherAssets { get; set; }
-    decimal Assets_TotalDeferredOutflowsOfResources { get; set; }
-    decimal Liabilities_AccountsPayable { get; set; }
-    decimal Liabilities_AccruedWagesAndBenefits { get; set; }
-    decimal Liabilities_ContractsPayable { get; set; }
-    decimal Liabilities_IntergovernmentalPayable { get; set; }
-    decimal Liabilities_DueToOtherGovernments { get; set; }
-    decimal Liabilities_MaturedCompensatedAbsences { get; set; }
-    decimal Liabilities_MaturedInterestPayable { get; set; }
-    decimal Liabilities_MaturedBondsPayable { get; set; }
-    decimal Liabilities_AccruedInterestPayable { get; set; }
-    decimal Liabilities_RetainagePayable { get; set; }
-    decimal Liabilities_ClaimsPayable { get; set; }
-    decimal Liabilities_UnearnedRevenue { get; set; }
-    decimal Liabilities_NotesPayable { get; set; }
-    decimal Liabilities_LongTermLiabilities_DueWithinOneYear { get; set; }
-    decimal Liabilities_LongTermLiabilities_DueInMoreThanOneYear { get; set; }
-    decimal Liabilities_OtherLiabilities { get; set; }
-    decimal NetPosition_NetInvestmentInCapitalAssets { get; set; }
-    decimal NetPosition_Restricted { get; set; }
-    decimal NetPosition_UnrestrictedDeficit { get; set; }
+    public decimal Assets_CashAndCashEquivalents { get; set; }
+    public decimal Assets_Investments { get; set; }
+    public decimal Assets_InventoryHeldForResale { get; set; }
+    public decimal Assets_MaterialsAndSuppliesInventory { get; set; }
+    public decimal Assets_AccruedInterestReceivable { get; set; }
+    public decimal Assets_AccountsReceivable { get; set; }
+    public decimal Assets_InternalBalances { get; set; }
+    public decimal Assets_IntergovernmentalReceivable { get; set; }
+    public decimal Assets_PrepaidItems { get; set; }
+    public decimal Assets_PropertyTaxesReceivable { get; set; }
+    public decimal Assets_SpecialAssessmentsReceivable { get; set; }
+    public decimal Assets_SalesTaxReceivable { get; set; }
+    public decimal Assets_RevenueInLieuOfTaxesReceivable { get; set; }
+    public decimal Assets_DueFromOtherGovernments { get; set; }
+    public decimal Assets_NotesReceivable { get; set; }
+    public decimal Assets_LoansReceivable { get; set; }
+    public decimal Assets_InvestmentInJointVenture { get; set; }
+    public decimal Assets_RestrictedAssets { get; set; }
+    public decimal Assets_AdvancesToOtherFunds { get; set; }
+    public decimal Assets_NondepreciableCapitalAssets { get; set; }
+    public decimal Assets_DepreciableCapitalAssets { get; set; }
+    public decimal Assets_LessAccumulatedDepreciaion { get; set; }
+    public decimal Assets_OtherAssets { get; set; }
+    public decimal Assets_TotalDeferredOutflowsOfResources { get; set; }
+    public decimal Liabilities_AccountsPayable { get; set; }
+    public decimal Liabilities_AccruedWagesAndBenefits { get; set; }
+    public decimal Liabilities_ContractsPayable { get; set; }
+    public decimal Liabilities_IntergovernmentalPayable { get; set; }
+    public decimal Liabilities_DueToOtherGovernments { get; set; }
+    public decimal Liabilities_MaturedCompensatedAbsences { get; set; }
+    public decimal Liabilities_MaturedInterestPayable { get; set; }
+    public decimal Liabilities_MaturedBondsPayable { get; set; }
+    public decimal Liabilities_AccruedInterestPayable { get; set; }
+    public decimal Liabilities_RetainagePayable { get; set; }
+    public decimal Liabilities_ClaimsPayable { get; set; }
+    public decimal Liabilities_UnearnedRevenue { get; set; }
+    public decimal Liabilities_NotesPayable { get; set; }
+    public decimal Liabilities_LongTermLiabilities_DueWithinOneYear { get; set; }
+    public decimal Liabilities_LongTermLiabilities_DueInMoreThanOneYear { get; set; }
+    public decimal Liabilities_OtherLiabilities { get; set; }
+    public decimal NetPosition_NetInvestmentInCapitalAssets { get; set; }
+    public decimal NetPosition_Restricted { get; set; }
+    public decimal NetPosition_UnrestrictedDeficit { get; set; }
 
     public StatementOfNetPosition_GovernmentalActivities()
     {
-      this.id = -1;
+      this.Id = -1;
     }
     
-    public void Load(int id)
+    public void Load(int Id)
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfNetPosition_GovernmentalActivitiesGetByID", connection);
         SqlDataReader reader;
         
-        command.Parameters.AddWithValue("@StatementOfNetPosition_GovernmentalActivitiesId", id);
+        command.Parameters.AddWithValue("@StatementOfNetPosition_GovernmentalActivitiesId", Id);
 
         connection.Open();
         reader = command.ExecuteReader();                                                   
         reader.Read();  
         
-        this.Assets_CashAndCashEquivalents = reader["Assets_CashAndCashEquivalents"];
-        this.Assets_Investments = reader["Assets_Investments"];
-        this.Assets_InventoryHeldForResale = reader["Assets_InventoryHeldForResale"];
-        this.Assets_MaterialsAndSuppliesInventory = reader["Assets_MaterialsAndSuppliesInventory"];
-        this.Assets_AccruedInterestReceivable = reader["Assets_AccruedInterestReceivable"];
-        this.Assets_AccountsReceivable = reader["Assets_AccountsReceivable"];
-        this.Assets_InternalBalances = reader["Assets_InternalBalances"];
-        this.Assets_IntergovernmentalReceivable = reader["Assets_IntergovernmentalReceivable"];
-        this.Assets_PrepaidItems = reader["Assets_PrepaidItems"];
-        this.Assets_PropertyTaxesReceivable = reader["Assets_PropertyTaxesReceivable"];
-        this.Assets_SpecialAssessmentsReceivable = reader["Assets_SpecialAssessmentsReceivable"];
-        this.Assets_SalesTaxReceivable = reader["Assets_SalesTaxReceivable"];
-        this.Assets_RevenueInLieuOfTaxesReceivable = reader["Assets_RevenueInLieuOfTaxesReceivable"];
-        this.Assets_DueFromOtherGovernments = reader["Assets_DueFromOtherGovernments"];
-        this.Assets_NotesReceivable = reader["Assets_NotesReceivable"];
-        this.Assets_LoansReceivable = reader["Assets_LoansReceivable"];
-        this.Assets_InvestmentInJointVenture = reader["Assets_InvestmentInJointVenture"];
-        this.Assets_RestrictedAssets = reader["Assets_RestrictedAssets"];
-        this.Assets_AdvancesToOtherFunds = reader["Assets_AdvancesToOtherFunds"];
-        this.Assets_NondepreciableCapitalAssets = reader["Assets_NondepreciableCapitalAssets"];
-        this.Assets_DepreciableCapitalAssets = reader["Assets_DepreciableCapitalAssets"];
-        this.Assets_Less:AccumulatedDepreciaion = reader["Assets_Less:AccumulatedDepreciaion"];
-        this.Assets_OtherAssets = reader["Assets_OtherAssets"];
-        this.Assets_TotalDeferredOutflowsOfResources = reader["Assets_TotalDeferredOutflowsOfResources"];
-        this.Liabilities_AccountsPayable = reader["Liabilities_AccountsPayable"];
-        this.Liabilities_AccruedWagesAndBenefits = reader["Liabilities_AccruedWagesAndBenefits"];
-        this.Liabilities_ContractsPayable = reader["Liabilities_ContractsPayable"];
-        this.Liabilities_IntergovernmentalPayable = reader["Liabilities_IntergovernmentalPayable"];
-        this.Liabilities_DueToOtherGovernments = reader["Liabilities_DueToOtherGovernments"];
-        this.Liabilities_MaturedCompensatedAbsences = reader["Liabilities_MaturedCompensatedAbsences"];
-        this.Liabilities_MaturedInterestPayable = reader["Liabilities_MaturedInterestPayable"];
-        this.Liabilities_MaturedBondsPayable = reader["Liabilities_MaturedBondsPayable"];
-        this.Liabilities_AccruedInterestPayable = reader["Liabilities_AccruedInterestPayable"];
-        this.Liabilities_RetainagePayable = reader["Liabilities_RetainagePayable"];
-        this.Liabilities_ClaimsPayable = reader["Liabilities_ClaimsPayable"];
-        this.Liabilities_UnearnedRevenue = reader["Liabilities_UnearnedRevenue"];
-        this.Liabilities_NotesPayable = reader["Liabilities_NotesPayable"];
-        this.Liabilities_LongTermLiabilities_DueWithinOneYear = reader["Liabilities_LongTermLiabilities_DueWithinOneYear"];
-        this.Liabilities_LongTermLiabilities_DueInMoreThanOneYear = reader["Liabilities_LongTermLiabilities_DueInMoreThanOneYear"];
-        this.Liabilities_OtherLiabilities = reader["Liabilities_OtherLiabilities"];
-        this.NetPosition_NetInvestmentInCapitalAssets = reader["NetPosition_NetInvestmentInCapitalAssets"];
-        this.NetPosition_Restricted = reader["NetPosition_Restricted"];
-        this.NetPosition_UnrestrictedDeficit = reader["NetPosition_UnrestrictedDeficit"];
+        this.Assets_CashAndCashEquivalents = (decimal)reader["Assets_CashAndCashEquivalents"];
+        this.Assets_Investments = (decimal)reader["Assets_Investments"];
+        this.Assets_InventoryHeldForResale = (decimal)reader["Assets_InventoryHeldForResale"];
+        this.Assets_MaterialsAndSuppliesInventory = (decimal)reader["Assets_MaterialsAndSuppliesInventory"];
+        this.Assets_AccruedInterestReceivable = (decimal)reader["Assets_AccruedInterestReceivable"];
+        this.Assets_AccountsReceivable = (decimal)reader["Assets_AccountsReceivable"];
+        this.Assets_InternalBalances = (decimal)reader["Assets_InternalBalances"];
+        this.Assets_IntergovernmentalReceivable = (decimal)reader["Assets_IntergovernmentalReceivable"];
+        this.Assets_PrepaidItems = (decimal)reader["Assets_PrepaidItems"];
+        this.Assets_PropertyTaxesReceivable = (decimal)reader["Assets_PropertyTaxesReceivable"];
+        this.Assets_SpecialAssessmentsReceivable = (decimal)reader["Assets_SpecialAssessmentsReceivable"];
+        this.Assets_SalesTaxReceivable = (decimal)reader["Assets_SalesTaxReceivable"];
+        this.Assets_RevenueInLieuOfTaxesReceivable = (decimal)reader["Assets_RevenueInLieuOfTaxesReceivable"];
+        this.Assets_DueFromOtherGovernments = (decimal)reader["Assets_DueFromOtherGovernments"];
+        this.Assets_NotesReceivable = (decimal)reader["Assets_NotesReceivable"];
+        this.Assets_LoansReceivable = (decimal)reader["Assets_LoansReceivable"];
+        this.Assets_InvestmentInJointVenture = (decimal)reader["Assets_InvestmentInJointVenture"];
+        this.Assets_RestrictedAssets = (decimal)reader["Assets_RestrictedAssets"];
+        this.Assets_AdvancesToOtherFunds = (decimal)reader["Assets_AdvancesToOtherFunds"];
+        this.Assets_NondepreciableCapitalAssets = (decimal)reader["Assets_NondepreciableCapitalAssets"];
+        this.Assets_DepreciableCapitalAssets = (decimal)reader["Assets_DepreciableCapitalAssets"];
+        this.Assets_LessAccumulatedDepreciaion = (decimal)reader["Assets_LessAccumulatedDepreciaion"];
+        this.Assets_OtherAssets = (decimal)reader["Assets_OtherAssets"];
+        this.Assets_TotalDeferredOutflowsOfResources = (decimal)reader["Assets_TotalDeferredOutflowsOfResources"];
+        this.Liabilities_AccountsPayable = (decimal)reader["Liabilities_AccountsPayable"];
+        this.Liabilities_AccruedWagesAndBenefits = (decimal)reader["Liabilities_AccruedWagesAndBenefits"];
+        this.Liabilities_ContractsPayable = (decimal)reader["Liabilities_ContractsPayable"];
+        this.Liabilities_IntergovernmentalPayable = (decimal)reader["Liabilities_IntergovernmentalPayable"];
+        this.Liabilities_DueToOtherGovernments = (decimal)reader["Liabilities_DueToOtherGovernments"];
+        this.Liabilities_MaturedCompensatedAbsences = (decimal)reader["Liabilities_MaturedCompensatedAbsences"];
+        this.Liabilities_MaturedInterestPayable = (decimal)reader["Liabilities_MaturedInterestPayable"];
+        this.Liabilities_MaturedBondsPayable = (decimal)reader["Liabilities_MaturedBondsPayable"];
+        this.Liabilities_AccruedInterestPayable = (decimal)reader["Liabilities_AccruedInterestPayable"];
+        this.Liabilities_RetainagePayable = (decimal)reader["Liabilities_RetainagePayable"];
+        this.Liabilities_ClaimsPayable = (decimal)reader["Liabilities_ClaimsPayable"];
+        this.Liabilities_UnearnedRevenue = (decimal)reader["Liabilities_UnearnedRevenue"];
+        this.Liabilities_NotesPayable = (decimal)reader["Liabilities_NotesPayable"];
+        this.Liabilities_LongTermLiabilities_DueWithinOneYear = (decimal)reader["Liabilities_LongTermLiabilities_DueWithinOneYear"];
+        this.Liabilities_LongTermLiabilities_DueInMoreThanOneYear = (decimal)reader["Liabilities_LongTermLiabilities_DueInMoreThanOneYear"];
+        this.Liabilities_OtherLiabilities = (decimal)reader["Liabilities_OtherLiabilities"];
+        this.NetPosition_NetInvestmentInCapitalAssets = (decimal)reader["NetPosition_NetInvestmentInCapitalAssets"];
+        this.NetPosition_Restricted = (decimal)reader["NetPosition_Restricted"];
+        this.NetPosition_UnrestrictedDeficit = (decimal)reader["NetPosition_UnrestrictedDeficit"];
       
         connection.Close();
       }
@@ -116,7 +119,7 @@ namespace County.GAAP
 
     public void Save()
     {
-      if (this.id == -1)
+      if (this.Id == -1)
       {
         SaveNew();
       }
@@ -128,7 +131,7 @@ namespace County.GAAP
 
     protected void SaveNew()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfNetPosition_GovernmentalActivitiesAdd", connection);
         
@@ -154,7 +157,7 @@ namespace County.GAAP
         command.Parameters.AddWithValue("@Assets_AdvancesToOtherFunds", this.Assets_AdvancesToOtherFunds);
         command.Parameters.AddWithValue("@Assets_NondepreciableCapitalAssets", this.Assets_NondepreciableCapitalAssets);
         command.Parameters.AddWithValue("@Assets_DepreciableCapitalAssets", this.Assets_DepreciableCapitalAssets);
-        command.Parameters.AddWithValue("@Assets_Less:AccumulatedDepreciaion", this.Assets_Less:AccumulatedDepreciaion);
+        command.Parameters.AddWithValue("@Assets_LessAccumulatedDepreciaion", this.Assets_LessAccumulatedDepreciaion);
         command.Parameters.AddWithValue("@Assets_OtherAssets", this.Assets_OtherAssets);
         command.Parameters.AddWithValue("@Assets_TotalDeferredOutflowsOfResources", this.Assets_TotalDeferredOutflowsOfResources);
         command.Parameters.AddWithValue("@Liabilities_AccountsPayable", this.Liabilities_AccountsPayable);
@@ -178,18 +181,18 @@ namespace County.GAAP
         command.Parameters.AddWithValue("@NetPosition_UnrestrictedDeficit", this.NetPosition_UnrestrictedDeficit);
 
         connection.Open();
-        this.id = command.ExecuteScalar();
+        this.Id = (int)command.ExecuteScalar();
         connection.Close();
       }
     }
 
     protected void Update()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfNetPosition_GovernmentalActivitiesUpdate", connection);
 
-        command.Parameters.AddWithValue("@StatementOfNetPosition_GovernmentalActivitiesId", this.id);
+        command.Parameters.AddWithValue("@StatementOfNetPosition_GovernmentalActivitiesId", this.Id);
         
         command.Parameters.AddWithValue("@Assets_CashAndCashEquivalents", this.Assets_CashAndCashEquivalents);
         command.Parameters.AddWithValue("@Assets_Investments", this.Assets_Investments);
@@ -212,7 +215,7 @@ namespace County.GAAP
         command.Parameters.AddWithValue("@Assets_AdvancesToOtherFunds", this.Assets_AdvancesToOtherFunds);
         command.Parameters.AddWithValue("@Assets_NondepreciableCapitalAssets", this.Assets_NondepreciableCapitalAssets);
         command.Parameters.AddWithValue("@Assets_DepreciableCapitalAssets", this.Assets_DepreciableCapitalAssets);
-        command.Parameters.AddWithValue("@Assets_Less:AccumulatedDepreciaion", this.Assets_Less:AccumulatedDepreciaion);
+        command.Parameters.AddWithValue("@Assets_LessAccumulatedDepreciaion", this.Assets_LessAccumulatedDepreciaion);
         command.Parameters.AddWithValue("@Assets_OtherAssets", this.Assets_OtherAssets);
         command.Parameters.AddWithValue("@Assets_TotalDeferredOutflowsOfResources", this.Assets_TotalDeferredOutflowsOfResources);
         command.Parameters.AddWithValue("@Liabilities_AccountsPayable", this.Liabilities_AccountsPayable);
@@ -241,13 +244,13 @@ namespace County.GAAP
       }
     }
 
-    protected void Delete()
+    public void Delete()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfNetPosition_GovernmentalActivitiesDelete", connection);
 
-        command.Parameters.AddWithValue("@StatementOfNetPosition_GovernmentalActivitiesId", this.id);
+        command.Parameters.AddWithValue("@StatementOfNetPosition_GovernmentalActivitiesId", this.Id);
 
         connection.Open();
         command.ExecuteNonQuery();  

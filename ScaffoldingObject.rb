@@ -1,4 +1,4 @@
-require 'ScaffoldingField'
+require_relative 'ScaffoldingField'
 
 class ScaffoldingObject
   attr_accessor :name, :database, :entity_type, :filing_type, :fields

@@ -1,80 +1,83 @@
+using System.Data.SqlClient;
+using System.Configuration;
+
 namespace County.GAAP
 {
   public class StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewer
   {
-    int id { get; set; }
+    public int Id { get; set; }
     
-    decimal OperatingRevenues_Sales { get; set; }
-    decimal OperatingRevenues_ChargesForServices { get; set; }
-    decimal OperatingRevenues_Miscellaneous { get; set; }
-    decimal OperatingRevenues_OtherOperatingRevenues { get; set; }
-    decimal OperatingExpenses_Salaries { get; set; }
-    decimal OperatingExpenses_FringeBenefits { get; set; }
-    decimal OperatingExpenses_PurchasedServices { get; set; }
-    decimal OperatingExpenses_MaterialsAndSupplies { get; set; }
-    decimal OperatingExpenses_CostOfSales { get; set; }
-    decimal OperatingExpenses_Depreciation { get; set; }
-    decimal OperatingExpenses_Claims { get; set; }
-    decimal OperatingExpenses_CapitalOutlay { get; set; }
-    decimal OperatingExpenses_OtherOperatingExpenses { get; set; }
-    decimal NonOperatingRevenuesExpenses_InterestAndFiscalCharges { get; set; }
-    decimal NonOperatingRevenuesExpenses_GainOnSaleOfCapitalAssets { get; set; }
-    decimal NonOperatingRevenuesExpenses_LossOnSaleOfCapitalAssets { get; set; }
-    decimal NonOperatingRevenuesExpenses_Interest { get; set; }
-    decimal NonOperatingRevenuesExpenses_OperatingGrants { get; set; }
-    decimal NonOperatingRevenuesExpenses_OtherNonOperatingRevenues { get; set; }
-    decimal NonOperatingRevenuesExpenses_OtherNonOperatingExpenses { get; set; }
-    decimal CapitalContributions { get; set; }
-    decimal SpecialItems { get; set; }
-    decimal ExtraordinaryItems { get; set; }
-    decimal TransfersIn { get; set; }
-    decimal TransfersOut { get; set; }
-    decimal NetPositionBeginningOfYear { get; set; }
+    public decimal OperatingRevenues_Sales { get; set; }
+    public decimal OperatingRevenues_ChargesForServices { get; set; }
+    public decimal OperatingRevenues_Miscellaneous { get; set; }
+    public decimal OperatingRevenues_OtherOperatingRevenues { get; set; }
+    public decimal OperatingExpenses_Salaries { get; set; }
+    public decimal OperatingExpenses_FringeBenefits { get; set; }
+    public decimal OperatingExpenses_PurchasedServices { get; set; }
+    public decimal OperatingExpenses_MaterialsAndSupplies { get; set; }
+    public decimal OperatingExpenses_CostOfSales { get; set; }
+    public decimal OperatingExpenses_Depreciation { get; set; }
+    public decimal OperatingExpenses_Claims { get; set; }
+    public decimal OperatingExpenses_CapitalOutlay { get; set; }
+    public decimal OperatingExpenses_OtherOperatingExpenses { get; set; }
+    public decimal NonOperatingRevenuesExpenses_InterestAndFiscalCharges { get; set; }
+    public decimal NonOperatingRevenuesExpenses_GainOnSaleOfCapitalAssets { get; set; }
+    public decimal NonOperatingRevenuesExpenses_LossOnSaleOfCapitalAssets { get; set; }
+    public decimal NonOperatingRevenuesExpenses_Interest { get; set; }
+    public decimal NonOperatingRevenuesExpenses_OperatingGrants { get; set; }
+    public decimal NonOperatingRevenuesExpenses_OtherNonOperatingRevenues { get; set; }
+    public decimal NonOperatingRevenuesExpenses_OtherNonOperatingExpenses { get; set; }
+    public decimal CapitalContributions { get; set; }
+    public decimal SpecialItems { get; set; }
+    public decimal ExtraordinaryItems { get; set; }
+    public decimal TransfersIn { get; set; }
+    public decimal TransfersOut { get; set; }
+    public decimal NetPositionBeginningOfYear { get; set; }
 
     public StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewer()
     {
-      this.id = -1;
+      this.Id = -1;
     }
     
-    public void Load(int id)
+    public void Load(int Id)
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerGetByID", connection);
         SqlDataReader reader;
         
-        command.Parameters.AddWithValue("@StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerId", id);
+        command.Parameters.AddWithValue("@StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerId", Id);
 
         connection.Open();
         reader = command.ExecuteReader();                                                   
         reader.Read();  
         
-        this.OperatingRevenues_Sales = reader["OperatingRevenues_Sales"];
-        this.OperatingRevenues_ChargesForServices = reader["OperatingRevenues_ChargesForServices"];
-        this.OperatingRevenues_Miscellaneous = reader["OperatingRevenues_Miscellaneous"];
-        this.OperatingRevenues_OtherOperatingRevenues = reader["OperatingRevenues_OtherOperatingRevenues"];
-        this.OperatingExpenses_Salaries = reader["OperatingExpenses_Salaries"];
-        this.OperatingExpenses_FringeBenefits = reader["OperatingExpenses_FringeBenefits"];
-        this.OperatingExpenses_PurchasedServices = reader["OperatingExpenses_PurchasedServices"];
-        this.OperatingExpenses_MaterialsAndSupplies = reader["OperatingExpenses_MaterialsAndSupplies"];
-        this.OperatingExpenses_CostOfSales = reader["OperatingExpenses_CostOfSales"];
-        this.OperatingExpenses_Depreciation = reader["OperatingExpenses_Depreciation"];
-        this.OperatingExpenses_Claims = reader["OperatingExpenses_Claims"];
-        this.OperatingExpenses_CapitalOutlay = reader["OperatingExpenses_CapitalOutlay"];
-        this.OperatingExpenses_OtherOperatingExpenses = reader["OperatingExpenses_OtherOperatingExpenses"];
-        this.NonOperatingRevenuesExpenses_InterestAndFiscalCharges = reader["NonOperatingRevenuesExpenses_InterestAndFiscalCharges"];
-        this.NonOperatingRevenuesExpenses_GainOnSaleOfCapitalAssets = reader["NonOperatingRevenuesExpenses_GainOnSaleOfCapitalAssets"];
-        this.NonOperatingRevenuesExpenses_LossOnSaleOfCapitalAssets = reader["NonOperatingRevenuesExpenses_LossOnSaleOfCapitalAssets"];
-        this.NonOperatingRevenuesExpenses_Interest = reader["NonOperatingRevenuesExpenses_Interest"];
-        this.NonOperatingRevenuesExpenses_OperatingGrants = reader["NonOperatingRevenuesExpenses_OperatingGrants"];
-        this.NonOperatingRevenuesExpenses_OtherNonOperatingRevenues = reader["NonOperatingRevenuesExpenses_OtherNonOperatingRevenues"];
-        this.NonOperatingRevenuesExpenses_OtherNonOperatingExpenses = reader["NonOperatingRevenuesExpenses_OtherNonOperatingExpenses"];
-        this.CapitalContributions = reader["CapitalContributions"];
-        this.SpecialItems = reader["SpecialItems"];
-        this.ExtraordinaryItems = reader["ExtraordinaryItems"];
-        this.TransfersIn = reader["TransfersIn"];
-        this.TransfersOut = reader["TransfersOut"];
-        this.NetPositionBeginningOfYear = reader["NetPositionBeginningOfYear"];
+        this.OperatingRevenues_Sales = (decimal)reader["OperatingRevenues_Sales"];
+        this.OperatingRevenues_ChargesForServices = (decimal)reader["OperatingRevenues_ChargesForServices"];
+        this.OperatingRevenues_Miscellaneous = (decimal)reader["OperatingRevenues_Miscellaneous"];
+        this.OperatingRevenues_OtherOperatingRevenues = (decimal)reader["OperatingRevenues_OtherOperatingRevenues"];
+        this.OperatingExpenses_Salaries = (decimal)reader["OperatingExpenses_Salaries"];
+        this.OperatingExpenses_FringeBenefits = (decimal)reader["OperatingExpenses_FringeBenefits"];
+        this.OperatingExpenses_PurchasedServices = (decimal)reader["OperatingExpenses_PurchasedServices"];
+        this.OperatingExpenses_MaterialsAndSupplies = (decimal)reader["OperatingExpenses_MaterialsAndSupplies"];
+        this.OperatingExpenses_CostOfSales = (decimal)reader["OperatingExpenses_CostOfSales"];
+        this.OperatingExpenses_Depreciation = (decimal)reader["OperatingExpenses_Depreciation"];
+        this.OperatingExpenses_Claims = (decimal)reader["OperatingExpenses_Claims"];
+        this.OperatingExpenses_CapitalOutlay = (decimal)reader["OperatingExpenses_CapitalOutlay"];
+        this.OperatingExpenses_OtherOperatingExpenses = (decimal)reader["OperatingExpenses_OtherOperatingExpenses"];
+        this.NonOperatingRevenuesExpenses_InterestAndFiscalCharges = (decimal)reader["NonOperatingRevenuesExpenses_InterestAndFiscalCharges"];
+        this.NonOperatingRevenuesExpenses_GainOnSaleOfCapitalAssets = (decimal)reader["NonOperatingRevenuesExpenses_GainOnSaleOfCapitalAssets"];
+        this.NonOperatingRevenuesExpenses_LossOnSaleOfCapitalAssets = (decimal)reader["NonOperatingRevenuesExpenses_LossOnSaleOfCapitalAssets"];
+        this.NonOperatingRevenuesExpenses_Interest = (decimal)reader["NonOperatingRevenuesExpenses_Interest"];
+        this.NonOperatingRevenuesExpenses_OperatingGrants = (decimal)reader["NonOperatingRevenuesExpenses_OperatingGrants"];
+        this.NonOperatingRevenuesExpenses_OtherNonOperatingRevenues = (decimal)reader["NonOperatingRevenuesExpenses_OtherNonOperatingRevenues"];
+        this.NonOperatingRevenuesExpenses_OtherNonOperatingExpenses = (decimal)reader["NonOperatingRevenuesExpenses_OtherNonOperatingExpenses"];
+        this.CapitalContributions = (decimal)reader["CapitalContributions"];
+        this.SpecialItems = (decimal)reader["SpecialItems"];
+        this.ExtraordinaryItems = (decimal)reader["ExtraordinaryItems"];
+        this.TransfersIn = (decimal)reader["TransfersIn"];
+        this.TransfersOut = (decimal)reader["TransfersOut"];
+        this.NetPositionBeginningOfYear = (decimal)reader["NetPositionBeginningOfYear"];
       
         connection.Close();
       }
@@ -82,7 +85,7 @@ namespace County.GAAP
 
     public void Save()
     {
-      if (this.id == -1)
+      if (this.Id == -1)
       {
         SaveNew();
       }
@@ -94,7 +97,7 @@ namespace County.GAAP
 
     protected void SaveNew()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerAdd", connection);
         
@@ -127,18 +130,18 @@ namespace County.GAAP
         command.Parameters.AddWithValue("@NetPositionBeginningOfYear", this.NetPositionBeginningOfYear);
 
         connection.Open();
-        this.id = command.ExecuteScalar();
+        this.Id = (int)command.ExecuteScalar();
         connection.Close();
       }
     }
 
     protected void Update()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerUpdate", connection);
 
-        command.Parameters.AddWithValue("@StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerId", this.id);
+        command.Parameters.AddWithValue("@StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerId", this.Id);
         
         command.Parameters.AddWithValue("@OperatingRevenues_Sales", this.OperatingRevenues_Sales);
         command.Parameters.AddWithValue("@OperatingRevenues_ChargesForServices", this.OperatingRevenues_ChargesForServices);
@@ -173,13 +176,13 @@ namespace County.GAAP
       }
     }
 
-    protected void Delete()
+    public void Delete()
     {
-      using connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements");
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("County_GAAP_StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerDelete", connection);
 
-        command.Parameters.AddWithValue("@StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerId", this.id);
+        command.Parameters.AddWithValue("@StatementOfRevenuesExpensesAndChangesInNetPosition_ProprietaryFunds_EnterpriseFundsSewerId", this.Id);
 
         connection.Open();
         command.ExecuteNonQuery();  
