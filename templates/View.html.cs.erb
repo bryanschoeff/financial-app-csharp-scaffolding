@@ -1,0 +1,13 @@
+<!--
+################################################################
+# Fields for <%= @name %>
+################################################################
+-->
+<fieldset id="<%= @name %>">
+<% @fields.each do |field| %>
+  <div class="fieldline">
+  	@Html.LabelFor(model => model.<%= "#{@name}.#{field.csharp_name}" %>)
+  	@Html.EditorFor(model => model.<%= "#{@name}.#{field.csharp_name}" %>)
+  </div>
+<% end %>
+</fieldset>

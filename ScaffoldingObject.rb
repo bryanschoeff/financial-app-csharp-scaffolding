@@ -8,6 +8,8 @@ class ScaffoldingObject
     
     @template_erb_class = File.open('templates/Class.cs.erb') { |f| f.read }
     @template_erb_sql = File.open('templates/SQL.sql.erb') { |f| f.read }
+    @template_erb_webform = File.open('templates/WebForm.aspx.erb') { |f| f.read }
+    @template_erb_mvcform = File.open('templates/View.html.cs.erb') { |f| f.read }
   end
 
   def add_field field
@@ -28,7 +30,17 @@ class ScaffoldingObject
     template.result(get_binding)
   end
 
-  def print_sql_table_name
+  def print_webform_fields
+    template = ERB.new @template_erb_webform
+    template.result(get_binding)
+  end
+
+  def print_mvcform_fields
+    template = ERB.new @template_erb_mvcform
+    template.result(get_binding)
+  end
+
+ def print_sql_table_name
     "#{@entity_type}_#{@filing_type}_#{@name}"
   end
 

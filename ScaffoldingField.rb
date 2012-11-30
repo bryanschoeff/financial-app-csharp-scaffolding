@@ -35,4 +35,8 @@ class ScaffoldingField
     @name.gsub(' ', '')
   end
 
+  def webform_textbox
+    "txt#{csharp_name}"
+  end
+
 end
