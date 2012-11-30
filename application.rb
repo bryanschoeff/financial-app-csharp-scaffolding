@@ -1,5 +1,5 @@
 require 'CSV'
-require 'EntityFiling'
+require_relative 'EntityFiling.rb'
 require 'ERB'
 
 ApplicationPath = "#{Dir.pwd}/"
@@ -13,17 +13,19 @@ def load_specs
   files.each do |file|
     next if File.directory? file
     tables = Array.new
+	sql = ""
     webform = ""
     mvcform = ""
 
     load_spec file, tables
     tables.each do |table|
       File.open("#{OutputPath}#{table.entity_type}_#{table.filing_type}_#{table.name}.cs", 'w') {|f| f.write(table.print_csharp_class) }
-      File.open("#{OutputPath}#{table.entity_type}_#{table.filing_type}_#{table.name}.sql", 'w') {|f| f.write(table.print_sql_script) }
+      sql += table.print_sql_script
       webform += table.print_webform_fields
       mvcform += table.print_mvcform_fields
     end
-
+	
+	File.open("#{OutputPath}SQLScript.sql", 'w') {|f| f.write(sql) }
     File.open("#{OutputPath}WebFormFields.aspx", 'w') {|f| f.write(webform) }
     File.open("#{OutputPath}View.html.cs", 'w') {|f| f.write(mvcform) }
   end
