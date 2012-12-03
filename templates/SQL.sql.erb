@@ -43,7 +43,7 @@ BEGIN
    
     SELECT [<%= @name %>ID]<% @fields.each do |field| %>
           ,<%= field.sql_column %><% end %>
-	  FROM [<%= @database %>].[dbo].[<%= @name %>]
+	  FROM [<%= @database %>].[dbo].[<%= print_sql_table_name %>]
 	 WHERE [<%= @name %>ID] = @<%= @name %>ID
 		  
 END
@@ -71,7 +71,7 @@ BEGIN
 
     -- Insert statements for procedure here
    
-    DELETE FROM [<%= @database %>].[dbo].[<%= @name %>]
+    DELETE FROM [<%= @database %>].[dbo].[<%= print_sql_table_name %>]
 		  WHERE [<%= @name %>ID] = @<%= @name %>ID
 		  
 END
@@ -99,7 +99,7 @@ BEGIN
 
     -- Insert statements for procedure here
    
-    INSERT INTO [<%= @database %>].[dbo].[<%= @name %>]
+    INSERT INTO [<%= @database %>].[dbo].[<%= print_sql_table_name %>]
 			   (<% @fields.each do |field| %><%= ',' if (fields.first != field) %><%= field.sql_column %><%= ')' if (fields.last == field) %>
 			   <% end %>
 		VALUES (<% @fields.each do |field| %><%= field.sql_parameter %><%= if (fields.last != field) then ',' else ')' end %>
@@ -131,7 +131,7 @@ BEGIN
 
     -- Insert statements for procedure here
    
-    UPDATE [<%= @database %>].[dbo].[<%= @name %>]
+    UPDATE [<%= @database %>].[dbo].[<%= print_sql_table_name %>]
 	   SET<% @fields.each do |field| %><%= if (fields.first != field) then ',' else ' ' end %><%= field.sql_column %> = <%= field.sql_parameter %> 
 		  <% end %>
 	 WHERE [<%= @name %>ID] = @<%= @name %>ID
