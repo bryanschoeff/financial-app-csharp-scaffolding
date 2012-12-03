@@ -1,7 +1,7 @@
 require 'FileUtils'
 require 'CSV'
-require_relative 'EntityFiling.rb'
 require 'ERB'
+require_relative 'EntityFiling.rb'
 
 ApplicationPath = "#{Dir.pwd}/"
 SourcePath = "#{ApplicationPath}source/"
@@ -32,9 +32,11 @@ def load_specs
       mvcform += table.print_mvcform_fields
     end
 	prefix = "#{file_parts[0]}#{file_parts[1]}"
+	view_path = "#{OutputPath}views/#{file_parts[0]}#{file_parts[1]}/"
 	
+	FileUtils.mkpath(view_path) if !(File.exists?(view_path) && File.directory?(view_path))
     File.open("#{OutputPath}#{prefix}WebFormFields.aspx", 'w') {|f| f.write(webform) }
-    File.open("#{OutputPath}#{prefix}View.html.cs", 'w') {|f| f.write(mvcform) }
+    File.open("#{view_path}Edit.cshtml", 'w') {|f| f.write(mvcform) }
   end
   
   File.open("#{OutputPath}SQLScript.sql", 'w') {|f| f.write(sql) }
@@ -77,4 +79,5 @@ end
 def cap words
   words.split(" ").map {|words| words.capitalize}.join(" ") if (words)
 end
+
 load_specs

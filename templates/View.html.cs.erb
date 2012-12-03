@@ -4,6 +4,7 @@
 ################################################################
 -->
 <fieldset id="<%= @name %>">
+	<legend>@name<legend>
 <% @fields.each do |field| %>
   <div class="fieldline">
   	@Html.LabelFor(model => model.<%= "#{@name}.#{field.csharp_name}" %>)
