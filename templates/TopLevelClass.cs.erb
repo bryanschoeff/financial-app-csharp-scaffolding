@@ -5,7 +5,10 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 {
   public class Filing
   {
-    public int ID { get; set; }<% @tables.each do |table| %>
+    public int ID { get; set; }
+	public string EntityID { get; set; }
+	public string EntityType { get; set; }
+	public string FilingType { get; set; }<% @tables.each do |table| %>
     public <%= "#{table.name} #{table.name} { get; set; }"  %><% end %>
 
     public Filing()
@@ -15,10 +18,86 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 	  <%= "this.#{table.name} = new #{table.name}();"  %><% end %> 
     }
 	
+	public void Load(int ID)
+    {
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+      {
+        SqlCommand command = new SqlCommand("FilingGetByID", connection);
+        SqlDataReader reader;
+        
+		command.CommandType = CommandType.StoredProcedure;
+        command.Parameters.AddWithValue("@FilingID", ID);
+
+        connection.Open();
+        reader = command.ExecuteReader();                                                   
+        reader.Read();
+		
+		this.EntityID = reader["EntityID"];
+		this.EntityType = reader["EntityType"];
+		this.FilingType = reader["FilingType"];
+		this.ID = ID;
+		
+        connection.Close();
+		<% @tables.each do |table| %>
+        this.<%= table.name %>.LoadByFilingID(this.ID);<% end %>
+      }
+    }
+	
 	public void Save()
     {
-      <% @tables.each do |table| %>
+      if (this.ID == -1)
+      {
+        SaveNew();
+      }
+      else
+      {
+        Update();
+      }
+	  <% @tables.each do |table| %>
 	  <%= "this.#{table.name}.Save();"  %><% end %> 
+    }
+	
+	public void SaveNew()
+    {
+	  using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+      {
+        SqlCommand command = new SqlCommand("FilingAdd", connection);
+		
+		command.CommandType = CommandType.StoredProcedure;
+        command.Parameters.AddWithValue("@EntityID", this.EntityID);
+		command.Parameters.AddWithValue("@EntityType", this.EntityType);
+		command.Parameters.AddWithValue("@FilingType", this.FilingType);
+
+        connection.Open();
+        this.ID = command.ExecuteScalar();                                                   
+		
+        connection.Close();
+		<% @tables.each do |table| %>
+        this.<%= table.name %>.LoadByFilingID(this.ID);<% end %>
+      }
+      
+    }
+	
+	public void Update()
+    {
+	  using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+      {
+        SqlCommand command = new SqlCommand("FilingUpdate", connection);
+		
+		command.CommandType = CommandType.StoredProcedure;
+		command.Parameters.AddWithValue("@FilingID", this.ID);
+        command.Parameters.AddWithValue("@EntityID", this.EntityID);
+		command.Parameters.AddWithValue("@EntityType", this.EntityType);
+		command.Parameters.AddWithValue("@FilingType", this.FilingType);
+
+        connection.Open();
+        command.ExecuteNonQuery();                                                   
+		
+        connection.Close();
+		<% @tables.each do |table| %>
+        this.<%= table.name %>.LoadByFilingID(this.ID);<% end %>
+      }
+      
     }
     
   }

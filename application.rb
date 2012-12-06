@@ -3,6 +3,7 @@ require 'CSV'
 require 'ERB'
 require_relative 'EntityFiling.rb'
 
+RunDate = Time.new.strftime("%Y.%m.%d")
 ApplicationName = "Skellington"
 DatabaseName = "BryanSandbox"
 
@@ -11,6 +12,11 @@ SourcePath = "#{ApplicationPath}source/"
 OutputPath = "#{ApplicationPath}output/"
 
 filings = Array.new
+
+def run_script filings
+  load_specs filings
+  print_outputs filings
+end
 
 def load_specs filings
   files = Dir.glob("#{SourcePath}*.csv")
@@ -23,12 +29,12 @@ def load_specs filings
 	filing.entity_type = file_parts[0]
 	filing.filing_type = file_parts[1]
 	
-    load_spec file, filing
+    load_filing file, filing
 	filings << filing
   end
 end
 
-def load_spec file, filing
+def load_filing file, filing
 
   table = nil
   current_line = ''
@@ -37,37 +43,44 @@ def load_spec file, filing
   CSV.foreach(file, {:headers => :first_row}) do |line|
     if ("#{line[0]}_#{line[1]}_#{line[2]}" != current_line)
       filing.tables << table unless table.nil?
-
-      table = ScaffoldingObject.new
-      table.database = DatabaseName
-      table.entity_type = filing.entity_type
-      table.filing_type = filing.filing_type
-      table.description1 = line[0]
-	  table.description2 = line[1]
-	  table.description3 = line[2]
-
-      current_line = "#{line[0]}_#{line[1]}_#{line[2]}"
 	  
-	  joinfield = ScaffoldingField.new
-	  joinfield.field = "FilingID"
-	  joinfield.db_type = "int"
-	  
-	  table.add_field joinfield
+      table = initialize_table filing, line
+      current_line = "#{line[0]}_#{line[1]}_#{line[2]}" 
     end
 
-    field = ScaffoldingField.new
+    field = initialize_field line
+    table.add_field field
+  end
+
+  filing.tables << table unless table.nil?  
+end
+
+def initialize_field line
+	field = ScaffoldingField.new
 	field.category = line[3]
 	field.sub_category = line[4]
 	field.tertiary_category = line[5]
 	field.field = line[6]
     field.db_type = 'decimal(19,4)'
-    
-    table.add_field field
+	field
+end
+
+def initialize_table filing, line
+	table = ScaffoldingObject.new
 	
-  end
-  
-  filing.tables << table unless table.nil?
-  
+	table.database = DatabaseName
+	table.entity_type = filing.entity_type
+	table.filing_type = filing.filing_type
+	table.description1 = line[0]
+	table.description2 = line[1]
+	table.description3 = line[2]
+	
+	joinfield = ScaffoldingField.new
+	joinfield.field = "Filing I D"
+	joinfield.db_type = "int"
+
+	table.add_field joinfield
+	table
 end
 
 def print_outputs filings
@@ -107,5 +120,5 @@ def print_outputs filings
   
 end
 
-load_specs filings
-print_outputs filings
+
+run_script filings

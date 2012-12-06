@@ -27,7 +27,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		Bryan J Schoeff
--- Create date: 10.06.2010
+-- Create date: <%= RunDate %>
 -- Description:	
 -- =============================================
 CREATE PROCEDURE [dbo].[<%= print_sql_sp_name_load %>]
@@ -49,6 +49,35 @@ BEGIN
 END
 GO
 
+/****** Object:  StoredProcedure [dbo].[<%= print_sql_sp_name_load_by_filingid %>]    Script Date: 11/26/2012 13:45:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Bryan J Schoeff
+-- Create date: <%= RunDate %>
+-- Description:	
+-- =============================================
+CREATE PROCEDURE [dbo].[<%= print_sql_sp_name_load_by_filingid %>]
+	-- Add the parameters for the stored procedure here
+    @FilingID int 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+   
+    SELECT [<%= @name %>ID]<% @fields.each do |field| %>
+          ,<%= field.sql_column %><% end %>
+	  FROM [<%= @database %>].[dbo].[<%= print_sql_table_name %>]
+	 WHERE [FilingID] = @FilingID
+		  
+END
+GO
+
 
 /****** Object:  StoredProcedure [dbo].[<%= print_sql_sp_name_delete %>]    Script Date: 11/26/2012 13:45:39 ******/
 SET ANSI_NULLS ON
@@ -57,7 +86,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		Bryan J Schoeff
--- Create date: 10.06.2010
+-- Create date: <%= RunDate %>
 -- Description:	
 -- =============================================
 CREATE PROCEDURE [dbo].[<%= print_sql_sp_name_delete %>]
@@ -84,7 +113,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		Bryan J Schoeff
--- Create date: 10.06.2010
+-- Create date: <%= RunDate %>
 -- Description:	
 -- =============================================
 CREATE PROCEDURE [dbo].[<%= print_sql_sp_name_save %>]
@@ -116,7 +145,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		Bryan J Schoeff
--- Create date: 10.06.2010
+-- Create date: <%= RunDate %>
 -- Description:	
 -- =============================================
 CREATE PROCEDURE [dbo].[<%= print_sql_sp_name_update %>]

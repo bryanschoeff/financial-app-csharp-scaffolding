@@ -43,19 +43,23 @@ class ScaffoldingObject
   end
 
   def print_sql_sp_name_load
-    "#{@entity_type}_#{@filing_type}_#{@name}GetByID"
+    "#{@entity_type}_#{@filing_type}_#{name}GetByID"
+  end
+  
+  def print_sql_sp_name_load_by_filingid
+    "#{@entity_type}_#{@filing_type}_#{name}GetByFilingID"
   end
 
   def print_sql_sp_name_update
-    "#{@entity_type}_#{@filing_type}_#{@name}Update"
+    "#{@entity_type}_#{@filing_type}_#{name}Update"
   end
 
   def print_sql_sp_name_save
-    "#{@entity_type}_#{@filing_type}_#{@name}Add"
+    "#{@entity_type}_#{@filing_type}_#{name}Add"
   end
  
   def print_sql_sp_name_delete
-    "#{@entity_type}_#{@filing_type}_#{@name}Delete"
+    "#{@entity_type}_#{@filing_type}_#{name}Delete"
   end
 
   def cap words
