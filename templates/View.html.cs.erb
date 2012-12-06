@@ -1,14 +1,24 @@
+@model <%= "Skellington.Models.#{@entity_type}.#{@filing_type}.Filing" %>
+
+<h1><%= "#{@entity_type} - #{@filing_type}" %></h1>
+
+@using (Html.BeginForm()) {
+
+<% @tables.each do |table| %>
 <!--
 ################################################################
-# Fields for <%= @name %>
+# Fields for <%= table.name %>
 ################################################################
 -->
-<fieldset id="<%= @name %>">
-	<legend>@name<legend>
-<% @fields.each do |field| %>
+<fieldset id="<%= table.name %>">
+	<legend><%= table.name %></legend>
+<% table.fields.each do |field| %>
   <div class="fieldline">
-  	@Html.LabelFor(model => model.<%= "#{@name}.#{field.csharp_name}" %>)
-  	@Html.EditorFor(model => model.<%= "#{@name}.#{field.csharp_name}" %>)
+  	@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)
+  	@Html.EditorFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)
   </div>
 <% end %>
 </fieldset>
+<% end %>
+
+}

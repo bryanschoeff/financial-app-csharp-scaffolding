@@ -1,0 +1,25 @@
+using System.Data.SqlClient;
+using System.Configuration;
+
+namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
+{
+  public class Filing
+  {
+    public int ID { get; set; }<% @tables.each do |table| %>
+    public <%= "#{table.name} #{table.name} { get; set; }"  %><% end %>
+
+    public Filing()
+    {
+      this.ID = -1;
+	  <% @tables.each do |table| %>
+	  <%= "this.#{table.name} = new #{table.name}();"  %><% end %> 
+    }
+	
+	public void Save()
+    {
+      <% @tables.each do |table| %>
+	  <%= "this.#{table.name}.Save();"  %><% end %> 
+    }
+    
+  }
+}

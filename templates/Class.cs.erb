@@ -1,41 +1,41 @@
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace <%= "#{@entity_type}.#{@filing_type}" %>
+namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 {
-  public class <%= @name %>
+  public class <%= name %>
   {
-    public int Id { get; set; }
+    public int ID { get; set; }
     <% @fields.each do |field| %>
     public <%= "#{field.csharp_type} #{field.csharp_name} { get; set; }"  %><% end %>
 
     public <%= @name %>()
     {
-      this.Id = -1;
+      this.ID = -1;
     }
     
-    public void Load(int Id)
+    public void Load(int ID)
     {
       using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
       {
         SqlCommand command = new SqlCommand("<%= print_sql_sp_name_load %>", connection);
         SqlDataReader reader;
         
-        command.Parameters.AddWithValue("@<%= @name  %>Id", Id);
+        command.Parameters.AddWithValue("@<%= @name  %>ID", ID);
 
         connection.Open();
         reader = command.ExecuteReader();                                                   
-        reader.Read();  
+        reader.Read();
         <% @fields.each do |field| %>
-        this.<%= field.csharp_name %> = (decimal)reader["<%= field.sql_column_name %>"];<% end %>
-      
+        this.<%= field.csharp_name %> = (<%= field.csharp_type %>)reader["<%= field.sql_column_name %>"];<% end %>
+		this.ID = ID;
         connection.Close();
       }
     }
 
     public void Save()
     {
-      if (this.Id == -1)
+      if (this.ID == -1)
       {
         SaveNew();
       }
@@ -55,7 +55,7 @@ namespace <%= "#{@entity_type}.#{@filing_type}" %>
         command.Parameters.AddWithValue("<%= field.sql_parameter  %>", this.<%= field.csharp_name %>);<% end %>
 
         connection.Open();
-        this.Id = (int)command.ExecuteScalar();
+        this.ID = (int)command.ExecuteScalar();
         connection.Close();
       }
     }
@@ -66,7 +66,7 @@ namespace <%= "#{@entity_type}.#{@filing_type}" %>
       {
         SqlCommand command = new SqlCommand("<%= print_sql_sp_name_update %>", connection);
 
-        command.Parameters.AddWithValue("@<%= @name %>Id", this.Id);
+        command.Parameters.AddWithValue("@<%= @name %>ID", this.ID);
         <% @fields.each do |field| %>
         command.Parameters.AddWithValue("<%= field.sql_parameter  %>", this.<%= field.csharp_name %>);<% end %>
 
@@ -82,7 +82,7 @@ namespace <%= "#{@entity_type}.#{@filing_type}" %>
       {
         SqlCommand command = new SqlCommand("<%= print_sql_sp_name_delete %>", connection);
 
-        command.Parameters.AddWithValue("@<%= @name %>Id", this.Id);
+        command.Parameters.AddWithValue("@<%= @name %>ID", this.ID);
 
         connection.Open();
         command.ExecuteNonQuery();  
