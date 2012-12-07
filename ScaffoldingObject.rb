@@ -22,6 +22,10 @@ class ScaffoldingObject
   def name
 	"#{acronymize description1}#{'_' if description2}#{cap description2}#{'_' if description3}#{cap description3}".gsub(' ', '')
   end
+  
+  def display_name
+	"#{cap description1}#{' - ' if description2}#{cap description2}#{' - ' if description3}#{cap description3}"
+  end
 
   def print_sql_script
     template = ERB.new @template_erb_sql

@@ -4,6 +4,11 @@
 
 @using (Html.BeginForm()) {
 
+@Html.HiddenFor(model => model.ID)
+@Html.HiddenFor(model => model.EntityID)
+@Html.HiddenFor(model => model.EntityType)
+@Html.HiddenFor(model => model.FilingType)
+
 <% @tables.each do |table| %>
 <!--
 ################################################################
@@ -11,14 +16,16 @@
 ################################################################
 -->
 <fieldset id="<%= table.name %>">
-	<legend><%= table.name %></legend>
+	<legend><%= table.display_name %></legend>@Html.HiddenFor(model => model.<%= table.name %>.ID)
 <% table.fields.each do |field| %>
-  <div class="fieldline">
+  <% if field.csharp_name == "FilingID" %><%# "@Html.HiddenFor(#{table.name}.#{field.csharp_name})" %><% else %><div class="fieldline">
   	@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)
   	@Html.EditorFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)
-  </div>
+  </div><% end %>
 <% end %>
 </fieldset>
 <% end %>
+
+<input type="submit" value="Save Changes" />
 
 }

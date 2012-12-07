@@ -1,3 +1,4 @@
+using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
@@ -20,9 +21,9 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 	
 	public void Load(int ID)
     {
-      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
       {
-        SqlCommand command = new SqlCommand("FilingGetByID", connection);
+        SqlCommand command = new SqlCommand("FilingsGetByID", connection);
         SqlDataReader reader;
         
 		command.CommandType = CommandType.StoredProcedure;
@@ -32,9 +33,9 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         reader = command.ExecuteReader();                                                   
         reader.Read();
 		
-		this.EntityID = reader["EntityID"];
-		this.EntityType = reader["EntityType"];
-		this.FilingType = reader["FilingType"];
+		this.EntityID = (string)reader["EntityID"];
+		this.EntityType = (string)reader["EntityType"];
+		this.FilingType = (string)reader["FilingType"];
 		this.ID = ID;
 		
         connection.Close();
@@ -59,9 +60,9 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 	
 	public void SaveNew()
     {
-	  using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+	  using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
       {
-        SqlCommand command = new SqlCommand("FilingAdd", connection);
+        SqlCommand command = new SqlCommand("FilingsAdd", connection);
 		
 		command.CommandType = CommandType.StoredProcedure;
         command.Parameters.AddWithValue("@EntityID", this.EntityID);
@@ -69,20 +70,20 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 		command.Parameters.AddWithValue("@FilingType", this.FilingType);
 
         connection.Open();
-        this.ID = command.ExecuteScalar();                                                   
+        this.ID = System.Convert.ToInt32(command.ExecuteScalar());
 		
         connection.Close();
 		<% @tables.each do |table| %>
-        this.<%= table.name %>.LoadByFilingID(this.ID);<% end %>
+        this.<%= table.name %>.FilingID = this.ID;<% end %>
       }
       
     }
 	
 	public void Update()
     {
-	  using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+	  using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
       {
-        SqlCommand command = new SqlCommand("FilingUpdate", connection);
+        SqlCommand command = new SqlCommand("FilingsUpdate", connection);
 		
 		command.CommandType = CommandType.StoredProcedure;
 		command.Parameters.AddWithValue("@FilingID", this.ID);
@@ -94,8 +95,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         command.ExecuteNonQuery();                                                   
 		
         connection.Close();
-		<% @tables.each do |table| %>
-        this.<%= table.name %>.LoadByFilingID(this.ID);<% end %>
+
       }
       
     }

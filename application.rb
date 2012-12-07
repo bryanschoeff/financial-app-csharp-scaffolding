@@ -61,7 +61,7 @@ def initialize_field line
 	field.sub_category = line[4]
 	field.tertiary_category = line[5]
 	field.field = line[6]
-    field.db_type = 'decimal(19,4)'
+    field.db_type = 'int'
 	field
 end
 

@@ -31,6 +31,14 @@ class ScaffoldingField
     "@#{name}".gsub(' ', '')
   end
 
+  def display_name
+    result = cap @field
+    result = "#{cap @tertiary_category} - #{result}" if @tertiary_category
+    result = "#{cap @sub_category} - #{result}" if @sub_category
+    result = "#{cap @category} - #{result}" if @category
+	result
+  end
+  
   def csharp_name
     name.gsub(' ', '')
   end

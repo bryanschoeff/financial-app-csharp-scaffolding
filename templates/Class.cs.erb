@@ -1,6 +1,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.ComponentModel.DataAnnotations;
 
 namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 {
@@ -8,6 +9,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
   {
     public int ID { get; set; }
     <% @fields.each do |field| %>
+	[Display(Name = "<%= field.display_name %>")]
     public <%= "#{field.csharp_type} #{field.csharp_name} { get; set; }"  %><% end %>
 
     public <%= name %>()
@@ -17,7 +19,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
     
     public void Load(int ID)
     {
-      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
       {
         SqlCommand command = new SqlCommand("<%= print_sql_sp_name_load %>", connection);
         SqlDataReader reader;
@@ -37,7 +39,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 	
 	public void LoadByFilingID(int FilingID)
     {
-      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
       {
         SqlCommand command = new SqlCommand("<%= print_sql_sp_name_load_by_filingid %>", connection);
         SqlDataReader reader;
@@ -71,7 +73,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 
     protected void SaveNew()
     {
-      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
       {
         SqlCommand command = new SqlCommand("<%= print_sql_sp_name_save %>", connection);
         
@@ -80,14 +82,14 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         command.Parameters.AddWithValue("<%= field.sql_parameter  %>", this.<%= field.csharp_name %>);<% end %>
 
         connection.Open();
-        this.ID = (int)command.ExecuteScalar();
+        this.ID = System.Convert.ToInt32(command.ExecuteScalar());
         connection.Close();
       }
     }
 
     protected void Update()
     {
-      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
       {
         SqlCommand command = new SqlCommand("<%= print_sql_sp_name_update %>", connection);
 
@@ -104,7 +106,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 
     public void Delete()
     {
-      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=OnlineFinancialStatements"))
+      using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
       {
         SqlCommand command = new SqlCommand("<%= print_sql_sp_name_delete %>", connection);
 
