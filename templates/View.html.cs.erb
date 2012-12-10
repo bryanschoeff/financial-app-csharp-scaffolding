@@ -10,19 +10,28 @@
 @Html.HiddenFor(model => model.FilingType)
 
 <% @tables.each do |table| %>
+<% current_group = "" %>
+<% current_subgroup = "" %>
 <!--
 ################################################################
 # Fields for <%= table.name %>
 ################################################################
 -->
-<fieldset id="<%= table.name %>">
-	<legend><%= table.display_name %></legend>@Html.HiddenFor(model => model.<%= table.name %>.ID)
+<fieldset id="<%= table.name %>" class="tabpage">
+	<legend><div><%= table.display_name %></div></legend>@Html.HiddenFor(model => model.<%= table.name %>.ID)
 <% table.fields.each do |field| %>
-  <% if field.csharp_name == "FilingID" %><%# "@Html.HiddenFor(#{table.name}.#{field.csharp_name})" %><% else %><div class="fieldline">
-  	@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)
-  	@Html.EditorFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)
+  <% if field.csharp_name == "FilingID" %>@Html.HiddenFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)<% else %>
+  <% if field.category != current_group %><h3><%= field.category %></h3><% current_group = field.category %><% end %>
+  <% if (field.sub_category != current_subgroup) %><% if (field.sub_category) %><div class="fieldline"><%= field.sub_category %>:</div><% if (field.tertiary_category) %><div class="fieldline"><%= field.tertiary_category %>:</div><% end %><% end %>
+	<% current_subgroup = field.sub_category %>
+  <% end %>
+  <div class="fieldline">
+  	@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-label<%= " sub-category" if field.sub_category %>"} )
+  	@Html.TextBoxFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-money" })
   </div><% end %>
 <% end %>
+<br />
+<input type="submit" value="Save Changes" />
 </fieldset>
 <% end %>
 
