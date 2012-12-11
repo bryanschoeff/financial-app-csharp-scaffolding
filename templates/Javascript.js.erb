@@ -1,0 +1,11 @@
+calcs = {};
+
+$(document).ready(function() {
+  <% @calculations.each do |calculation, fields| %>
+  calcs.<%= calculation %> = function() {
+    return <% fields.each do |field| %><%= field.view_page_id %> <%= "+" unless fields.last == field %>
+    <% end %>;
+  }
+  <% end %>
+
+});
