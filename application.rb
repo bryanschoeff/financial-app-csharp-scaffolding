@@ -47,8 +47,10 @@ def load_filing file, filing
       table = initialize_table filing, line
       current_line = "#{line[0]}_#{line[1]}_#{line[2]}" 
     end
+    
 
     field = initialize_field line
+    filing.add_calculation "#{table.name}_#{line[8].gsub(' ', '')}", "#{table.name}_#{field.view_field_id}" if line[8] 
     table.add_field field
   end
 
@@ -61,6 +63,8 @@ def initialize_field line
 	field.sub_category = line[4]
 	field.tertiary_category = line[5]
 	field.field = line[6]
+    field.calculated = (line[7])
+    field.field = line[6] if field.calculated
     field.db_type = 'int'
 	field
 end
@@ -103,6 +107,7 @@ def print_outputs filings
     end
 	prefix = "#{filing.entity_type}#{filing.filing_type}"
 	view_path = "#{OutputPath}views/#{prefix}/"
+	scripts_path = "#{OutputPath}scripts/#{prefix}/"
 	
 	# main model
 	File.open("#{model_path}Filing.cs", 'w') {|f| f.write(filing.print_csharp_main_class) }
@@ -112,6 +117,10 @@ def print_outputs filings
 	
 	# webforms  
 	File.open("#{OutputPath}#{prefix}WebFormFields.aspx", 'w') {|f| f.write(webform) }
+
+    # javascript
+	FileUtils.mkpath(scripts_path) if !(File.exists?(scripts_path) && File.directory?(scripts_path))
+	File.open("#{scripts_path}#{prefix}Scripts.js", 'w') {|f| f.write(filing.print_javascript) }
 	
   end
   

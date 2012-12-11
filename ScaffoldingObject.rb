@@ -5,6 +5,7 @@ class ScaffoldingObject
 
   def initialize
     @fields = Array.new
+    @calculations = Hash.new
     
     @template_erb_class = File.open('templates/Class.cs.erb') { |f| f.read }
     @template_erb_sql = File.open('templates/SQL.sql.erb') { |f| f.read }

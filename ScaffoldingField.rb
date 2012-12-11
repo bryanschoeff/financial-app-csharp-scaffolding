@@ -1,5 +1,5 @@
 class ScaffoldingField
-  attr_accessor :category, :sub_category, :tertiary_category, :field, :db_type
+  attr_accessor :category, :sub_category, :tertiary_category, :field, :db_type, :calculated
 
   def initialize
   end
@@ -53,6 +53,10 @@ class ScaffoldingField
 
   def webform_textbox
     "txt#{csharp_name}"
+  end
+
+  def view_field_id
+    name.gsub(' ', '_')
   end
 
   def cap words
