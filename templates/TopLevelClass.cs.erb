@@ -49,16 +49,23 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
       if (this.ID == -1)
       {
         SaveNew();
+		SaveAllChildren()
 		SaveNewJson();
       }
       else
       {
         Update();
+		SaveAllChildren();
 		UpdateJson();
       }
-	  <% @tables.each do |table| %>
-	  <%= "this.#{table.name}.Save();"  %><% end %> 
+	  
     }
+	
+	protected void SaveAllChildren()
+	{
+		<% @tables.each do |table| %>
+		<%= "this.#{table.name}.Save();"  %><% end %> 
+	}
 	
 	public void SaveNew()
     {
