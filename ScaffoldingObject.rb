@@ -1,10 +1,11 @@
 require_relative 'ScaffoldingField'
 
 class ScaffoldingObject
-  attr_accessor :database, :entity_type, :filing_type, :description1, :description2, :description3, :fields
+  attr_accessor :database, :entity_type, :filing_type, :description1, :description2, :description3, :fields, :fields_all
 
   def initialize
     @fields = Array.new
+	@fields_all = Array.new
     @calculations = Hash.new
     
     @template_erb_class = File.open('templates/Class.cs.erb') { |f| f.read }
@@ -14,8 +15,13 @@ class ScaffoldingObject
 
   def add_field field
     @fields << field
+	@fields_all << field
   end
 
+  def add_calculated field
+    @fields_all << field
+  end
+  
   def get_binding
     binding
   end

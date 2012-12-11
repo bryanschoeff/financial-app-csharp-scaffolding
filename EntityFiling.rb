@@ -17,8 +17,8 @@ class EntityFiling
   end
 
   def add_calculation calculation, field
-    @calculation[calculation] = Array.new unless @calculation[calculation]
-    @calculation[calculation] << field
+    @calculations[calculation] = Array.new unless @calculations[calculation]
+    @calculations[calculation] << field
   end
 
   def print_mvcform

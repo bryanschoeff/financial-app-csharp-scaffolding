@@ -1,5 +1,5 @@
 class ScaffoldingField
-  attr_accessor :category, :sub_category, :tertiary_category, :field, :db_type, :calculated
+  attr_accessor :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated
 
   def initialize
   end
@@ -51,6 +51,10 @@ class ScaffoldingField
     name.gsub(' ', '')
   end
 
+  def calculated_name
+    field.gsub(' ', '')
+  end
+  
   def webform_textbox
     "txt#{csharp_name}"
   end

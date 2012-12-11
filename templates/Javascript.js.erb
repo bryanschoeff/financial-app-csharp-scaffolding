@@ -3,9 +3,19 @@ calcs = {};
 $(document).ready(function() {
   <% @calculations.each do |calculation, fields| %>
   calcs.<%= calculation %> = function() {
-    return <% fields.each do |field| %><%= field.view_page_id %> <%= "+" unless fields.last == field %>
-    <% end %>;
+    $('#<%= calculation %>').html(<% fields.each do |field| %><% if field.calculated %><%= "calcs.#{field.calculation_table}_#{field.csharp_name}()" %><% else %>parseInt($('#<%= "#{field.calculation_table}_#{field.csharp_name}" %>').val())<% end %><%= (fields.last == field) ? ");" : " +" %>
+    <% end %>
   }
   <% end %>
+  
+  calcs.updateTotals = function() {
+	<% @calculations.each do |calculation, fields| %>
+	calcs.<%= calculation %>();<% end %>
+  }
 
+  $('.statement-money').blur(function() {
+	calcs.updateTotals();
+  });
+  
+  calcs.updateTotals();
 });
