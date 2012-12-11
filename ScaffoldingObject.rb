@@ -1,7 +1,7 @@
 require_relative 'ScaffoldingField'
 
 class ScaffoldingObject
-  attr_accessor :database, :entity_type, :filing_type, :description1, :description2, :description3, :fields, :fields_all
+  attr_accessor :database, :entity_type, :filing_type, :description1, :description2, :description3, :fields, :fields_all, :calculations
 
   def initialize
     @fields = Array.new
@@ -20,6 +20,11 @@ class ScaffoldingObject
 
   def add_calculated field
     @fields_all << field
+  end
+  
+  def add_calculation calculation, field
+    @calculations[calculation] = Array.new unless @calculations[calculation]
+    @calculations[calculation] << field
   end
   
   def get_binding

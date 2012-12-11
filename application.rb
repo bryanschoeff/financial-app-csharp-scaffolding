@@ -52,6 +52,7 @@ def load_filing file, filing
 	field.calculation_table = table.name
 	
     filing.add_calculation "#{table.name}_#{line[8].gsub(' ', '')}", field if line[8] 
+	table.add_calculation "#{table.name}_#{line[8].gsub(' ', '')}", field if line[8] 
     if (field.calculated)
 	  table.add_calculated field
 	else

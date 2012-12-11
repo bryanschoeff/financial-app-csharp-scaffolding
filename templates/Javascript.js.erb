@@ -3,18 +3,20 @@ calcs = {};
 $(document).ready(function() {
   <% @calculations.each do |calculation, fields| %>
   calcs.<%= calculation %> = function() {
-    $('#<%= calculation %>').html(<% fields.each do |field| %><% if field.calculated %><%= "calcs.#{field.calculation_table}_#{field.csharp_name}()" %><% else %>parseInt($('#<%= "#{field.calculation_table}_#{field.csharp_name}" %>').val())<% end %><%= (fields.last == field) ? ");" : " +" %>
+    $('#<%= calculation %>').html(<% fields.each do |field| %><% if field.calculated %>parseInt($('#<%= "#{field.calculation_table}_#{field.calculated_name}" %>').html())<% else %>parseInt($('#<%= "#{field.calculation_table}_#{field.csharp_name}" %>').val())<% end %><%= (fields.last == field) ? ");" : " +" %>
     <% end %>
   }
   <% end %>
   
-  calcs.updateTotals = function() {
+  calcs.updateTotals = function(callback) {
 	<% @calculations.each do |calculation, fields| %>
 	calcs.<%= calculation %>();<% end %>
+	
+	if (callback) { callback(); }
   }
 
   $('.statement-money').blur(function() {
-	calcs.updateTotals();
+	calcs.updateTotals(calcs.updateTotals());
   });
   
   calcs.updateTotals();

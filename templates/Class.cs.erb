@@ -12,6 +12,13 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 	[Display(Name = "<%= field.display_name %>")]
     public <%= "#{field.csharp_type} #{field.csharp_name} { get; set; }"  %><% end %>
 
+	// Derived Fields
+	<% @calculations.each do |calculation, fields| %>
+	public int <%= "#{calculation}" %>
+	{
+		get { return <% fields.each do |field| %><% if field.calculated %><%= "#{field.calculation_table}_#{field.calculated_name}" %><% else %><%= field.csharp_name %><% end %><%= (field == fields.last) ? ";" : " + " %><% end %> }
+	}
+	<% end %>
     public <%= name %>()
     {
       this.ID = -1;
@@ -118,5 +125,6 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         connection.Close();
       }
     }
+	
   }
 }

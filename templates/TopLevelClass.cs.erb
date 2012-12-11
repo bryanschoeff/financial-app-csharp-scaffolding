@@ -49,10 +49,12 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
       if (this.ID == -1)
       {
         SaveNew();
+		SaveNewJson();
       }
       else
       {
         Update();
+		UpdateJson();
       }
 	  <% @tables.each do |table| %>
 	  <%= "this.#{table.name}.Save();"  %><% end %> 
@@ -98,6 +100,39 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 
       }
       
+    }
+	
+	public void SaveNewJson()
+    {
+        using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=BryanSandbox"))
+        {
+            SqlCommand command = new SqlCommand("FilingsJsonAdd", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@FilingID", this.ID);
+            command.Parameters.AddWithValue("@Data", Newtonsoft.Json.JsonConvert.SerializeObject(this));
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+    }
+
+    public void UpdateJson()
+    {
+        using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=BryanSandbox"))
+        {
+            SqlCommand command = new SqlCommand("FilingsJsonUpdateByFilingID", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@FilingID", this.ID);
+            command.Parameters.AddWithValue("@Data", Newtonsoft.Json.JsonConvert.SerializeObject(this));
+
+            connection.Open();
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
     }
     
   }
