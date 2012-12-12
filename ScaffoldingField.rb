@@ -48,7 +48,7 @@ class ScaffoldingField
   end
 
   def sql_column_name
-    name.gsub(' ', '')
+	name.gsub(' ', '')
   end
 
   def calculated_name

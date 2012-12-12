@@ -49,7 +49,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
       if (this.ID == -1)
       {
         SaveNew();
-		SaveAllChildren()
+		SaveAllChildren();
 		SaveNewJson();
       }
       else

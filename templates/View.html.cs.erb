@@ -1,5 +1,6 @@
 @model <%= "Skellington.Models.#{@entity_type}.#{@filing_type}.Filing" %>
 
+<<<<<<< HEAD
 <h1><%= "#{@entity_type} - #{@filing_type}" %></h1>
 
 @section navigation {
@@ -9,6 +10,8 @@
   </ul>
 }
 
+=======
+>>>>>>> finalized all calulations and pagination
 @using (Html.BeginForm()) {
 
 @Html.HiddenFor(model => model.ID)
@@ -40,6 +43,17 @@
 
 <input type="submit" value="Save Changes" />
 
+}
+
+@section header {
+<h1><%= "#{@entity_type} - #{@filing_type}" %></h1>
+}
+
+@section navigation {
+<ul>
+<% @tables.each do |table| %>
+	<li><a href="javascript:void(0);" id="nav-<%= table.name %>" class="filing-nav"><%= table.display_name %></a></li><% end %>
+</ul>
 }
 
 @section scripts {

@@ -59,6 +59,8 @@ def load_filing file, filing
 	  table.add_field field
 	end
 	
+	print "#{file} #{line}" if !(field.field)
+	
   end
 
   filing.tables << table unless table.nil?  
