@@ -56,14 +56,42 @@ $(document).ready(function() {
 	nav.removeAllActive();
 	$('#' + current).addClass('filing-nav-active');
   }
+  nav.next = function (current) {
+    $('.filing-nav-active').parent().next().children('a').removeClass('disabled');
+    $('.filing-nav-active').parent().next().children('a').click();
+  }
+
+  nav.previous = function (current) {
+    $('.filing-nav-active').parent().prev().children('a').click();
+  }
+  
+  nav.returnToTop = function () {
+    window.scrollTo(0, 0);
+    //$('body').animate({ scrollTop: 0 }, 1000);
+    //return false;
+  }
   
   $('.filing-nav').click(function() {
+	if ($(this).hasClass('disabled')) return;
 	var id = $(this).attr('id');
 	var fieldset = id.replace('nav-', '');
 	nav.show(fieldset);
 	nav.setActive(id);
 	nav.saveProgress();
   });
+  
+  $('#nav-previous').click(function () {
+    nav.previous();
+	nav.returnToTop();
+  });
+  
+  $('#nav-next').click(function () {
+	nav.next();
+	nav.returnToTop();
+  });
+
+  $('.filing-nav').addClass('disabled');
+  $('.filing-nav').first().removeClass('disabled');
   
   nav.show('<%= @tables.first.name %>');
   $('.filing-nav').first().addClass('filing-nav-active');
