@@ -6,12 +6,10 @@ $(document).ready(function() {
   // -----------------------------------------------------------------
   //  Totals Fields Calculations and Auto-Updates
   // -----------------------------------------------------------------
-
   <% @calculations.each do |calculation, fields| %>
   calcs.<%= calculation %> = function() {
     $('#<%= calculation %>').html(<% fields.each do |field| %><% if field.calculated %>parseInt($('#<%= "#{field.calculation_table}_#{field.calculated_name}" %>').html())<% else %>parseInt($('#<%= "#{field.calculation_table}_#{field.csharp_name}" %>').val())<% end %><%= (fields.last == field) ? ");" : " +" %>
-    <% end %>
-  }
+    <% end %>}
   <% end %>
   
   calcs.updateTotals = function(callback) {
@@ -30,7 +28,6 @@ $(document).ready(function() {
   // -----------------------------------------------------------------
   //  Navigation Functions
   // -----------------------------------------------------------------
-  
   nav.saveProgress = function() {
 	$.post('/<%= "#{@entity_type}#{@filing_type}/EditAsync/" %>', $('form').serialize(), function(data) {
 	  helpers.showMessage(data);
@@ -39,8 +36,7 @@ $(document).ready(function() {
   
   nav.hideAll = function() {
 	<% @tables.each do |table| %>
-	$('#<%= table.name %>').hide();
-	<% end %>
+	$('#<%= table.name %>').hide();<% end %>
   }
   
   nav.show = function(current) {
@@ -70,6 +66,8 @@ $(document).ready(function() {
     //$('body').animate({ scrollTop: 0 }, 1000);
     //return false;
   }
+
+  // Run once
   
   $('.filing-nav').click(function() {
 	if ($(this).hasClass('disabled')) return;
@@ -78,16 +76,15 @@ $(document).ready(function() {
 	nav.show(fieldset);
 	nav.setActive(id);
 	nav.saveProgress();
+	nav.returnToTop();
   });
   
   $('#nav-previous').click(function () {
     nav.previous();
-	nav.returnToTop();
   });
   
   $('#nav-next').click(function () {
 	nav.next();
-	nav.returnToTop();
   });
 
   $('.filing-nav').addClass('disabled');

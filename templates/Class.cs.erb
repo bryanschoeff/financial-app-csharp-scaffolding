@@ -11,6 +11,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
     <% @fields.each do |field| %>
 	[Display(Name = "<%= field.display_name %>")]
     public <%= "#{field.csharp_type} #{field.csharp_name} { get; set; }"  %><% end %>
+	public bool Unlocked { get; set; }
 
 	// Derived Fields
 	<% @calculations.each do |calculation, fields| %>
@@ -39,6 +40,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         reader.Read();
         <% @fields.each do |field| %>
         this.<%= field.csharp_name %> = (<%= field.csharp_type %>)reader["<%= field.sql_column_name %>"];<% end %>
+		this.Unlocked = (bool)reader["Unlocked"];
 		this.ID = ID;
         connection.Close();
       }
@@ -58,9 +60,10 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         reader = command.ExecuteReader();                                                   
         reader.Read();
 		
-		this.ID = (int)reader["<%= name  %>ID"];
+		this.ID = (int)reader["<%= name %>ID"];
         <% @fields.each do |field| %>
         this.<%= field.csharp_name %> = (<%= field.csharp_type %>)reader["<%= field.sql_column_name %>"];<% end %>
+		this.Unlocked = (bool)reader["Unlocked"];
 		
         connection.Close();
       }
@@ -87,7 +90,8 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 		command.CommandType = CommandType.StoredProcedure;
         <% @fields.each do |field| %>
         command.Parameters.AddWithValue("<%= field.sql_parameter  %>", this.<%= field.csharp_name %>);<% end %>
-
+		command.Parameters.AddWithValue("@Unlocked", this.Unlocked);
+		
         connection.Open();
         this.ID = System.Convert.ToInt32(command.ExecuteScalar());
         connection.Close();
@@ -104,6 +108,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         command.Parameters.AddWithValue("@<%= name %>ID", this.ID);
         <% @fields.each do |field| %>
         command.Parameters.AddWithValue("<%= field.sql_parameter  %>", this.<%= field.csharp_name %>);<% end %>
+		command.Parameters.AddWithValue("@Unlocked", this.Unlocked);
 
         connection.Open();
         command.ExecuteNonQuery();  
