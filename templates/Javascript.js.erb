@@ -20,6 +20,7 @@ $(document).ready(function() {
   }
 
   $('.statement-money').blur(function() {
+	$(this).val(Math.floor($(this).val()));
 	calcs.updateTotals(calcs.updateTotals());
   });
   
@@ -34,63 +35,78 @@ $(document).ready(function() {
 	});
   }
   
-  nav.hideAll = function() {
-	<% @tables.each do |table| %>
-	$('#<%= table.name %>').hide();<% end %>
-  }
-  
-  nav.show = function(current) {
-	nav.hideAll();
-	$('#' + current).show();
-  }
-  
-  nav.removeAllActive = function() {
-	$('.filing-nav').removeClass('filing-nav-active');
-  }
-  
-  nav.setActive = function(current) {
-	nav.removeAllActive();
-	$('#' + current).addClass('filing-nav-active');
-  }
-  nav.next = function (current) {
-    $('.filing-nav-active').parent().next().children('a').removeClass('disabled');
-    $('.filing-nav-active').parent().next().children('a').click();
-  }
+  nav.hideAll = function () {
+        $('.tabpage').hide();
+    }
 
-  nav.previous = function (current) {
-    $('.filing-nav-active').parent().prev().children('a').click();
-  }
-  
-  nav.returnToTop = function () {
-    window.scrollTo(0, 0);
-    //$('body').animate({ scrollTop: 0 }, 1000);
-    //return false;
-  }
+    nav.show = function (current) {
+        nav.hideAll();
+        $('#' + current).show();
+    }
 
-  // Run once
-  
-  $('.filing-nav').click(function() {
-	if ($(this).hasClass('disabled')) return;
-	var id = $(this).attr('id');
-	var fieldset = id.replace('nav-', '');
-	nav.show(fieldset);
-	nav.setActive(id);
-	nav.saveProgress();
-	nav.returnToTop();
-  });
-  
-  $('#nav-previous').click(function () {
-    nav.previous();
-  });
-  
-  $('#nav-next').click(function () {
-	nav.next();
-  });
+    nav.removeAllActive = function () {
+        $('.filing-nav').removeClass('filing-nav-active');
+    }
 
-  $('.filing-nav').addClass('disabled');
-  $('.filing-nav').first().removeClass('disabled');
-  
-  nav.show('<%= @tables.first.name %>');
-  $('.filing-nav').first().addClass('filing-nav-active');
-  
+    nav.setActive = function (current) {
+        nav.removeAllActive();
+        $('#' + current).addClass('filing-nav-active');
+    }
+
+    nav.unlock = function (current) {
+        var id = $(current).attr('id');
+        var fieldset = id.replace('nav-', '');
+
+        $('#' + id).removeClass('disabled');
+        $('#' + fieldset + '_Unlocked').val("True");
+
+    }
+
+    nav.next = function (current) {
+        var newSection = $('.filing-nav-active').parent().next().children('a');
+        nav.unlock($(newSection));
+        $(newSection).click();
+    }
+
+    nav.previous = function (current) {
+        $('.filing-nav-active').parent().prev().children('a').click();
+    }
+
+    nav.returnToTop = function () {
+        window.scrollTo(0, 0);
+        //$('body').animate({ scrollTop: 0 }, 1000);
+        //return false;
+    }
+
+    // Run once
+
+    $('.filing-nav').click(function () {
+        if ($(this).hasClass('disabled')) return;
+
+        var id = $(this).attr('id');
+        var fieldset = id.replace('nav-', '');
+
+        nav.show(fieldset);
+        nav.setActive(id);
+        nav.saveProgress();
+        nav.returnToTop();
+    });
+
+    $('#nav-previous').click(function () {
+        nav.previous();
+    });
+
+    $('#nav-next').click(function () {
+        nav.next();
+    });
+
+    $('.tabpage').each(function () {
+        var id = $(this).attr('id');
+        console.log($('#' + id + '_Unlocked').val());
+        if ($('#' + id + '_Unlocked').val() === 'False') { $('#nav-' + id).addClass('disabled'); }
+    });
+
+    nav.show('SONP_GovernmentalActivities');
+    $('.filing-nav').first().addClass('filing-nav-active');
+
 });
