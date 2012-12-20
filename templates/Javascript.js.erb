@@ -9,7 +9,7 @@ $(document).ready(function() {
   <% @calculations.each do |calculation, fields| %>
   calcs.<%= calculation %> = function() {
     $('#<%= calculation %>').html(<% fields.each do |field| %><% if field.calculated %>parseInt($('#<%= "#{field.calculation_table}_#{field.calculated_name}" %>').html())<% else %>parseInt($('#<%= "#{field.calculation_table}_#{field.csharp_name}" %>').val())<% end %><%= (fields.last == field) ? ");" : " +" %>
-    <% end %>}
+  <% end %>}
   <% end %>
   
   calcs.updateTotals = function(callback) {
@@ -102,10 +102,9 @@ $(document).ready(function() {
 
     $('.tabpage').each(function () {
         var id = $(this).attr('id');
-        console.log($('#' + id + '_Unlocked').val());
         if ($('#' + id + '_Unlocked').val() === 'False') { $('#nav-' + id).addClass('disabled'); }
-    });
-
+    }, nav.unlock($('.tabpage').first()));
+	
     nav.show('SONP_GovernmentalActivities');
     $('.filing-nav').first().addClass('filing-nav-active');
 
