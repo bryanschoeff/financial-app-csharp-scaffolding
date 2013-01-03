@@ -26,11 +26,15 @@ class ScaffoldingObject
     @calculations[calculation] = Array.new unless @calculations[calculation]
     @calculations[calculation] << field
   end
-  
+ 
   def get_binding
     binding
   end
   
+  def not_applicableable?                                                                                                                                                      
+    ((name.downcase.include? "water") || (name.downcase.include? "sewer") || (name.downcase.include? "electric") || (name.downcase.include? "landfill"))
+  end
+
   def name
 	"#{acronymize description1}#{'_' if description2}#{cap description2}#{'_' if description3}#{cap description3}".gsub(' ', '')
   end

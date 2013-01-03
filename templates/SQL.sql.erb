@@ -8,7 +8,8 @@ GO
 CREATE TABLE [dbo].[<%= print_sql_table_name %>](
 	[<%= name %>ID] [int] IDENTITY(1,1) NOT NULL<% @fields.each do |field| %>
 	,<%= field.sql_column %> <%= field.db_type %> NULL<% end %>
-	,Unlocked bit NOT NULL
+    ,[Unlocked] bit NOT NULL
+    <%= ",[NotApplicable] bit NOT NULL" if not_applicableable? %>
  CONSTRAINT [PK_<%= print_sql_table_name %>] PRIMARY KEY CLUSTERED 
 (
 	[<%= name %>ID] ASC
@@ -44,7 +45,9 @@ BEGIN
    
     SELECT [<%= name %>ID]<% @fields.each do |field| %>
           ,<%= field.sql_column %><% end %>
-		  ,[Unlocked]
+          ,[Unlocked]
+          <%= ",[NotApplicable]" if not_applicableable? %>
+
 	  FROM [<%= @database %>].[dbo].[<%= print_sql_table_name %>]
 	 WHERE [<%= name %>ID] = @<%= name %>ID
 		  
@@ -74,7 +77,9 @@ BEGIN
    
     SELECT [<%= name %>ID]<% @fields.each do |field| %>
           ,<%= field.sql_column %><% end %>
-		  ,[Unlocked]
+          ,[Unlocked]
+          <%= ",[NotApplicable]" if not_applicableable? %>
+
 	  FROM [<%= @database %>].[dbo].[<%= print_sql_table_name %>]
 	 WHERE [FilingID] = @FilingID
 		  
@@ -123,7 +128,9 @@ CREATE PROCEDURE [dbo].[<%= print_sql_sp_name_save %>]
 	-- Add the parameters for the stored procedure here
 	<% @fields.each do |field| %>
     <%= field.sql_parameter %> <%= field.db_type %>,<% end %>
-	@Unlocked bit
+    @Unlocked bit<%= ",
+    @NotApplicable bit" if not_applicableable? %>
+
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -134,9 +141,13 @@ BEGIN
    
     INSERT INTO [<%= @database %>].[dbo].[<%= print_sql_table_name %>]
 			   (<% @fields.each do |field| %><%= ',' if (fields.first != field) %><%= field.sql_column %>
-			   <% end %>,[Unlocked])
+                <% end %>,[Unlocked]
+                <%= ",[NotApplicable]" if not_applicableable? %>)
+
 		VALUES (<% @fields.each do |field| %><%= field.sql_parameter %>,
-			   <% end %>@Unlocked)
+                <% end %>@Unlocked<%= ",
+                @NotApplicable" if not_applicableable? %>
+)
 	
 	SELECT SCOPE_IDENTITY()
 END
@@ -156,7 +167,9 @@ CREATE PROCEDURE [dbo].[<%= print_sql_sp_name_update %>]
 	-- Add the parameters for the stored procedure here
     @<%= name %>ID int<% @fields.each do |field| %>,
     <%= field.sql_parameter %> <%= field.db_type %><% end %>,
-	@Unlocked bit
+    @Unlocked bit<%= ",
+    @NotApplicable bit" if not_applicableable? %>
+
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -167,7 +180,9 @@ BEGIN
    
     UPDATE [<%= @database %>].[dbo].[<%= print_sql_table_name %>]
 	   SET<% @fields.each do |field| %><%= if (fields.first != field) then ',' else ' ' end %><%= field.sql_column %> = <%= field.sql_parameter %> 
-		  <% end %>,[Unlocked] = @Unlocked
+          <% end %>,[Unlocked] = @Unlocked
+          <%= ",[NotApplicable] = @NotApplicable" if not_applicableable? %>
+
 	 WHERE [<%= name %>ID] = @<%= name %>ID
 	
 END
