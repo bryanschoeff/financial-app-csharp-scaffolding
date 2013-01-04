@@ -12,6 +12,8 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 	[Display(Name = "<%= field.display_name %>")]
     public <%= "#{field.csharp_type} #{field.csharp_name} { get; set; }"  %><% end %>
 	public bool Unlocked { get; set; }
+	<% if not_applicableable? %>[Display(Name = "Not Applicable")]
+	public bool NotApplicable { get; set; } <% end %>
 
 	// Derived Fields
 	<% @calculations.each do |calculation, fields| %>
@@ -41,6 +43,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         <% @fields.each do |field| %>
         this.<%= field.csharp_name %> = (<%= field.csharp_type %>)reader["<%= field.sql_column_name %>"];<% end %>
 		this.Unlocked = (bool)reader["Unlocked"];
+		<% if not_applicableable? %>this.NotApplicable = (bool)reader["NotApplicable"];<% end %>
 		this.ID = ID;
         connection.Close();
       }
@@ -64,6 +67,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         <% @fields.each do |field| %>
         this.<%= field.csharp_name %> = (<%= field.csharp_type %>)reader["<%= field.sql_column_name %>"];<% end %>
 		this.Unlocked = (bool)reader["Unlocked"];
+		<% if not_applicableable? %>this.NotApplicable = (bool)reader["NotApplicable"];<% end %>
 		
         connection.Close();
       }
@@ -91,6 +95,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         <% @fields.each do |field| %>
         command.Parameters.AddWithValue("<%= field.sql_parameter  %>", this.<%= field.csharp_name %>);<% end %>
 		command.Parameters.AddWithValue("@Unlocked", this.Unlocked);
+		<% if not_applicableable? %>command.Parameters.AddWithValue("@NotApplicable", this.NotApplicable);<% end %>
 		
         connection.Open();
         this.ID = System.Convert.ToInt32(command.ExecuteScalar());
@@ -109,6 +114,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         <% @fields.each do |field| %>
         command.Parameters.AddWithValue("<%= field.sql_parameter  %>", this.<%= field.csharp_name %>);<% end %>
 		command.Parameters.AddWithValue("@Unlocked", this.Unlocked);
+		<% if not_applicableable? %>command.Parameters.AddWithValue("@NotApplicable", this.NotApplicable);<% end %>
 
         connection.Open();
         command.ExecuteNonQuery();  
