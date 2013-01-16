@@ -46,17 +46,17 @@ $(document).ready(function() {
     }
 
     filingsApp.nav.removeAllActive = function () {
-        $('.filing-filingsApp.nav').removeClass('filing-filingsApp.nav-active');
+        $('.filing-nav').removeClass('filing-nav-active');
     }
 
     filingsApp.nav.setActive = function (current) {
         filingsApp.nav.removeAllActive();
-        $('#' + current).addClass('filing-filingsApp.nav-active');
+        $('#' + current).addClass('filing-nav-active');
     }
 
     filingsApp.nav.unlock = function (current) {
         var id = $(current).attr('id');
-        var fieldset = id.replace('filingsApp.nav-', '');
+        var fieldset = id.replace('nav-', '');
 
         $('#' + id).removeClass('disabled');
         $('#' + fieldset + '_Unlocked').val("True");
@@ -64,13 +64,13 @@ $(document).ready(function() {
     }
 
     filingsApp.nav.next = function (current) {
-        var newSection = $('.filing-filingsApp.nav-active').parent().next().children('a');
+        var newSection = $('.filing-nav-active').parent().next().children('a');
         filingsApp.nav.unlock($(newSection));
         $(newSection).click();
     }
 
     filingsApp.nav.previous = function (current) {
-        $('.filing-filingsApp.nav-active').parent().prev().children('a').click();
+        $('.filing-nav-active').parent().prev().children('a').click();
     }
 
     filingsApp.nav.returnToTop = function () {
@@ -78,14 +78,16 @@ $(document).ready(function() {
         //$('body').animate({ scrollTop: 0 }, 1000);
         //return false;
     }
+	
+	
 
     // Run once
 
-    $('.filing-filingsApp.nav').click(function () {
+    $('.filing-nav').click(function () {
         if ($(this).hasClass('disabled')) return;
 
         var id = $(this).attr('id');
-        var fieldset = id.replace('filingsApp.nav-', '');
+        var fieldset = id.replace('nav-', '');
 
         filingsApp.nav.show(fieldset);
         filingsApp.nav.setActive(id);
@@ -93,11 +95,11 @@ $(document).ready(function() {
         filingsApp.nav.returnToTop();
     });
 
-    $('#filingsApp.nav-previous').click(function () {
+    $('#nav-previous').click(function () {
         filingsApp.nav.previous();
     });
 
-    $('#filingsApp.nav-next').click(function () {
+    $('#nav-next').click(function () {
         filingsApp.nav.next();
     });
 	
@@ -105,13 +107,28 @@ $(document).ready(function() {
 		filingsApp.nav.disablePage($(this).parent());
 		filingsApp.nav.next();
 	});
-
+	
     $('.tabpage').each(function () {
         var id = $(this).attr('id');
-        if ($('#' + id + '_Unlocked').val() === 'False') { $('#filingsApp.nav-' + id).addClass('disabled'); }
+        if ($('#' + id + '_Unlocked').val() === 'False') { $('#nav-' + id).addClass('disabled'); }
     }, filingsApp.nav.unlock($('.tabpage').first()));
 	
     filingsApp.nav.show('SONP_GovernmentalActivities');
-    $('.filing-filingsApp.nav').first().addClass('filing-filingsApp.nav-active');
+    $('.filing-nav').first().addClass('filing-nav-active');
+	
+	$('.statement-na-check').click(function () {
+        if ($(this).prop('checked')) {
+            $(this).parent().children('.tabpage-input').hide();
+        }
+		else {
+			$(this).parent().children('.tabpage-input').show();
+		}
+    });
+	
+	$('.statement-na-check').each(function () {
+        if ($(this).prop('checked')) {
+            $(this).parent().children('.tabpage-input').hide();
+        }
+    });
 
 });
