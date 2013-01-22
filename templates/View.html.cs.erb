@@ -1,18 +1,17 @@
 @model <%= "Skellington.Models.#{@entity_type}.#{@filing_type}.Filing" %>
 
 @section navigation {
-  <ul>
-    <% @tables.each do |table| %>
+  <ul><% @tables.each do |table| %>
       <li><a href="javascript:void(0);" id="nav-<%= table.name %>" class="filing-nav<%= " filing-nav-active" if table == @tables.first  %>"><%= table.display_name  %></a></li><% end %>
   </ul>
 }
 
 @using (Html.BeginForm()) {
 
-@Html.HiddenFor(model => model.ID)
-@Html.HiddenFor(model => model.EntityID)
-@Html.HiddenFor(model => model.EntityType)
-@Html.HiddenFor(model => model.FilingType)
+@Html.HiddenFor(model => model.EntityFiling.ID)
+@Html.HiddenFor(model => model.EntityFiling.EntityID)
+@Html.HiddenFor(model => model.EntityFiling.EntityType)
+@Html.HiddenFor(model => model.EntityFiling.FilingType)
 
 <% @tables.each do |table| %>
 <% current_group = "" %>
