@@ -1,6 +1,3 @@
-filingsApp = {};
-filingsApp.calcs = {};
-filingsApp.nav = {};
 
 $(document).ready(function() {
 
@@ -32,7 +29,7 @@ $(document).ready(function() {
   // -----------------------------------------------------------------
   filingsApp.nav.saveProgress = function() {
 	$.post('/<%= "#{@entity_type}#{@filing_type}/EditAsync/" %>', $('form').serialize(), function(data) {
-	  helpers.showMessage(data);
+	  filingsApp.helpers.showMessage(data);
 	});
   }
   
@@ -89,14 +86,15 @@ $(document).ready(function() {
     filingsApp.nav.previous = function (current) {
         $('.filing-nav-active').parent().prev().children('a').click();
     }
+	
+	filingsApp.nav.submit = function () {
+		$('form').submit();
+	}
+
     filingsApp.nav.returnToTop = function () {
         window.scrollTo(0, 0);
         //$('body').animate({ scrollTop: 0 }, 1000);
         //return false;
-    }
-	
-	filingsApp.nav.submit = function () {
-        $('form').submit();
     }
 	
     // Run once
@@ -121,13 +119,13 @@ $(document).ready(function() {
         filingsApp.nav.next();
     });
 	
-	$('#nav-submit').click(function () {
-        filingsApp.nav.submit();
-    });
-	
 	$('#nav-save-changes').click(function () {
         filingsApp.nav.saveProgress();
     });	
+	
+	$('#nav-submit').click(function () {
+        filingsApp.nav.submit();
+    });
 	
     $('.tabpage').each(function () {
         var id = $(this).attr('id');
@@ -154,4 +152,3 @@ $(document).ready(function() {
     });
 
 });
-
