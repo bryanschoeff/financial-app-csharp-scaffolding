@@ -12,6 +12,8 @@
 @Html.HiddenFor(model => model.EntityFiling.EntityID)
 @Html.HiddenFor(model => model.EntityFiling.EntityType)
 @Html.HiddenFor(model => model.EntityFiling.FilingType)
+@Html.HiddenFor(model => model.EntityFiling.FilingYear)
+@Html.HiddenFor(model => model.EntityFiling.Status)
 
 <% @tables.each do |table| %>
 <% current_group = "" %>
@@ -39,14 +41,17 @@
 <br />
 </fieldset>
 <% end %>
-<div id="nav-page-control"><a href="javascript:void(0);" id="nav-previous" class="nav-button">&lt;- previous</a><a href="javascript:void(0);" id="nav-next" class="nav-button">next -&gt;</a></div>
+<div id="nav-page-control">
+<a href="javascript:void(0);" id="nav-previous" class="nav-button">&lt;- previous</a><a href="javascript:void(0);" id="nav-next" class="nav-button">next -&gt;</a><a href="javascript:void(0);" id="nav-submit" class="nav-button nav-submit">submit</a><a href="javascript:void(0);" id="nav-save-changes" class="nav-button">Save Changes</a>
+</div>
 
 <input type="submit" value="Save Changes" />
 
 }
 
 @section header {
-<h1><%= "#{@entity_type} - #{@filing_type}" %></h1>
+<h1>@Model.EntityFiling.EntityName</h1>
+<h2><%= "#{@filing_type}" %></h2>
 }
 
 @section scripts {
