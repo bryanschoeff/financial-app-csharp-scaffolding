@@ -4,8 +4,8 @@ require 'ERB'
 require_relative 'EntityFiling.rb'
 
 RunDate = Time.new.strftime("%Y.%m.%d")
-ApplicationName = "Skellington"
-DatabaseName = "BryanSandbox"
+ApplicationName = "Online_Financial_Statements"
+DatabaseName = "OnlineFinancialStatements"
 
 ApplicationPath = "#{Dir.pwd}/"
 SourcePath = "#{ApplicationPath}source/"

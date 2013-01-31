@@ -19,9 +19,6 @@ GO
 
 
 
-
-
-
 /****** Object:  StoredProcedure [dbo].[<%= print_sql_sp_name_load %>]    Script Date: 11/26/2012 13:45:39 ******/
 SET ANSI_NULLS ON
 GO
@@ -187,3 +184,14 @@ BEGIN
 	
 END
 GO
+
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load %>] TO [Internet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load_by_filingid %>] TO [Internet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_save %>] TO [Internet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_update %>] TO [Internet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_delete %>] TO [Internet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load %>] TO [Intranet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load_by_filingid %>] TO [Intranet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_save %>] TO [Intranet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_update %>] TO [Intranet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_delete %>] TO [Intranet]

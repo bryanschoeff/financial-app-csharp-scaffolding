@@ -62,7 +62,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
     
 	protected void SaveNewJson()
 	{
-		using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=BryanSandbox"))
+		using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
 		{
 			SqlCommand command = new SqlCommand("FilingsJsonAdd", connection);
 
@@ -78,7 +78,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 
 	protected void UpdateJson()
 	{
-		using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=BryanSandbox"))
+		using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
 		{
 			SqlCommand command = new SqlCommand("FilingsJsonUpdateByFilingID", connection);
 
