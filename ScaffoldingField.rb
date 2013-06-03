@@ -1,5 +1,5 @@
 class ScaffoldingField
-  attr_accessor :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated
+  attr_accessor :calculation_group, :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated
 
   def initialize
   end
@@ -28,7 +28,7 @@ class ScaffoldingField
   end
   
   def sql_parameter
-    "@#{name}".gsub(' ', '')
+    "@#{clean name.gsub(' ', '')}"
   end
 
   def display_name
@@ -40,19 +40,19 @@ class ScaffoldingField
   end
   
   def csharp_name
-    name.gsub(' ', '')
+    clean name.gsub(' ', '')
   end
 
   def sql_column
-    "[#{name.gsub(' ', '')}]"
+    "[#{clean name.gsub(' ', '')}]"
   end
 
   def sql_column_name
-	name.gsub(' ', '')
+	clean name.gsub(' ', '')
   end
 
   def calculated_name
-    field.gsub(' ', '')
+    clean field.gsub(' ', '')
   end
   
   def webform_textbox
@@ -60,11 +60,16 @@ class ScaffoldingField
   end
 
   def view_field_id
-    name.gsub(' ', '_')
+    clean name.gsub(' ', '_')
   end
 
   def cap words
-	words.split(" ").map {|words| words.capitalize}.join(" ") if (words)
+	words = words.split(" ").map {|words| words.capitalize}.join(" ") if (words)
+	words.gsub!(/\((\w*?)\)/) {|match| $1.capitalize }
+	words
   end
   
+  def clean words
+	words.gsub(/[,()]/,'')
+  end
 end

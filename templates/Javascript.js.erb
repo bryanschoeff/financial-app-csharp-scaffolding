@@ -1,15 +1,19 @@
-
-$(document).ready(function() {
-
   // -----------------------------------------------------------------
   //  Totals Fields Calculations and Auto-Updates
   // -----------------------------------------------------------------
+	filingsApp.calcs.sumFields = function (dataGroup) {
+        sum = 0;
+        $('input[data-sum-group="' + dataGroup + '"]').each(function () {
+            sum += parseInt($(this).val());
+        });
+        return sum;
+	}
+  
   <% @calculations.each do |calculation, fields| %>
   filingsApp.calcs.<%= calculation %> = function() {
-    $('#<%= calculation %>').html(<% fields.each do |field| %><% if field.calculated %>parseInt($('#<%= "#{field.calculation_table}_#{field.calculated_name}" %>').html())<% else %>parseInt($('#<%= "#{field.calculation_table}_#{field.csharp_name}" %>').val())<% end %><%= (fields.last == field) ? ");" : " +" %>
-  <% end %>}
+    $('#<%= calculation %>').html(filingsApp.calcs.sumFields('<%= calculation %>'));
+  }
   <% end %>
-  
   filingsApp.calcs.updateTotals = function(callback) {
 	<% @calculations.each do |calculation, fields| %>
 	filingsApp.calcs.<%= calculation %>();<% end %>
@@ -28,7 +32,7 @@ $(document).ready(function() {
   //  Navigation Functions
   // -----------------------------------------------------------------
   filingsApp.nav.saveProgress = function() {
-	$.post('/<%= "#{@entity_type}#{@filing_type}/EditAsync/" %>', $('form').serialize(), function(data) {
+	$.post('EditAsync/', $('form').serialize(), function(data) {
 	  filingsApp.helpers.showMessage(data);
 	});
   }
@@ -98,6 +102,9 @@ $(document).ready(function() {
     }
 	
     // Run once
+
+$(document).ready(function() {
+
 
     $('.filing-nav').click(function () {
         if ($(this).hasClass('disabled')) return;

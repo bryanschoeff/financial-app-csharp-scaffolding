@@ -34,18 +34,10 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 	
 	public void Save()
 	{
-		int tempid = this.EntityFiling.ID;
 		this.EntityFiling.Save();
 		SetID(this.EntityFiling.ID);
 		SaveChildren();
-		if (tempid == -1)
-		{
-			SaveNewJson();
-		}
-		else
-		{
-			UpdateJson();
-		}
+		SaveJson();
 	}
 	
 	protected void SaveChildren()
@@ -60,11 +52,11 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
         this.<%= table.name %>.FilingID = ID;<% end %>
 	}
     
-	protected void SaveNewJson()
+	protected void SaveJson()
 	{
 		using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
 		{
-			SqlCommand command = new SqlCommand("FilingsJsonAdd", connection);
+			SqlCommand command = new SqlCommand("FilingsJsonSave", connection);
 
 			command.CommandType = CommandType.StoredProcedure;
 			command.Parameters.AddWithValue("@FilingID", this.EntityFiling.ID);
@@ -72,30 +64,6 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 
 			connection.Open();
 			command.ExecuteNonQuery();
-			connection.Close();
-		}
-	}
-
-	protected void UpdateJson()
-	{
-		using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
-		{
-			SqlCommand command = new SqlCommand("FilingsJsonUpdateByFilingID", connection);
-
-			command.CommandType = CommandType.StoredProcedure;
-			command.Parameters.AddWithValue("@FilingID", this.EntityFiling.ID);
-			command.Parameters.AddWithValue("@Data", Newtonsoft.Json.JsonConvert.SerializeObject(this));
-
-			connection.Open();
-			try
-			{
-				command.ExecuteNonQuery();
-			}
-			catch
-			{
-				SaveNewJson();
-			}
-			
 			connection.Close();
 		}
 	}
