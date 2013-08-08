@@ -34,11 +34,6 @@
   <% if field.csharp_name == "FilingID" %>@Html.HiddenFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)<% else %><% if field.category != current_group %><h3><%= field.category %></h3><% current_group = field.category %><% end %>
   <% if (field.sub_category != current_subgroup) %><% if (field.sub_category) %>
 	<div class="fieldline"><%= field.sub_category %>:</div>
-		<!--
-		<% if (field.tertiary_category) %>
-			<div class="fieldline"><%= field.tertiary_category %>:</div>
-		<% end %>
-		-->
 	<% end %>
 	<% current_subgroup = field.sub_category %><% end %><div class="<%= (field.calculated) ? "total-line" : "fieldline" %>"><% if field.calculated %><span class="statement-label"><%= field.display_name %></span><span class="statement-total" id="<%= "#{table.name}_#{field.calculated_name}" %>">0</span><% else %>
   	@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-label<%= " sub-category" if field.sub_category %>"} )

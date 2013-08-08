@@ -34,6 +34,7 @@ class ScaffoldingField
   def display_name
     result = cap @field
     result = "#{cap @tertiary_category} - #{result}" if @tertiary_category
+	result = clean_english result
     #result = "#{cap @sub_category} - #{result}" if @sub_category
     #result = "#{cap @category} - #{result}" if @category
 	result
@@ -63,10 +64,14 @@ class ScaffoldingField
     clean name.gsub(' ', '_')
   end
 
-  def cap words
-	words = words.split(" ").map {|words| words.capitalize}.join(" ") if (words)
-	words.gsub!(/\((\w*?)\)/) {|match| $1.capitalize }
-	words
+  def cap words 
+ 	words = words.split(" ").map {|words| words.capitalize}.join(" ") if (words) 
+ 	words.gsub!(/\((\w*?)(\)|\s)/) {|match| "(#{$1.capitalize}#{$2}" } 
+ 	words 
+  end
+
+  def clean_english words
+    words.gsub(' Of ', ' of ').gsub(' And ', ' and ').gsub(' In ', ' in ').gsub(' From ', ' from ').gsub(' To ', ' to ').gsub(' For ', ' for ')
   end
   
   def clean words
