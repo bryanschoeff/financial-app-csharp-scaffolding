@@ -1,7 +1,8 @@
 class ScaffoldingField
-  attr_accessor :calculation_group, :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated
+  attr_accessor :calculation_group, :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated, :subtraction
 
   def initialize
+    @subtraction = false
   end
 
   def csharp_type
@@ -20,13 +21,13 @@ class ScaffoldingField
   end
 
   def name
-	result = cap @field
+    result = cap @field
     result = "#{cap @tertiary_category}_#{result}" if @tertiary_category
     result = "#{cap @sub_category}_#{result}" if @sub_category
     result = "#{cap @category}_#{result}" if @category
-	result
+    result
   end
-  
+
   def sql_parameter
     "@#{clean name.gsub(' ', '')}"
   end
@@ -34,12 +35,10 @@ class ScaffoldingField
   def display_name
     result = cap @field
     result = "#{cap @tertiary_category} - #{result}" if @tertiary_category
-	result = clean_english result
-    #result = "#{cap @sub_category} - #{result}" if @sub_category
-    #result = "#{cap @category} - #{result}" if @category
-	result
+    result = clean_english result
+    result
   end
-  
+
   def csharp_name
     clean name.gsub(' ', '')
   end
@@ -55,7 +54,7 @@ class ScaffoldingField
   def calculated_name
     clean field.gsub(' ', '')
   end
-  
+
   def webform_textbox
     "txt#{csharp_name}"
   end
@@ -64,17 +63,17 @@ class ScaffoldingField
     clean name.gsub(' ', '_')
   end
 
-  def cap words 
- 	words = words.split(" ").map {|words| words.capitalize}.join(" ") if (words) 
- 	words.gsub!(/\((\w*?)(\)|\s)/) {|match| "(#{$1.capitalize}#{$2}" } 
- 	words 
+  def cap words
+ 	  words = words.split(" ").map {|word| word.capitalize}.join(" ") if (words) 
+ 	  words.gsub!(/\((\w*?)(\)|\s)/) {|match| "(#{$1.capitalize}#{$2}" } 
+ 	  words
   end
 
   def clean_english words
     words.gsub(' Of ', ' of ').gsub(' And ', ' and ').gsub(' In ', ' in ').gsub(' From ', ' from ').gsub(' To ', ' to ').gsub(' For ', ' for ')
   end
-  
+
   def clean words
-	words.gsub(/[,()]/,'')
+	  words.gsub(/[,()]/,'')
   end
 end

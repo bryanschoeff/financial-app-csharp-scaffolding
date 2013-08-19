@@ -1,161 +1,161 @@
-  // -----------------------------------------------------------------
-  //  Totals Fields Calculations and Auto-Updates
-  // -----------------------------------------------------------------
-	filingsApp.calcs.sumFields = function (dataGroup) {
-        sum = 0;
-        $('input[data-sum-group="' + dataGroup + '"]').each(function () {
-            sum += parseInt($(this).val());
-        });
-        return sum;
-	}
-  
-  <% @calculations.each do |calculation, fields| %>
-  filingsApp.calcs.<%= calculation %> = function() {
-    $('#<%= calculation %>').html(filingsApp.calcs.sumFields('<%= calculation %>'));
-  }
-  <% end %>
-  filingsApp.calcs.updateTotals = function(callback) {
+// -----------------------------------------------------------------
+//  Totals Fields Calculations and Auto-Updates
+// -----------------------------------------------------------------
+filingsApp.calcs.sumFields = function (dataGroup) {
+  sum = 0;
+  $('[data-sum-group="' + dataGroup + '"]').each(function () {
+    var value = parseInt(($(this).val() === '') ? $(this).html() : $(this).val());
+    if ($().attr('data-subtraction') !== undefined) { value *= -1; }
+    sum += value
+  });
+  return sum;
+};
+
+<% @calculations.each do |calculation, fields| %>filingsApp.calcs.<%= calculation %> = function() {
+  $('#<%= calculation %>').html(filingsApp.calcs.sumFields('<%= calculation %>'));
+};
+<% end %>
+filingsApp.calcs.updateTotals = function(callback) {
 	<% @calculations.each do |calculation, fields| %>
 	filingsApp.calcs.<%= calculation %>();<% end %>
 	
 	if (callback) { callback(); }
-  }
+};
 
-  $('.statement-money').blur(function() {
-	$(this).val(Math.floor($(this).val()));
-	filingsApp.calcs.updateTotals(filingsApp.calcs.updateTotals());
+// -----------------------------------------------------------------
+//  Navigation Functions
+// -----------------------------------------------------------------
+filingsApp.nav.saveProgress = function() {
+  $.post('EditAsync/', $('form').serialize(), function(data) {
+    filingsApp.helpers.showMessage(data);
   });
-  
-  filingsApp.calcs.updateTotals();
-  
-  // -----------------------------------------------------------------
-  //  Navigation Functions
-  // -----------------------------------------------------------------
-  filingsApp.nav.saveProgress = function() {
-	$.post('EditAsync/', $('form').serialize(), function(data) {
-	  filingsApp.helpers.showMessage(data);
-	});
+};
+
+filingsApp.nav.hideAll = function () {
+  $('.tabpage').hide();
+};
+
+filingsApp.nav.show = function (current) {
+  filingsApp.nav.hideAll();
+  $('#' + current).show();
+};
+
+filingsApp.nav.setNavigation = function () {
+  if ($('.filing-nav').first().hasClass('filing-nav-active')) {
+    $('#nav-previous').hide();
   }
-  
-  filingsApp.nav.hideAll = function () {
-        $('.tabpage').hide();
-    }
+  else {
+    $('#nav-previous').show();
+  }
+  if ($('.filing-nav').last().hasClass('filing-nav-active')) {
+    $('#nav-next').hide();
+    $('#nav-submit').show();
+  }
+  else {
+    $('#nav-next').show();
+    $('#nav-submit').hide();
+  }
+};
 
-    filingsApp.nav.show = function (current) {
-        filingsApp.nav.hideAll();
-        $('#' + current).show();
-    }
+filingsApp.nav.removeAllActive = function () {
+  $('.filing-nav').removeClass('filing-nav-active');
+};
 
-	filingsApp.nav.setNavigation = function () {
-		if ($('.filing-nav').first().hasClass('filing-nav-active')) {
-            $('#nav-previous').hide();
-        }
-        else {
-            $('#nav-previous').show();
-        }
-		if ($('.filing-nav').last().hasClass('filing-nav-active')) {
-			$('#nav-next').hide();
-			$('#nav-submit').show();
-        }
-        else {
-            $('#nav-next').show();
-			$('#nav-submit').hide();
-        }
-	}
-	
-    filingsApp.nav.removeAllActive = function () {
-        $('.filing-nav').removeClass('filing-nav-active');
-    }
+filingsApp.nav.setActive = function (current) {
+  filingsApp.nav.removeAllActive();
+  $('#' + current).addClass('filing-nav-active');
+  filingsApp.nav.setNavigation();
+};
 
-    filingsApp.nav.setActive = function (current) {
-        filingsApp.nav.removeAllActive();
-        $('#' + current).addClass('filing-nav-active');
-		filingsApp.nav.setNavigation();
-    }
+filingsApp.nav.unlock = function (current) {
+  var id = $(current).attr('id');
+  var fieldset = id.replace('nav-', '');
 
-    filingsApp.nav.unlock = function (current) {
-        var id = $(current).attr('id');
-        var fieldset = id.replace('nav-', '');
+  $('#' + id).removeClass('disabled');
+  $('#' + fieldset + '_Unlocked').val("True");
+};
 
-        $('#' + id).removeClass('disabled');
-        $('#' + fieldset + '_Unlocked').val("True");
-    }
+filingsApp.nav.next = function (current) {
+  var newSection = $('.filing-nav-active').parent().next().children('a');
+  filingsApp.nav.unlock($(newSection));
+  $(newSection).click();
+};
 
-    filingsApp.nav.next = function (current) {
-        var newSection = $('.filing-nav-active').parent().next().children('a');
-        filingsApp.nav.unlock($(newSection));
-        $(newSection).click();
-    }
+filingsApp.nav.previous = function (current) {
+  $('.filing-nav-active').parent().prev().children('a').click();
+};
 
-    filingsApp.nav.previous = function (current) {
-        $('.filing-nav-active').parent().prev().children('a').click();
-    }
-	
-	filingsApp.nav.submit = function () {
-		$('form').submit();
-	}
+filingsApp.nav.submit = function () {
+  $('form').submit();
+};
 
-    filingsApp.nav.returnToTop = function () {
-        window.scrollTo(0, 0);
-        //$('body').animate({ scrollTop: 0 }, 1000);
-        //return false;
-    }
-	
-    // Run once
+filingsApp.nav.returnToTop = function () {
+  window.scrollTo(0, 0);
+  //$('body').animate({ scrollTop: 0 }, 1000);
+  //return false;
+};
+
+// Run once
 
 $(document).ready(function() {
 
+  $('.statement-money').blur(function() {
+    $(this).val(Math.floor($(this).val()));
+    filingsApp.calcs.updateTotals(filingsApp.calcs.updateTotals());
+  });
 
-    $('.filing-nav').click(function () {
-        if ($(this).hasClass('disabled')) return;
+  filingsApp.calcs.updateTotals();
 
-        var id = $(this).attr('id');
-        var fieldset = id.replace('nav-', '');
+  $('.filing-nav').click(function () {
+    if ($(this).hasClass('disabled')) return;
 
-        filingsApp.nav.show(fieldset);
-        filingsApp.nav.setActive(id);
-        filingsApp.nav.saveProgress();
-        filingsApp.nav.returnToTop();
-    });
+    var id = $(this).attr('id');
+    var fieldset = id.replace('nav-', '');
 
-    $('#nav-previous').click(function () {
-        filingsApp.nav.previous();
-    });
+    filingsApp.nav.show(fieldset);
+    filingsApp.nav.setActive(id);
+    filingsApp.nav.saveProgress();
+    filingsApp.nav.returnToTop();
+  });
 
-    $('#nav-next').click(function () {
-        filingsApp.nav.next();
-    });
-	
-	$('#nav-save-changes').click(function () {
-        filingsApp.nav.saveProgress();
-    });	
-	
-	$('#nav-submit').click(function () {
-        filingsApp.nav.submit();
-    });
-	
-    $('.tabpage').each(function () {
-        var id = $(this).attr('id');
-        if ($('#' + id + '_Unlocked').val() === 'False') { $('#nav-' + id).addClass('disabled'); }
-    }, filingsApp.nav.unlock($('.tabpage').first()));
-	
-    filingsApp.nav.show('<%= tables.first.name %>');
-    $('.filing-nav').first().addClass('filing-nav-active');
-	filingsApp.nav.setNavigation();
-	
-	$('.statement-na-check').click(function () {
-        if ($(this).prop('checked')) {
-            $(this).parent().children('.tabpage-input').hide();
-        }
-		else {
-			$(this).parent().children('.tabpage-input').show();
-		}
-    });
-	
-	$('.statement-na-check').each(function () {
-        if ($(this).prop('checked')) {
-            $(this).parent().children('.tabpage-input').hide();
-        }
-    });
+  $('#nav-previous').click(function () {
+    filingsApp.nav.previous();
+  });
+
+  $('#nav-next').click(function () {
+    filingsApp.nav.next();
+  });
+
+  $('#nav-save-changes').click(function () {
+    filingsApp.nav.saveProgress();
+  });	
+
+  $('#nav-submit').click(function () {
+    filingsApp.nav.submit();
+  });
+
+  $('.tabpage').each(function () {
+    var id = $(this).attr('id');
+    if ($('#' + id + '_Unlocked').val() === 'False') { $('#nav-' + id).addClass('disabled'); }
+  }, filingsApp.nav.unlock($('.tabpage').first()));
+
+  filingsApp.nav.show('<%= tables.first.name %>');
+  $('.filing-nav').first().addClass('filing-nav-active');
+  filingsApp.nav.setNavigation();
+
+  $('.statement-na-check').click(function () {
+    if ($(this).prop('checked')) {
+      $(this).parent().children('.tabpage-input').hide();
+    }
+    else {
+      $(this).parent().children('.tabpage-input').show();
+    }
+  });
+
+  $('.statement-na-check').each(function () {
+    if ($(this).prop('checked')) {
+      $(this).parent().children('.tabpage-input').hide();
+    }
+  });
 
 });

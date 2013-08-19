@@ -35,9 +35,9 @@
   <% if (field.sub_category != current_subgroup) %><% if (field.sub_category) %>
 	<div class="fieldline"><%= field.sub_category %>:</div>
 	<% end %>
-	<% current_subgroup = field.sub_category %><% end %><div class="<%= (field.calculated) ? "total-line" : "fieldline" %>"><% if field.calculated %><span class="statement-label"><%= field.display_name %></span><span class="statement-total" id="<%= "#{table.name}_#{field.calculated_name}" %>">0</span><% else %>
-  	@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-label<%= " sub-category" if field.sub_category %>"} )
-  	@Html.TextBoxFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-money"<%= ", data_sum_group = \"#{field.calculation_group}\"" if field.calculation_group %> })
+  <% current_subgroup = field.sub_category %><% end %><div class="<%= (field.calculated) ? "total-line" : "fieldline" %>"><% if field.calculated %><span class="statement-label"><%= field.display_name %></span><span class="statement-total" id="<%= "#{table.name}_#{field.calculated_name}" %>"<%= " data-sum-group=\"#{field.calculation_group}\"" if field.calculation_group %><%="data-subtraction" if field.subtraction %>>0</span><% else %>
+  	@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-label<%= " sub-category" if field.sub_category %>" } )
+  	@Html.TextBoxFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-money"<%= ", data_sum_group = \"#{field.calculation_group}\"" if field.calculation_group %> <%="data_subtraction = \"\"" if field.subtraction %>})
   <% end %></div><% end %>
 <% end %>
 </div>
