@@ -48,7 +48,7 @@ class ScaffoldingField
   end
 
   def sql_column_name
-	clean name.gsub(' ', '')
+    clean name.gsub(' ', '')
   end
 
   def calculated_name
@@ -64,9 +64,9 @@ class ScaffoldingField
   end
 
   def cap words
- 	  words = words.split(" ").map {|word| word.capitalize}.join(" ") if (words) 
- 	  words.gsub!(/\((\w*?)(\)|\s)/) {|match| "(#{$1.capitalize}#{$2}" } 
- 	  words
+    words = words.split(" ").map {|word| word.capitalize}.join(" ") if (words) 
+    words.gsub!(/\((\w*?)(\)|\s)/) {|match| "(#{$1.capitalize}#{$2}" } 
+    words
   end
 
   def clean_english words
@@ -74,6 +74,6 @@ class ScaffoldingField
   end
 
   def clean words
-	  words.gsub(/[,()]/,'')
+    words.gsub(/[,()]/,'')
   end
 end

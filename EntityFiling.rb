@@ -7,11 +7,11 @@ class EntityFiling
     @tables = Array.new
     @calculations = Hash.new
     @template_erb_main_class = File.open('templates/TopLevelClass.cs.erb') { |f| f.read }
-	@template_erb_mvcform = File.open('templates/View.html.cs.erb') { |f| f.read }
-	@template_erb_javascript = File.open('templates/Javascript.js.erb') { |f| f.read }
+    @template_erb_mvcform = File.open('templates/View.html.cs.erb') { |f| f.read }
+    @template_erb_javascript = File.open('templates/Javascript.js.erb') { |f| f.read }
 
   end
-  
+
   def get_binding
     binding
   end
@@ -25,7 +25,7 @@ class EntityFiling
     template = ERB.new @template_erb_mvcform
     template.result(get_binding)
   end
-  
+
   def print_csharp_main_class
     template = ERB.new @template_erb_main_class
     template.result(get_binding)
