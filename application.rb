@@ -1,7 +1,11 @@
-require 'FileUtils'
-require 'CSV'
-require 'ERB'
+require 'fileutils'
+require 'csv'
+require 'erb'
 require_relative 'EntityFiling.rb'
+require_relative 'EditCheck.rb'
+require_relative 'EditChecks.rb'
+require_relative 'CheckField.rb'
+
 
 RunDate = Time.new.strftime("%Y.%m.%d")
 ApplicationName = "Online_Financial_Statements"
@@ -9,13 +13,18 @@ DatabaseName = "OnlineFinancialStatements"
 
 ApplicationPath = "#{Dir.pwd}/"
 SourcePath = "#{ApplicationPath}source/"
+ChecksSourcePath = "#{ApplicationPath}source/checks/"
 OutputPath = "#{ApplicationPath}output/"
 
-filings = Array.new
+filings = []
+checks_list = []
 
-def run_script filings
+def run_script filings, checks_list
   load_specs filings
+  load_check_lists checks_list
+
   print_outputs filings
+  print_checks_scripts checks_list
 end
 
 def load_specs filings
@@ -34,11 +43,28 @@ def load_specs filings
   end
 end
 
+def load_check_lists checks_list
+  files = Dir.glob("#{ChecksSourcePath}*.csv")
+  files.each do |file|
+    next if File.directory? file
+
+    file_parts = File.basename(file).gsub('.csv', '').split(' - ')
+
+    checks = EditChecks.new
+    checks = load_checks file
+
+    checks.entity_type = file_parts[0]
+    checks.filing_type = file_parts[1]
+
+    checks_list << checks
+  end
+end
+
 def load_filing file, filing
 
   table = nil
   current_line = ''
-  file_parts = File.basename(file).gsub('.csv', '').split(' - ')
+  # file_parts = File.basename(file).gsub('.csv', '').split(' - ')
 
   CSV.foreach(file, {:headers => :first_row}) do |line|
     if ("#{line[0]}_#{line[1]}_#{line[2]}" != current_line)
@@ -64,7 +90,48 @@ def load_filing file, filing
 
   end
 
-  filing.tables << table unless table.nil?  
+  filing.tables << table unless table.nil?
+end
+
+def load_checks file
+
+  checks = EditChecks.new
+  check = EditCheck.new
+
+  CSV.foreach(file, {:headers => :first_row}) do |line|
+
+    check_line = load_check_line line
+
+    if (line[11] == "End")
+      check.right = check_line
+      checks.add check
+      check = EditCheck.new
+    else
+      check.description1 = line[0]
+      check.description2 = line[1]
+      check.description3 = line[2]
+      check.left = check_line
+    end
+  end
+  checks
+end
+
+def load_check_line line
+  check_line = CheckField.new
+
+  check_line.description1 = line[3]
+  check_line.description2 = line[4]
+  check_line.description3 = line[5]
+
+  check_line.category = nil #line[6]
+  check_line.sub_category = nil #line[7]
+  check_line.tertiary_category = nil #line[8]
+  check_line.field = line[9]
+  check_line.calculated = (line[10])
+  check_line.field = line[10] if check_line.calculated
+  check_line.db_type = 'int'
+
+  check_line
 end
 
 def initialize_field line
@@ -102,7 +169,6 @@ def print_outputs filings
 
   filings.each do |filing|
     webform = ""
-    mvcform = ""
     model_path = "#{OutputPath}models/#{filing.entity_type}/#{filing.filing_type}/"
     FileUtils.mkpath(model_path) if !(File.exists?(model_path) && File.directory?(model_path))
 
@@ -139,5 +205,14 @@ def print_outputs filings
 
 end
 
+def print_checks_scripts checks
 
-run_script filings
+  checks.each do |check|
+    prefix = "#{check.entity_type}#{check.filing_type}"
+    scripts_path = "#{OutputPath}scripts/"
+
+    File.open("#{scripts_path}#{prefix}Scripts-Checks.js", 'w') {|f| f.write(check.print_javascript) }
+  end
+end
+
+run_script filings, checks_list

@@ -123,7 +123,10 @@ $(document).ready(function() {
   });
 
   $('#nav-next').click(function () {
-    filingsApp.nav.next();
+    var currentSection = $('.filing-nav-active').attr('id').replace('nav-', '');
+    if (filingsApp.calcs.validChecks(currentSection)) {
+      filingsApp.nav.next();
+    }
   });
 
   $('#nav-save-changes').click(function () {

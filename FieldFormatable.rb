@@ -1,9 +1,4 @@
-class ScaffoldingField
-  attr_accessor :calculation_group, :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated, :subtraction
-
-  def initialize
-    @subtraction = false
-  end
+module FieldFormatable
 
   def csharp_type
     if @db_type.include? 'decimal'

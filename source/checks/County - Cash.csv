@@ -1,0 +1,25 @@
+,,,Page Description 1,Page Description 2,Column Description,Category,Subcategory,Tertiary Category,Field,Calculated,Next Item
+Statement of Net Position,,Governmental Activities,Statement of Net Position,,Governmental Activities,Assets,,,,Total Assets,Equal
+Statement of Net Position,,Governmental Activities,Statement of Net Position,,Governmental Activities,Net Position,,,,Total Net Position,End
+Statement of Activities,,Governmental Activities,Statement of Activities,,Governmental Activities,,,,,"Net Position, End of Year",Equal
+Statement of Activities,,Governmental Activities,Statement of Net Position,,Governmental Activities,Net Position,,,,Total Net Position,End
+Balance Sheet,Governmental Funds,General,Balance Sheet,Governmental Funds,General,Assets,,,,Total Assets,Equal
+Balance Sheet,Governmental Funds,General,Balance Sheet,Governmental Funds,General,Fund Balances,,,,Total Fund Balances,End
+Balance Sheet,Governmental Funds,Total Governmental,Balance Sheet,Governmental Funds,Total Governmental,Assets,,,,Total Assets,Equal
+Balance Sheet,Governmental Funds,Total Governmental,Balance Sheet,Governmental Funds,Total Governmental,Fund Balances,,,,Total Fund Balances,End
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,General,"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,General,,,,,"Fund Balances, End of Year",Equal
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,General,Balance Sheet,Governmental Funds,General,Fund Balances,,,,Total Fund Balances,End
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,,,,,"Fund Balances, End of Year",Equal
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Balance Sheet,Governmental Funds,Total Governmental,Fund Balances,,,,Total Fund Balances,End
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,,,,Total Assets,Equal
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Net Position,,,,Total Net Position,End
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,,,,Total Assets,Equal
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Net Position,,,,Total Net Position,End
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,,,,Total Assets,Equal
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Position,,,,Total Net Position,End
+"STATEMENT OF RECEIPTS, Disbursements AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,"STATEMENT OF RECEIPTS, Disbursements AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,"Net Position, End of Year",Equal
+"STATEMENT OF RECEIPTS, Disbursements AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Net Position,,,,Total Net Position,End
+"STATEMENT OF RECEIPTS, Disbursements AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,"STATEMENT OF RECEIPTS, Disbursements AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,"Net Position, End of Year",Equal
+"STATEMENT OF RECEIPTS, Disbursements AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Net Position,,,,Total Net Position,End
+"STATEMENT OF RECEIPTS, Disbursements AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,"STATEMENT OF RECEIPTS, Disbursements AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,"Net Position, End of Year",Equal
+"STATEMENT OF RECEIPTS, Disbursements AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Position,,,,Total Net Position,End

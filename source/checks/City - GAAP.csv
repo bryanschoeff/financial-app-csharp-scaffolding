@@ -1,0 +1,44 @@
+,,,Page Description 1,Page Description 2,Column Description,Category,Subcategory,Tertiary Category,Field,Calculated,Next Item
+STATEMENT OF NET POSITION,,Governmental Activities,STATEMENT OF NET POSITION,,Governmental Activities,Net Position,,,,Total Net Position,Equal
+STATEMENT OF NET POSITION,,Governmental Activities,STATEMENT OF NET POSITION,,Governmental Activities,Assets,,,,Total Assets,Plus
+STATEMENT OF NET POSITION,,Governmental Activities,STATEMENT OF NET POSITION,,Governmental Activities,,,,Total Deferred Outflows of Resources,,Minus
+STATEMENT OF NET POSITION,,Governmental Activities,STATEMENT OF NET POSITION,,Governmental Activities,Liabilities,,,,Total Liabilities,Minus
+STATEMENT OF NET POSITION,,Governmental Activities,STATEMENT OF NET POSITION,,Governmental Activities,,,,Total Deferred Inflows of Resources,,End
+STATEMENT OF ACTIVITIES,,Governmental Activities,STATEMENT OF ACTIVITIES,,Governmental Activities,,,,,"Net Position, End of Year",Equal
+STATEMENT OF ACTIVITIES,,Governmental Activities,STATEMENT OF NET POSITION,,Governmental Activities,Net Position,,,,Total Net Position,End
+BALANCE SHEET,GOVERNMENTAL FUNDS,General,BALANCE SHEET,GOVERNMENTAL FUNDS,General,,,,,Total Assets and Deferred Outflows of Resources,Equal
+BALANCE SHEET,GOVERNMENTAL FUNDS,General,BALANCE SHEET,GOVERNMENTAL FUNDS,General,,,,,"Total Liabilities, Deferred Inflows of Resources and Fund Balances",End
+BALANCE SHEET,GOVERNMENTAL FUNDS,Total Governmental Funds,BALANCE SHEET,GOVERNMENTAL FUNDS,Total Governmental Funds,,,,,Total Assets and Deferred Outflows of Resources,Equal
+BALANCE SHEET,GOVERNMENTAL FUNDS,Total Governmental Funds,BALANCE SHEET,GOVERNMENTAL FUNDS,Total Governmental Funds,,,,,"Total Liabilities, Deferred Inflows of Resources and Fund Balances",End
+"STATEMENT OF REVENUES, EXPENDITURES AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,"STATEMENT OF REVENUES, EXPENDITURES AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,,,,,"Fund Balances, End of Year",Equal
+"STATEMENT OF REVENUES, EXPENDITURES AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,BALANCE SHEET,GOVERNMENTAL FUNDS,General,Fund Balances,,,,Total Fund Balances,End
+"STATEMENT OF REVENUES, EXPENDITURES AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,"STATEMENT OF REVENUES, EXPENDITURES AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,,,,,"Fund Balances, End of Year",Equal
+"STATEMENT OF REVENUES, EXPENDITURES AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,BALANCE SHEET,GOVERNMENTAL FUNDS,Total Governmental Funds,Fund Balances,,,,Total Fund Balances,End
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Net Position,,,,Total Net Position,Equal
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,,,,Total Assets,Plus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,,,,Total Deferred Outflows of Resources,,Minus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Liabilities,,,,Total Liabilities,Minus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,,,,Total Deferred Inflows of Resources,,End
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Net Position,,,,Total Net Position,Equal
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,,,,Total Assets,Plus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Total Deferred Outflows of Resources,,Minus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Liabilities,,,,Total Liabilities,Minus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Total Deferred Inflows of Resources,,End
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,Net Position,,,,Total Net Position,Equal
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,Assets,,,,Total Assets,Plus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,,,,Total Deferred Outflows of Resources,,Minus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,Liabilities,,,,Total Liabilities,Minus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,,,,Total Deferred Inflows of Resources,,End
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Position,,,,Total Net Position,Equal
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,,,,Total Assets,Plus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Total Deferred Outflows of Resources,,Minus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Liabilities,,,,Total Liabilities,Minus
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Total Deferred Inflows of Resources,,End
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,"Net Position, End of Year",Equal
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Net Position,,,,Total Net Position,End
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,"Net Position, End of Year",Equal
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Net Position,,,,Total Net Position,End
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,,,,,"Net Position, End of Year",Equal
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Electric,Net Position,,,,Total Net Position,End
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,"Net Position, End of Year",Equal
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Position,,,,Total Net Position,End

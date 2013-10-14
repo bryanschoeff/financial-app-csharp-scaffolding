@@ -1,0 +1,30 @@
+// -----------------------------------------------------------------
+//  Calulations for double-checking edit checks.
+// -----------------------------------------------------------------
+
+filingsApp.calcs.validChecks = function (page) {
+    var result = ((!filingsApp.calcs.checks[page]) ||
+          filingsApp.calcs.passesCheck(page));
+    if (!result) {
+      filingsApp.helpers.showError(filingsApp.calcs.checks[page].message); 
+    } else {
+      filingsApp.helpers.clearError();
+    }
+    return result;
+};
+
+filingsApp.calcs.passesCheck = function (page) {
+  var left = $('#' + filingsApp.calcs.checks[page].left).val() || $('#' + filingsApp.calcs.checks[page].left).html();
+  var right = $('#' + filingsApp.calcs.checks[page].right).val() || $('#' + filingsApp.calcs.checks[page].right).html();
+
+  return (left === right);
+};
+
+filingsApp.calcs.checks = {<% @checks.each do |check| %>
+  <%= "#{check.name}" %> : {
+    left: "<%= "#{check.name}_#{check.left.csharp_name}" %>",
+    right: "<%= "#{check.name}_#{check.right.csharp_name}" %>",
+    message: "<%= "#{check.left.display_name} should be equal to #{check.right.display_name}" %>"
+  }<%= "," unless check == @checks.last %><% end %>
+};
+
