@@ -49,7 +49,7 @@ Statement of Net Position,,Governmental Activities,Net Position,,,Unrestricted (
 Statement of Net Position,,Governmental Activities,Net Position,,,,Total Net Position,
 Statement of Activities,,Governmental Activities,Program Receipts,,,Charges for Services and Sales,,Total Program Receipts
 Statement of Activities,,Governmental Activities,Program Receipts,,,"Operating Grants, Contributions and Interest",,Total Program Receipts
-Statement of Activities,,Governmental Activities,Program Receipts,,,Capital Grants and Contributions,,Total Program Receipts
+Statement of Activities,,Governmental Activities,Program Receipts,,,"Capital Grants, Contributions and Interest",,Total Program Receipts
 Statement of Activities,,Governmental Activities,Program Receipts,,,,Total Program Receipts,Total Receipts and Other Items
 Statement of Activities,,Governmental Activities,General Receipts,,,Property Taxes,,Total General Receipts
 Statement of Activities,,Governmental Activities,General Receipts,,,Sales Taxes,,Total General Receipts
@@ -232,8 +232,8 @@ Balance Sheet,Governmental Funds,Total Governmental,,,,,"Total Liabilities, Defe
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Receipts,,,Special Assessments,,Total Receipts
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Receipts,,,Other Receipts,,Total Receipts
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Receipts,,,,Total Receipts,Excess of Receipts Over (Under) Disbursements
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Expenditures,General Government,,Legislative and Executive,,Total Disbursements
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Expenditures,General Government,,Judicial,,Total Disbursements
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Disbursements,General Government,,Legislative and Executive,,Total Disbursements
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Disbursements,General Government,,Judicial,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Disbursements,,,Public Safety,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Disbursements,,,Public Works,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",Governmental Funds,Total Governmental,Disbursements,,,Health,,Total Disbursements
@@ -278,17 +278,17 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Curren
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Current Assets,,Interfund Receivable,,Total Current Assets
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Current Assets,,Other Current Assets,,Total Current Assets
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Current Assets,,,Total Current Assets,Total Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Asset,Restricted Assets,Cash and Cash Equivalents,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Asset,Restricted Assets,Customer Deposits,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Asset,Restricted Assets,Investment,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Asset,Capital Assets,Capital Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Asset,Capital Assets,Nondepreciable Capital Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Asset,Capital Assets,Depreciable Capital Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Asset,Capital Assets,Less  Accumulated Depreciation,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Asset,,Other Noncurrent Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Asset,,,Total Noncurrent Assets,Total Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Assets,Restricted Assets,Cash and Cash Equivalents,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Assets,Restricted Assets,Customer Deposits,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Assets,Restricted Assets,Investments,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Assets,Capital Assets,Capital Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Assets,Capital Assets,Nondepreciable Capital Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Assets,Capital Assets,Depreciable Capital Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Assets,Capital Assets,Less  Accumulated Depreciation,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Assets,,Other Noncurrent Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,Noncurrent Assets,,,Total Noncurrent Assets,Total Assets
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Assets,,,,Total Assets,
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,,,,,Total Deferred Outflows of Resources,
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,,,,Total Deferred Outflows of Resources,,
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Liabilities,Current Liabilities,,Accounts Payable,,Total Current Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Liabilities,Current Liabilities,,Accrued Wages,,Total Current Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Liabilities,Current Liabilities,,Intergovernmental Payable,,Total Current Liabilities
@@ -313,7 +313,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Liabilities,L
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Liabilities,Long Term Liabilities,,Other Long Term Liabilities,,Total Long Term Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Liabilities,Long Term Liabilities,,,Total Long Term Liabilities,Total Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Liabilities,,,,Total Liabilities,
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,,,,,Total Deferred Inflows of Resources,
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,,,,Total Deferred Inflows of Resources,,
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Net Position,,,Net Investment in Capital Assets,,Total Net Position
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Net Position,,,Restricted,,Total Net Position
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Water,Net Position,,,Unrestricted,,Total Net Position
@@ -328,17 +328,17 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Curren
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Current Assets,,Interfund Receivable,,Total Current Assets
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Current Assets,,Other Current Assets,,Total Current Assets
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Current Assets,,,Total Current Assets,Total Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Asset,Restricted Assets,Cash and Cash Equivalents,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Asset,Restricted Assets,Customer Deposits,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Asset,Restricted Assets,Investment,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Asset,Capital Assets,Capital Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Asset,Capital Assets,Nondepreciable Capital Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Asset,Capital Assets,Depreciable Capital Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Asset,Capital Assets,Less  Accumulated Depreciation,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Asset,,Other Noncurrent Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Asset,,,Total Noncurrent Assets,Total Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Assets,Restricted Assets,Cash and Cash Equivalents,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Assets,Restricted Assets,Customer Deposits,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Assets,Restricted Assets,Investments,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Assets,Capital Assets,Capital Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Assets,Capital Assets,Nondepreciable Capital Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Assets,Capital Assets,Depreciable Capital Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Assets,Capital Assets,Less  Accumulated Depreciation,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Assets,,Other Noncurrent Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,Noncurrent Assets,,,Total Noncurrent Assets,Total Assets
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Assets,,,,Total Assets,
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,Total Deferred Outflows of Resources,
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Total Deferred Outflows of Resources,,
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Liabilities,Current Liabilities,,Accounts Payable,,Total Current Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Liabilities,Current Liabilities,,Accrued Wages,,Total Current Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Liabilities,Current Liabilities,,Intergovernmental Payable,,Total Current Liabilities
@@ -363,7 +363,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Liabilities,L
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Liabilities,Long Term Liabilities,,Other Long Term Liabilities,,Total Long Term Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Liabilities,Long Term Liabilities,,,Total Long Term Liabilities,Total Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Liabilities,,,,Total Liabilities,
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,Total Deferred Inflows of Resources,
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Total Deferred Inflows of Resources,,
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Net Position,,,Net Investment in Capital Assets,,Total Net Position
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Net Position,,,Restricted,,Total Net Position
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Sewer,Net Position,,,Unrestricted,,Total Net Position
@@ -378,17 +378,17 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Cur
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Current Assets,,Interfund Receivable,,Total Current Assets
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Current Assets,,Other Current Assets,,Total Current Assets
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Current Assets,,,Total Current Assets,Total Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Asset,Restricted Assets,Cash and Cash Equivalents,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Asset,Restricted Assets,Customer Deposits,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Asset,Restricted Assets,Investment,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Asset,Capital Assets,Capital Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Asset,Capital Assets,Nondepreciable Capital Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Asset,Capital Assets,Depreciable Capital Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Asset,Capital Assets,Less  Accumulated Depreciation,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Asset,,Other Noncurrent Assets,,Total Noncurrent Assets
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Asset,,,Total Noncurrent Assets,Total Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Assets,Restricted Assets,Cash and Cash Equivalents,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Assets,Restricted Assets,Customer Deposits,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Assets,Restricted Assets,Investments,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Assets,Capital Assets,Capital Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Assets,Capital Assets,Nondepreciable Capital Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Assets,Capital Assets,Depreciable Capital Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Assets,Capital Assets,Less  Accumulated Depreciation,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Assets,,Other Noncurrent Assets,,Total Noncurrent Assets
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,Noncurrent Assets,,,Total Noncurrent Assets,Total Assets
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Assets,,,,Total Assets,
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,Total Deferred Outflows of Resources,
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Total Deferred Outflows of Resources,,
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Liabilities,Current Liabilities,,Accounts Payable,,Total Current Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Liabilities,Current Liabilities,,Accrued Wages,,Total Current Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Liabilities,Current Liabilities,,Intergovernmental Payable,,Total Current Liabilities
@@ -413,7 +413,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Liabilitie
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Liabilities,Long Term Liabilities,,Other Long Term Liabilities,,Total Long Term Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Liabilities,Long Term Liabilities,,,Total Long Term Liabilities,Total Liabilities
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Liabilities,,,,Total Liabilities,
-STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,Total Deferred Inflows of Resources,
+STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Total Deferred Inflows of Resources,,
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Position,,,Net Investment in Capital Assets,,Total Net Position
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Position,,,Restricted,,Total Net Position
 STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Position,,,Unrestricted,,Total Net Position
@@ -431,7 +431,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Operating Disbursements,,,Claims,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Operating Disbursements,,,Other Operating Disbursements,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Operating Disbursements,,,,Total Operating Disbursements,Operating Income (Loss)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Interest and Fiscal Charges,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Sale of Bonds,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Sale of Notes,,Total Non Operating Receipts (Disbursements)
@@ -444,8 +444,8 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Operating Grants,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Other Non Operating Receipts,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Other Non Operating Disbursements,,Total Non Operating Receipts (Disbursements)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers",Change in Net Position
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers",Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,Capital Contributions,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,Special Items,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,Extraordinary Items,,Change in Net Position
@@ -469,7 +469,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Operating Disbursements,,,Claims,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Operating Disbursements,,,Other Operating Disbursements,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Operating Disbursements,,,,Total Operating Disbursements,Operating Income (Loss)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Interest and Fiscal Charges,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Sale of Bonds,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Sale of Notes,,Total Non Operating Receipts (Disbursements)
@@ -482,8 +482,8 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Operating Grants,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Other Non Operating Receipts,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Other Non Operating Disbursements,,Total Non Operating Receipts (Disbursements)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers",Change in Net Position
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers",Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Capital Contributions,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Special Items,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Extraordinary Items,,Change in Net Position
@@ -507,7 +507,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Operating Disbursements,,,Claims,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Operating Disbursements,,,Other Operating Disbursements,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Operating Disbursements,,,,Total Operating Disbursements,Operating Income (Loss)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Interest and Fiscal Charges,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Sale of Bonds,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Sale of Notes,,Total Non Operating Receipts (Disbursements)
@@ -520,8 +520,8 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Operating Grants,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Other Non Operating Receipts,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Other Non Operating Disbursements,,Total Non Operating Receipts (Disbursements)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers",Change in Net Position
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers",Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Capital Contributions,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Special Items,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Extraordinary Items,,Change in Net Position
