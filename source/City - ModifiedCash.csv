@@ -48,7 +48,7 @@ STATEMENT OF NET POSITION,,Governmental Activities,Net Position,,,Unrestricted (
 STATEMENT OF NET POSITION,,Governmental Activities,Net Position,,,,Total Net Position,
 STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,Charges for Services and Sales,,Total Program Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,"Operating Grants, Contributions and Interest",,Total Program Receipts
-STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,Capital Grants and Contributions,,Total Program Receipts
+STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,"Capital Grants, Contributions and Interest",,Total Program Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,,Total Program Receipts,Total Revenues and Other Items
 STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,Property Taxes,,Total General Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,Income Tax,,Total General Receipts
@@ -489,7 +489,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Operating Disbursements,,,Capital Outlay,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Operating Disbursements,,,Other Operating Disbursements,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Operating Disbursements,,,,Total Operating Disbursements,Operating Income (Loss)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Interest and Fiscal Charges,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Sale of Bonds,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Sale of Notes,,Total Non Operating Receipts (Disbursements)
@@ -502,8 +502,8 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Operating Grants,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Other Non Operating Receipts,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,Other Non Operating Disbursements,,Total Non Operating Receipts (Disbursements)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers",Change in Net Position
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers",Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,Capital Contributions,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,Special Items,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Water,,,,Extraordinary Items,,Change in Net Position
@@ -528,7 +528,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Operating Disbursements,,,Capital Outlay,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Operating Disbursements,,,Other Operating Disbursements,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Operating Disbursements,,,,Total Operating Disbursements,Operating Income (Loss)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Interest and Fiscal Charges,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Sale of Bonds,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Sale of Notes,,Total Non Operating Receipts (Disbursements)
@@ -541,8 +541,8 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Operating Grants,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Other Non Operating Receipts,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,Other Non Operating Disbursements,,Total Non Operating Receipts (Disbursements)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers",Change in Net Position
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers",Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Capital Contributions,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Special Items,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Sewer,,,,Extraordinary Items,,Change in Net Position
@@ -567,7 +567,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Operating Disbursements,,,Capital Outlay,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Operating Disbursements,,,Other Operating Disbursements,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Operating Disbursements,,,,Total Operating Disbursements,Operating Income (Loss)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Non Operating Receipts (Disbursements),,,Interest and Fiscal Charges,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Non Operating Receipts (Disbursements),,,Sale of Bonds,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Non Operating Receipts (Disbursements),,,Sale of Notes,,Total Non Operating Receipts (Disbursements)
@@ -580,8 +580,8 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Non Operating Receipts (Disbursements),,,Operating Grants,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Non Operating Receipts (Disbursements),,,Other Non Operating Receipts,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Non Operating Receipts (Disbursements),,,Other Non Operating Disbursements,,Total Non Operating Receipts (Disbursements)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers",Change in Net Position
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers",Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,,,,Capital Contributions,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,,,,Special Items,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Electric,,,,Extraordinary Items,,Change in Net Position
@@ -606,7 +606,7 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Operating Disbursements,,,Capital Outlay,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Operating Disbursements,,,Other Operating Disbursements,,Total Operating Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Operating Disbursements,,,,Total Operating Disbursements,Operating Income (Loss)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,Operating Income (Loss),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Interest and Fiscal Charges,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Sale of Bonds,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Sale of Notes,,Total Non Operating Receipts (Disbursements)
@@ -619,8 +619,8 @@ STATEMENT OF NET POSITION,PROPRIETARY FUNDS,Enterprise Funds Landfill,Net Positi
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Operating Grants,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Other Non Operating Receipts,,Total Non Operating Receipts (Disbursements)
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,Other Non Operating Disbursements,,Total Non Operating Receipts (Disbursements)
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers"
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, and Transfers",Change in Net Position
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,Non Operating Receipts (Disbursements),,,,Total Non Operating Receipts (Disbursements),"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers"
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,,"Income (Loss) before Capital Contributions, Special and Extraordinary Items, Advances and Transfers",Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Capital Contributions,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Special Items,,Change in Net Position
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN NET POSITION",PROPRIETARY FUNDS,Enterprise Funds Landfill,,,,Extraordinary Items,,Change in Net Position
