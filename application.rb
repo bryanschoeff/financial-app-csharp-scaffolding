@@ -77,9 +77,9 @@ def load_filing file, filing
     field = initialize_field line
     field.calculation_table = table.name
 
-    field.calculation_group = "#{table.name}_#{line[8].gsub(/[\s,()]/, '')}" if line[8]
-    filing.add_calculation "#{table.name}_#{line[8].gsub(/[\s,()]/, '')}", field if line[8]
-    table.add_calculation "#{table.name}_#{line[8].gsub(/[\s,()]/, '')}", field if line[8]
+    field.calculation_group = "#{table.name}_#{cap(line[8]).gsub(/[\s,()]/, '')}" if line[8]
+    filing.add_calculation "#{table.name}_#{cap(line[8]).gsub(/[\s,()]/, '')}", field if line[8]
+    table.add_calculation "#{table.name}_#{cap(line[8]).gsub(/[\s,()]/, '')}", field if line[8]
     if (field.calculated)
       table.add_calculated field
     else
@@ -98,25 +98,36 @@ def load_checks file
   checks = EditChecks.new
   check = EditCheck.new
 
+  previous_sign = ""
+  current_side = "Left"
+
   CSV.foreach(file, {:headers => :first_row}) do |line|
 
-    check_line = load_check_line line
+    check_line = load_check_line line, previous_sign
+    sign = line[11]
 
-    if (line[11] == "End")
-      check.right = check_line
-      checks.add check
-      check = EditCheck.new
-    else
+    if current_side == "Left"
       check.description1 = line[0]
       check.description2 = line[1]
       check.description3 = line[2]
-      check.left = check_line
+      check.left << check_line
+
+      current_side = "Right" if sign == "Equal"
+    elsif sign == "End"
+      check.right << check_line
+      checks.add check
+      check = EditCheck.new
+
+      current_side = "Left"
+    else
+      check.right << check_line
     end
+    previous_sign = sign
   end
   checks
 end
 
-def load_check_line line
+def load_check_line line, sign
   check_line = CheckField.new
 
   check_line.description1 = line[3]
@@ -129,6 +140,7 @@ def load_check_line line
   check_line.field = line[9]
   check_line.calculated = (line[10])
   check_line.field = line[10] if check_line.calculated
+  check_line.sign = sign
   check_line.db_type = 'int'
 
   check_line
@@ -213,6 +225,12 @@ def print_checks_scripts checks
 
     File.open("#{scripts_path}#{prefix}Scripts-Checks.js", 'w') {|f| f.write(check.print_javascript) }
   end
+end
+
+def cap words
+  words = words.split(" ").map {|word| word.capitalize}.join(" ") if (words) 
+  words.gsub!(/\((\w*?)(\)|\s)/) {|match| "(#{$1.capitalize}#{$2}" } 
+  words
 end
 
 run_script filings, checks_list

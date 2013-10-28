@@ -52,7 +52,7 @@ class ScaffoldingField
   end
 
   def calculated_name
-    clean field.gsub(' ', '')
+    clean cap(field).gsub(' ', '')
   end
 
   def webform_textbox

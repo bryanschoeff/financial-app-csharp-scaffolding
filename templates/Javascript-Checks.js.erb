@@ -1,30 +1,49 @@
 // -----------------------------------------------------------------
-//  Calulations for double-checking edit checks.
+//  Calculations for double-checking edit checks.
 // -----------------------------------------------------------------
 
 filingsApp.calcs.validChecks = function (page) {
     var result = ((!filingsApp.calcs.checks[page]) ||
           filingsApp.calcs.passesCheck(page));
     if (!result) {
-      filingsApp.helpers.showError(filingsApp.calcs.checks[page].message); 
+      filingsApp.helpers.showError(filingsApp.calcs.checks[page].message);
     } else {
       filingsApp.helpers.clearError();
     }
     return result;
 };
 
+filingsApp.calcs.fieldValue = function (field) {
+  return parseInt($('#' + field).val() || $('#' + field).html());
+};
+
+filingsApp.calcs.checkSide = function (list) {
+  var result = 0;
+  _.each(list, function(element, index, list) {
+    var elements = element.split(" ");
+    if (elements[0] === "+") {
+      result += filingsApp.calcs.fieldValue(elements[1]);
+    } else if (elements[0] === "-") {
+      result -= filingsApp.calcs.fieldValue(elements[1]);
+    } else {
+      result = filingsApp.calcs.fieldValue(elements[0]);
+    }
+  });
+  return result;
+};
+
 filingsApp.calcs.passesCheck = function (page) {
-  var left = $('#' + filingsApp.calcs.checks[page].left).val() || $('#' + filingsApp.calcs.checks[page].left).html();
-  var right = $('#' + filingsApp.calcs.checks[page].right).val() || $('#' + filingsApp.calcs.checks[page].right).html();
+  var left = filingsApp.calcs.checkSide(filingsApp.calcs.checks[page].left);
+  var right = filingsApp.calcs.checkSide(filingsApp.calcs.checks[page].right);
 
   return (left === right);
 };
 
 filingsApp.calcs.checks = {<% @checks.each do |check| %>
   <%= "#{check.name}" %> : {
-    left: "<%= "#{check.name}_#{check.left.csharp_name}" %>",
-    right: "<%= "#{check.name}_#{check.right.csharp_name}" %>",
-    message: "<%= "#{check.left.display_name} should be equal to #{check.right.display_name}" %>"
+    left: [<% check.left.each { |item| %><%= "\"#{"#{item.math_sign} " if item.math_sign != ""}#{item.check_name}\"#{", " unless item == check.left.last }" %><% } %>],
+    right: [<% check.right.each { |item| %><%= "\"#{"#{item.math_sign} " if item.math_sign != ""}#{item.check_name}\"#{", " unless item == check.right.last }" %><% } %>],
+    message: "<% check.left.each { |item| %><%= "#{" " + item.math_sign + " " unless item == check.left.first}#{item.display_name}"%><% } %> should be equal to <% check.right.each { |item| %><%= "#{" " + item.math_sign + " " unless item == check.right.first}#{item.display_name}" %><% } %>"
   }<%= "," unless check == @checks.last %><% end %>
 };
 
