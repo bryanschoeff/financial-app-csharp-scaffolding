@@ -43,7 +43,7 @@ filingsApp.calcs.checks = {<% @checks.each do |check| %>
   <%= "#{check.name}" %> : {
     left: [<% check.left.each { |item| %><%= "\"#{"#{item.math_sign} " if item.math_sign != ""}#{item.check_name}\"#{", " unless item == check.left.last }" %><% } %>],
     right: [<% check.right.each { |item| %><%= "\"#{"#{item.math_sign} " if item.math_sign != ""}#{item.check_name}\"#{", " unless item == check.right.last }" %><% } %>],
-    message: "<% check.left.each { |item| %><%= "#{" " + item.math_sign + " " unless item == check.left.first}#{item.display_name}"%><% } %> should be equal to <% check.right.each { |item| %><%= "#{" " + item.math_sign + " " unless item == check.right.first}#{item.display_name}" %><% } %>"
+    message: "<%= check.error_message %>"
   }<%= "," unless check == @checks.last %><% end %>
 };
 
