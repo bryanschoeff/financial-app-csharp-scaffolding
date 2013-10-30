@@ -8,7 +8,7 @@ STATEMENT OF NET POSITION,,Governmental Activities,Net Position,,,Unrestricted (
 STATEMENT OF NET POSITION,,Governmental Activities,Net Position,,,,Total Net Position,
 STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,Charges for Services and Sales,,Total Program Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,"Operating Grants, Contributions and Interest",,Total Program Receipts
-STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,Capital Grants and Contributions,,Total Program Receipts
+STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,"Capital Grants, Contributions and Interest",,Total Program Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,Program Receipts,,,,Total Program Receipts,Total Receipts and Other Items
 STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,Property Taxes,,Total General Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,Income Tax,,Total General Receipts
@@ -86,7 +86,7 @@ BALANCE SHEET,GOVERNMENTAL FUNDS,Total Governmental Funds,Fund Balances,,,,Total
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,Disbursements,Current,,Public Services,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,Disbursements,Current,,Public Health,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,Disbursements,Current,,Leisure Time Activities,,Total Disbursements
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,Disbursements,Current,,Community and Econcomic Development,,Total Disbursements
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,Disbursements,Current,,Community and Economic Development,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,Disbursements,Current,,Basic Utility Service,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,Disbursements,Current,,Public Works,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,General,Disbursements,Current,,Transportation,,Total Disbursements
@@ -136,7 +136,7 @@ BALANCE SHEET,GOVERNMENTAL FUNDS,Total Governmental Funds,Fund Balances,,,,Total
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,Disbursements,Current,,Public Services,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,Disbursements,Current,,Public Health,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,Disbursements,Current,,Leisure Time Activities,,Total Disbursements
-"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,Disbursements,Current,,Community and Econcomic Development,,Total Disbursements
+"STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,Disbursements,Current,,Community and Economic Development,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,Disbursements,Current,,Basic Utility Service,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,Disbursements,Current,,Public Works,,Total Disbursements
 "STATEMENT OF RECEIPTS, DISBURSEMENTS AND CHANGES IN FUND BALANCES",GOVERNMENTAL FUNDS,Total Governmental Funds,Disbursements,Current,,Transportation,,Total Disbursements

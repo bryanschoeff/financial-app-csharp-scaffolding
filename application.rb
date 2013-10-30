@@ -134,14 +134,15 @@ def load_check_line line, sign
   check_line.description2 = line[4]
   check_line.description3 = line[5]
 
-  check_line.category = nil #line[6]
-  check_line.sub_category = nil #line[7]
-  check_line.tertiary_category = nil #line[8]
   check_line.field = line[9]
   check_line.calculated = (line[10])
   check_line.field = line[10] if check_line.calculated
   check_line.sign = sign
   check_line.db_type = 'int'
+
+  check_line.category = check_line.calculated ? nil : line[6]
+  check_line.sub_category = check_line.calculated ? nil : line[7]
+  check_line.tertiary_category = check_line.calculated ? nil : line[8]
 
   check_line
 end
