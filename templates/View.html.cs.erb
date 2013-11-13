@@ -23,8 +23,9 @@
 # Fields for <%= table.name %>
 ################################################################
 -->
-<fieldset id="<%= table.name %>" class="tabpage">
-	<legend><div><%= table.display_name %></div></legend>@Html.HiddenFor(model => model.<%= table.name %>.ID)@Html.HiddenFor(model => model.<%= table.name %>.Unlocked)
+<div id="<%= table.name %>" class="tabpage">
+<div class="tabpage-header"><h2><%= table.display_name %></h2></div>
+<div class="fieldset"><span class="help-bubble help-bubble-main" data-message="ifNotListedGaapModified">&nbsp;</span>@Html.HiddenFor(model => model.<%= table.name %>.ID)@Html.HiddenFor(model => model.<%= table.name %>.Unlocked)
 	<% if table.not_applicableable? %>
 		@Html.LabelFor(model => model.<%= "#{table.name}.NotApplicable" %>, new { @class = "statement-na-label" } )
 		@Html.CheckBoxFor(model => model.<%= "#{table.name}.NotApplicable" %>, new { @class = "statement-na-check" })
@@ -36,13 +37,14 @@
 	<div class="fieldline"><%= field.sub_category %>:</div>
 	<% end %>
   <% current_subgroup = field.sub_category %><% end %><div class="<%= (field.calculated) ? "total-line" : "fieldline" %>"><% if field.calculated %><span class="statement-label"><%= field.display_name %></span><span class="statement-total" id="<%= "#{table.name}_#{field.calculated_name}" %>"<%= " data-sum-group=\"#{field.calculation_group}\"" if field.calculation_group %><%="data-subtraction" if field.subtraction %>>0</span><% else %>
-  	@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-label<%= " sub-category" if field.sub_category %>" } )
+  <span class="statement-label">@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-label<%= " sub-category" if field.sub_category %>" } )</span>
   	@Html.TextBoxFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-money"<%= ", data_sum_group = \"#{field.calculation_group}\"" if field.calculation_group %> <%="data_subtraction = \"\"" if field.subtraction %>})
   <% end %></div><% end %>
 <% end %>
 </div>
 <br />
-</fieldset>
+</div>
+</div>
 <% end %>
 <div id="nav-page-control">
 <a href="javascript:void(0);" id="nav-previous" class="nav-button">&lt;- previous</a><a href="javascript:void(0);" id="nav-next" class="nav-button">next -&gt;</a><a href="javascript:void(0);" id="nav-submit" class="nav-button nav-submit">submit</a><a href="javascript:void(0);" id="nav-save-changes" class="nav-button">Save Changes</a>
