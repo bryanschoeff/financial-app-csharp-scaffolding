@@ -58,6 +58,7 @@ STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,Gain on Sale
 STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,Payment in Lieu of Taxes,,Total General Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,Unrestricted Contributions,,Total General Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,Investment Earnings,,Total General Receipts
+STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,General Obligation Bonds Issued; Refunding Bonds Issued; and Other Debt Proceeds,,Total General Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,Miscellaneous,,Total General Receipts
 STATEMENT OF ACTIVITIES,,Governmental Activities,General Receipts,,,,Total General Receipts,Total Receipts and Other Items
 STATEMENT OF ACTIVITIES,,Governmental Activities,,,,Special Item,,Total Receipts and Other Items
@@ -637,14 +638,16 @@ LONG TERM OBLIGATIONS AT YEAR END,,,Governmental,,,Notes Payable,,
 LONG TERM OBLIGATIONS AT YEAR END,,,Governmental,,,Loans Payable,,
 LONG TERM OBLIGATIONS AT YEAR END,,,Governmental,,,Capital Leases,,
 LONG TERM OBLIGATIONS AT YEAR END,,,Governmental,,,Revenue Bonds,,
+LONG TERM OBLIGATIONS AT YEAR END,,,Governmental,,,Miscellaneous Long Term Bonds,,
 LONG TERM OBLIGATIONS AT YEAR END,,,Proprietary,,,General Obligation Bonds,,
 LONG TERM OBLIGATIONS AT YEAR END,,,Proprietary,,,Special Assessment Bonds,,
 LONG TERM OBLIGATIONS AT YEAR END,,,Proprietary,,,Notes Payable,,
 LONG TERM OBLIGATIONS AT YEAR END,,,Proprietary,,,Loans Payable,,
 LONG TERM OBLIGATIONS AT YEAR END,,,Proprietary,,,Capital Leases,,
 LONG TERM OBLIGATIONS AT YEAR END,,,Proprietary,,,Revenue Bonds,,
+LONG TERM OBLIGATIONS AT YEAR END,,,Proprietary,,,Miscellaneous Long Term Bonds,,
 OTHER INFORMATION ,DEMOGRAPHICS,,,,,Population,,
-OTHER INFORMATION ,DEMOGRAPHICS,,,,,Total Current Year Appropriations   All Funds,,
+OTHER INFORMATION ,DEMOGRAPHICS,,,,,Total Annual Final Appropriations for All Funds for the Reporting Year,,
 OTHER INFORMATION ,DEMOGRAPHICS,,,,,Average Number of Utility Customers,,
 OTHER INFORMATION ,DEMOGRAPHICS,,,,,Full Tax Rate,,
 OTHER INFORMATION ,DEMOGRAPHICS,,,,,Property Tax Valuation,,

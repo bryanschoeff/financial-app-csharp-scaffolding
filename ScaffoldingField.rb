@@ -21,7 +21,7 @@ class ScaffoldingField
   end
 
   def name
-    result = cap @field
+    result = cap @field.gsub(';','')
     result = "#{cap @tertiary_category}_#{result}" if @tertiary_category
     result = "#{cap @sub_category}_#{result}" if @sub_category
     result = "#{cap @category}_#{result}" if @category
