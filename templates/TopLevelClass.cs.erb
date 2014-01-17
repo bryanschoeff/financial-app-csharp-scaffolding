@@ -51,7 +51,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 		<% @tables.each do |table| %>
         this.<%= table.name %>.FilingID = ID;<% end %>
 	}
-    
+
 	protected void SaveJson()
 	{
 		using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
@@ -60,12 +60,18 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 
 			command.CommandType = CommandType.StoredProcedure;
 			command.Parameters.AddWithValue("@FilingID", this.EntityFiling.ID);
-			command.Parameters.AddWithValue("@Data", Newtonsoft.Json.JsonConvert.SerializeObject(this));
+			command.Parameters.AddWithValue("@Data", this.ToJson());
 
 			connection.Open();
 			command.ExecuteNonQuery();
 			connection.Close();
 		}
-	}
+  }
+
+  public string ToJson()
+  {
+     return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+  }
   }
 }
+
