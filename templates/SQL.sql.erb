@@ -185,13 +185,8 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load %>] TO [Internet]
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load_by_filingid %>] TO [Internet]
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_save %>] TO [Internet]
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_update %>] TO [Internet]
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_delete %>] TO [Internet]
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load %>] TO [Intranet]
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load_by_filingid %>] TO [Intranet]
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_save %>] TO [Intranet]
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_update %>] TO [Intranet]
-GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_delete %>] TO [Intranet]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load %>] TO [OnlineFinancialStatementUsers]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_load_by_filingid %>] TO [OnlineFinancialStatementUsers]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_save %>] TO [OnlineFinancialStatementUsers]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_update %>] TO [OnlineFinancialStatementUsers]
+GRANT EXECUTE ON [dbo].[<%= print_sql_sp_name_delete %>] TO [OnlineFinancialStatementUsers]
