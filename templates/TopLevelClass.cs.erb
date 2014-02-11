@@ -28,6 +28,8 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 		
 	public void Load(int ID)
     {     
+		this.EntityFiling.Load(ID);
+		
 		<% @tables.each do |table| %>
         this.<%= table.name %>.LoadByFilingID(ID);<% end %>
     }
