@@ -196,6 +196,7 @@ def print_outputs filings
     end
     prefix = "#{filing.entity_type}#{filing.filing_type}"
     view_path = "#{OutputPath}views/#{prefix}/"
+	readonly_view_path = "#{OutputPath}readonlyviews/#{prefix}/"
     scripts_path = "#{OutputPath}scripts/"
 
     # main model
@@ -203,6 +204,8 @@ def print_outputs filings
     # views
     FileUtils.mkpath(view_path) if !(File.exists?(view_path) && File.directory?(view_path))
     File.open("#{view_path}Edit.cshtml", 'w') {|f| f.write(filing.print_mvcform) }
+	FileUtils.mkpath(readonly_view_path) if !(File.exists?(readonly_view_path) && File.directory?(readonly_view_path))
+    File.open("#{readonly_view_path}Details.cshtml", 'w') {|f| f.write(filing.print_mvcform_readonly) }
 
     # webforms  
     File.open("#{OutputPath}#{prefix}WebFormFields.aspx", 'w') {|f| f.write(webform) }

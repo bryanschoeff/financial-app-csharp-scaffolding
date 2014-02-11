@@ -8,6 +8,7 @@ class EntityFiling
     @calculations = Hash.new
     @template_erb_main_class = File.open('templates/TopLevelClass.cs.erb') { |f| f.read }
     @template_erb_mvcform = File.open('templates/View.html.cs.erb') { |f| f.read }
+	@template_erb_mvcform_readonly = File.open('templates/ReadOnlyView.cshtml.erb') { |f| f.read }
     @template_erb_javascript = File.open('templates/Javascript.js.erb') { |f| f.read }
 
   end
@@ -23,6 +24,11 @@ class EntityFiling
 
   def print_mvcform
     template = ERB.new @template_erb_mvcform
+    template.result(get_binding)
+  end
+  
+  def print_mvcform_readonly
+    template = ERB.new @template_erb_mvcform_readonly
     template.result(get_binding)
   end
 
