@@ -19,7 +19,7 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 	<% @calculations.each do |calculation, fields| %>
 	public int <%= "#{calculation}" %>
 	{
-		get { return <% fields.each do |field| %><% if field.calculated %><%= "#{field.calculation_table}_#{field.calculated_name}" %><% else %><%= field.csharp_name %><% end %><%= (field == fields.last) ? ";" : " + " %><% end %> }
+		get { return <% fields.each do |field| %><% if field.calculated %>(<%= "#{field.calculation_table}_#{field.calculated_name}" %><% if field.subtraction? %> * -1<% end %>)<% else %>(<%= field.csharp_name %><% if field.subtraction? %> * -1<% end %>)<% end %><%= (field == fields.last) ? ";" : " + " %><% end %> }
 	}
 	<% end %>
     public <%= name %>()

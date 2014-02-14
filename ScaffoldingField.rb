@@ -1,8 +1,7 @@
 class ScaffoldingField
-  attr_accessor :calculation_group, :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated, :subtraction
-
+  attr_accessor :calculation_group, :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated, :calculation_sign
   def initialize
-    @subtraction = false
+	@calculation_sign = "+"
   end
 
   def csharp_type
@@ -18,6 +17,10 @@ class ScaffoldingField
       "string"
     end
 
+  end
+  
+  def subtraction?
+	@calculation_sign == "-"
   end
 
   def name

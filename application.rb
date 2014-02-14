@@ -155,6 +155,7 @@ def initialize_field line
   field.field = line[6]
   field.calculated = (line[7])
   field.field = line[7] if field.calculated
+  field.calculation_sign = "-" if line[9] == "-"
   field.db_type = 'int'
   field
 end
