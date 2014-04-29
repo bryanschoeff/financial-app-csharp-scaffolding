@@ -1,38 +1,6 @@
-// -----------------------------------------------------------------
-//  Totals Fields Calculations and Auto-Updates
-// -----------------------------------------------------------------
-filingsApp.calcs.sumFields = function (dataGroup) {
-  sum = 0;
-  $('[data-sum-group="' + dataGroup + '"]').each(function () {
-    var value = parseInt(($(this).val() === '') ? $(this).html() : $(this).val());
-    if ($(this).attr('data-subtraction') !== undefined) { value *= -1; }
-    sum += value
-  });
-  return sum;
-};
-
-<% @calculations.each do |calculation, fields| %>filingsApp.calcs.<%= calculation %> = function() {
-  $('#<%= calculation %>').html(filingsApp.calcs.sumFields('<%= calculation %>'));
-};
-<% end %>
-filingsApp.calcs.updateTotals = function(callback) {
-	<% @calculations.each do |calculation, fields| %>
-	filingsApp.calcs.<%= calculation %>();<% end %>
-	
-	if (callback) { callback(); }
-};
-
 // Run once
 
 $(document).ready(function() {
-  $('.statement-money').blur(function() {
-    $(this).val(Math.floor($(this).val()));
-    filingsApp.calcs.updateTotals(filingsApp.calcs.updateTotals());
-  });
-
-  filingsApp.calcs.updateTotals(filingsApp.calcs.updateTotals());
-
   filingsApp.nav.show('<%= tables.first.name %>');
   $('.filing-nav').first().addClass('filing-nav-active');
-  filingsApp.nav.setNavigation();
 });

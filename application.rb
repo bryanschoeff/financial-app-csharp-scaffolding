@@ -67,19 +67,19 @@ def load_filing file, filing
   # file_parts = File.basename(file).gsub('.csv', '').split(' - ')
 
   CSV.foreach(file, {:headers => :first_row}) do |line|
-    if ("#{line["Page Description 1"]}_#{line[1]}_#{line[2]}" != current_line)
+    if ("#{line["Page Description 1"]}_#{line["Page Description 2"]}_#{line["Column Description"]}" != current_line)
       filing.tables << table unless table.nil?
 
       table = initialize_table filing, line
-      current_line = "#{line["Page Description 1"]}_#{line[1]}_#{line[2]}" 
+      current_line = "#{line["Page Description 1"]}_#{line["Page Description 2"]}_#{line["Column Description"]}" 
     end
 
     field = initialize_field line
     field.calculation_table = table.name
 
-    field.calculation_group = "#{table.name}_#{cap(line[8]).gsub(/[\s,()]/, '')}" if line[8]
-    filing.add_calculation "#{table.name}_#{cap(line[8]).gsub(/[\s,()]/, '')}", field if line[8]
-    table.add_calculation "#{table.name}_#{cap(line[8]).gsub(/[\s,()]/, '')}", field if line[8]
+    field.calculation_group = "#{table.name}_#{cap(line["Sum Group"]).gsub(/[\s,()]/, '')}" if line["Sum Group"]
+    filing.add_calculation "#{table.name}_#{cap(line["Sum Group"]).gsub(/[\s,()]/, '')}", field if line["Sum Group"]
+    table.add_calculation "#{table.name}_#{cap(line["Sum Group"]).gsub(/[\s,()]/, '')}", field if line["Sum Group"]
     if (field.calculated)
       table.add_calculated field
     else
@@ -108,8 +108,8 @@ def load_checks file
 
     if current_side == "Left"
       check.description1 = line["Page Description 1"]
-      check.description2 = line[1]
-      check.description3 = line[2]
+      check.description2 = line["Page Description 2"]
+      check.description3 = line["Column Description"]
       check.left << check_line
 
       current_side = "Right" if sign == "Equal"
@@ -130,32 +130,32 @@ end
 def load_check_line line, sign
   check_line = CheckField.new
 
-  check_line.description1 = line[3]
-  check_line.description2 = line[4]
-  check_line.description3 = line[5]
+  check_line.description1 = line["Category"]
+  check_line.description2 = line["Subcategory"]
+  check_line.description3 = line["Tertiary Category"]
 
-  check_line.field = line[9]
+  check_line.field = line["Sign"]
   check_line.calculated = (line[10])
   check_line.field = line[10] if check_line.calculated
   check_line.sign = sign
   check_line.db_type = 'int'
 
-  check_line.category = check_line.calculated ? nil : line[6]
-  check_line.sub_category = check_line.calculated ? nil : line[7]
-  check_line.tertiary_category = check_line.calculated ? nil : line[8]
+  check_line.category = check_line.calculated ? nil : line["Field"]
+  check_line.sub_category = check_line.calculated ? nil : line["Calculated"]
+  check_line.tertiary_category = check_line.calculated ? nil : line["Sum Group"]
 
   check_line
 end
 
 def initialize_field line
   field = ScaffoldingField.new
-  field.category = line[3]
-  field.sub_category = line[4]
-  field.tertiary_category = line[5]
-  field.field = line[6]
-  field.calculated = (line[7])
-  field.field = line[7] if field.calculated
-  field.calculation_sign = "-" if line[9] == "-"
+  field.category = line["Category"]
+  field.sub_category = line["Subcategory"]
+  field.tertiary_category = line["Tertiary Category"]
+  field.field = line["Field"]
+  field.calculated = (line["Calculated"])
+  field.field = line["Calculated"] if field.calculated
+  field.calculation_sign = "-" if line["Sign"] == "-"
   field.db_type = 'int'
   field
 end
@@ -167,8 +167,8 @@ def initialize_table filing, line
   table.entity_type = filing.entity_type
   table.filing_type = filing.filing_type
   table.description1 = line["Page Description 1"]
-  table.description2 = line[1]
-  table.description3 = line[2]
+  table.description2 = line["Page Description 2"]
+  table.description3 = line["Column Description"]
 
   joinfield = ScaffoldingField.new
   joinfield.field = "Filing I D"
