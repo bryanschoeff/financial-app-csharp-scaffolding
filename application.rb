@@ -67,11 +67,11 @@ def load_filing file, filing
   # file_parts = File.basename(file).gsub('.csv', '').split(' - ')
 
   CSV.foreach(file, {:headers => :first_row}) do |line|
-    if ("#{line[0]}_#{line[1]}_#{line[2]}" != current_line)
+    if ("#{line["Page Description 1"]}_#{line[1]}_#{line[2]}" != current_line)
       filing.tables << table unless table.nil?
 
       table = initialize_table filing, line
-      current_line = "#{line[0]}_#{line[1]}_#{line[2]}" 
+      current_line = "#{line["Page Description 1"]}_#{line[1]}_#{line[2]}" 
     end
 
     field = initialize_field line
@@ -107,7 +107,7 @@ def load_checks file
     sign = line[11]
 
     if current_side == "Left"
-      check.description1 = line[0]
+      check.description1 = line["Page Description 1"]
       check.description2 = line[1]
       check.description3 = line[2]
       check.left << check_line
@@ -166,7 +166,7 @@ def initialize_table filing, line
   table.database = DatabaseName
   table.entity_type = filing.entity_type
   table.filing_type = filing.filing_type
-  table.description1 = line[0]
+  table.description1 = line["Page Description 1"]
   table.description2 = line[1]
   table.description3 = line[2]
 
@@ -197,7 +197,7 @@ def print_outputs filings
     end
     prefix = "#{filing.entity_type}#{filing.filing_type}"
     view_path = "#{OutputPath}views/#{prefix}/"
-	readonly_view_path = "#{OutputPath}readonlyviews/#{prefix}/"
+    readonly_view_path = "#{OutputPath}readonlyviews/#{prefix}/"
     scripts_path = "#{OutputPath}scripts/"
 
     # main model
@@ -205,7 +205,7 @@ def print_outputs filings
     # views
     FileUtils.mkpath(view_path) if !(File.exists?(view_path) && File.directory?(view_path))
     File.open("#{view_path}Edit.cshtml", 'w') {|f| f.write(filing.print_mvcform) }
-	FileUtils.mkpath(readonly_view_path) if !(File.exists?(readonly_view_path) && File.directory?(readonly_view_path))
+    FileUtils.mkpath(readonly_view_path) if !(File.exists?(readonly_view_path) && File.directory?(readonly_view_path))
     File.open("#{readonly_view_path}Details.cshtml", 'w') {|f| f.write(filing.print_mvcform_readonly) }
 
     # webforms  
