@@ -65,11 +65,15 @@ def load_filing file, filing
   table = nil
   current_line = ''
   # file_parts = File.basename(file).gsub('.csv', '').split(' - ')
-
+  test_number_base = 0
+  test_number_end = 1
+  
   CSV.foreach(file, {:headers => :first_row}) do |line|
     if ("#{line["Page Description 1"]}_#{line["Page Description 2"]}_#{line["Column Description"]}" != current_line)
       filing.tables << table unless table.nil?
-
+	  test_number_base += 100 unless table.nil?
+	  test_number_end = 1
+	  
       table = initialize_table filing, line
       current_line = "#{line["Page Description 1"]}_#{line["Page Description 2"]}_#{line["Column Description"]}" 
     end
@@ -77,12 +81,15 @@ def load_filing file, filing
     field = initialize_field line
     field.calculation_table = table.name
 
-    field.calculation_group = "#{table.name}_#{cap(line["Sum Group"]).gsub(/[\s,()]/, '')}" if line["Sum Group"]
-    filing.add_calculation "#{table.name}_#{cap(line["Sum Group"]).gsub(/[\s,()]/, '')}", field if line["Sum Group"]
-    table.add_calculation "#{table.name}_#{cap(line["Sum Group"]).gsub(/[\s,()]/, '')}", field if line["Sum Group"]
+    field.calculation_group = "#{table.name}_#{cap(line["SumGroup"]).gsub(/[\s,()]/, '')}" if line["SumGroup"]
+    filing.add_calculation "#{table.name}_#{cap(line["SumGroup"]).gsub(/[\s,()]/, '')}", field if line["SumGroup"]
+    table.add_calculation "#{table.name}_#{cap(line["SumGroup"]).gsub(/[\s,()]/, '')}", field if line["SumGroup"]
+		
     if (field.calculated)
       table.add_calculated field
     else
+	  field.test_value = test_number_base + test_number_end
+	  test_number_end += 1
       table.add_field field
     end
 
@@ -107,9 +114,9 @@ def load_checks file
     sign = line[11]
 
     if current_side == "Left"
-      check.description1 = line["Page Description 1"]
-      check.description2 = line["Page Description 2"]
-      check.description3 = line["Column Description"]
+      check.description1 = line[0]
+      check.description2 = line[1]
+      check.description3 = line[2]
       check.left << check_line
 
       current_side = "Right" if sign == "Equal"
@@ -130,19 +137,19 @@ end
 def load_check_line line, sign
   check_line = CheckField.new
 
-  check_line.description1 = line["Category"]
-  check_line.description2 = line["Subcategory"]
-  check_line.description3 = line["Tertiary Category"]
+  check_line.description1 = line["Page Description 1"]
+  check_line.description2 = line["Page Description 2"]
+  check_line.description3 = line["Column Description"]
 
-  check_line.field = line["Sign"]
-  check_line.calculated = (line[10])
-  check_line.field = line[10] if check_line.calculated
+  check_line.field = line["Field"]
+  check_line.calculated = (line["Calculated"])
+  check_line.field = line["Calculated"] if check_line.calculated
   check_line.sign = sign
   check_line.db_type = 'int'
 
-  check_line.category = check_line.calculated ? nil : line["Field"]
-  check_line.sub_category = check_line.calculated ? nil : line["Calculated"]
-  check_line.tertiary_category = check_line.calculated ? nil : line["Sum Group"]
+  check_line.category = check_line.calculated ? nil : line["Category"]
+  check_line.sub_category = check_line.calculated ? nil : line["Subcategory"]
+  check_line.tertiary_category = check_line.calculated ? nil : line["Tertiary Category"]
 
   check_line
 end
@@ -186,20 +193,23 @@ def print_outputs filings
     model_path = "#{OutputPath}models/#{filing.entity_type}/#{filing.filing_type}/"
     FileUtils.mkpath(model_path) if !(File.exists?(model_path) && File.directory?(model_path))
 
+	
+	
     filing.tables.each do |table|      
       # models
       File.open("#{model_path}#{table.name}.cs", 'w') {|f| f.write(table.print_csharp_class) }
 
       # views, webforms, sql
       sql += table.print_sql_script
-      webform += table.print_webform_fields
+      #webform += table.print_webform_fields
       #mvcform += table.print_mvcform_fields
     end
     prefix = "#{filing.entity_type}#{filing.filing_type}"
     view_path = "#{OutputPath}views/#{prefix}/"
     readonly_view_path = "#{OutputPath}readonlyviews/#{prefix}/"
     scripts_path = "#{OutputPath}scripts/"
-
+	unit_tests_path = "#{OutputPath}tests/Unit/"
+	
     # main model
     File.open("#{model_path}Filing.cs", 'w') {|f| f.write(filing.print_csharp_main_class) }
     # views
@@ -209,11 +219,15 @@ def print_outputs filings
     File.open("#{readonly_view_path}Details.cshtml", 'w') {|f| f.write(filing.print_mvcform_readonly) }
 
     # webforms  
-    File.open("#{OutputPath}#{prefix}WebFormFields.aspx", 'w') {|f| f.write(webform) }
+    #File.open("#{OutputPath}#{prefix}WebFormFields.aspx", 'w') {|f| f.write(webform) }
 
     # javascript
     FileUtils.mkpath(scripts_path) if !(File.exists?(scripts_path) && File.directory?(scripts_path))
     File.open("#{scripts_path}#{prefix}Scripts.js", 'w') {|f| f.write(filing.print_javascript) }
+	
+	# unit tests
+	FileUtils.mkpath(unit_tests_path) if !(File.exists?(unit_tests_path) && File.directory?(unit_tests_path))
+    File.open("#{unit_tests_path}#{prefix}Test.cs", 'w') {|f| f.write(filing.print_unit_tests) }
 
   end
 

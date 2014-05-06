@@ -10,6 +10,7 @@ class EntityFiling
     @template_erb_mvcform = File.open('templates/View.html.cs.erb') { |f| f.read }
 	@template_erb_mvcform_readonly = File.open('templates/ReadOnlyView.cshtml.erb') { |f| f.read }
     @template_erb_javascript = File.open('templates/Javascript.js.erb') { |f| f.read }
+	@template_erb_unit_test = File.open('templates/UnitTests.cs.erb') { |f| f.read }
 
   end
 
@@ -39,6 +40,11 @@ class EntityFiling
 
   def print_javascript
     template = ERB.new @template_erb_javascript
+    template.result(get_binding)
+  end
+  
+  def print_unit_tests
+    template = ERB.new @template_erb_unit_test
     template.result(get_binding)
   end
 end

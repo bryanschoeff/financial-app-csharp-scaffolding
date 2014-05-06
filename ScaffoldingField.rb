@@ -1,7 +1,8 @@
 class ScaffoldingField
-  attr_accessor :calculation_group, :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated, :calculation_sign
+  attr_accessor :calculation_group, :calculation_table, :category, :sub_category, :tertiary_category, :field, :db_type, :calculated, :calculation_sign, :test_value
   def initialize
 	@calculation_sign = "+"
+	@test_value = 0
   end
 
   def csharp_type
