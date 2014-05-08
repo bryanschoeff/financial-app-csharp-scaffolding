@@ -88,7 +88,7 @@ def load_filing file, filing
     if (field.calculated)
       table.add_calculated field
     else
-	  field.test_value = test_number_base + test_number_end
+	  field.test_value = line["TestNumber"] ? line["TestNumber"] : test_number_base + test_number_end
 	  test_number_end += 1
       table.add_field field
     end
