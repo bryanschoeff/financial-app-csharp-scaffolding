@@ -163,7 +163,8 @@ def initialize_field line
   field.calculated = (line["Calculated"])
   field.field = line["Calculated"] if field.calculated
   field.calculation_sign = "-" if line["Sign"] == "-"
-  field.db_type = 'int'
+  field.display_type = line["Type"] ? line["Type"] : "money"
+  field.db_type = line["Type"] == "tax-rate" ? "money" : "int"
   field
 end
 
@@ -187,6 +188,7 @@ end
 
 def print_outputs filings
   sql = ""
+  sql_down = ""
 
   filings.each do |filing|
     webform = ""
@@ -201,6 +203,7 @@ def print_outputs filings
 
       # views, webforms, sql
       sql += table.print_sql_script
+	  sql_down += table.print_sql_down_script
       #webform += table.print_webform_fields
       #mvcform += table.print_mvcform_fields
     end
@@ -208,7 +211,16 @@ def print_outputs filings
     view_path = "#{OutputPath}views/#{prefix}/"
     readonly_view_path = "#{OutputPath}readonlyviews/#{prefix}/"
     scripts_path = "#{OutputPath}scripts/"
+	sql_path = "#{OutputPath}sql/"
 	unit_tests_path = "#{OutputPath}tests/Unit/"
+	
+	# sql
+	FileUtils.mkpath(sql_path) if !(File.exists?(sql_path) && File.directory?(sql_path))
+	File.open("#{sql_path}#{prefix}Sql.sql", 'w') {|f| f.write(sql) }
+	File.open("#{sql_path}#{prefix}Sql-Down.sql", 'w') {|f| f.write(sql_down) }
+	
+	sql = ""
+	sql_down = ""
 	
     # main model
     File.open("#{model_path}Filing.cs", 'w') {|f| f.write(filing.print_csharp_main_class) }
@@ -229,10 +241,8 @@ def print_outputs filings
 	FileUtils.mkpath(unit_tests_path) if !(File.exists?(unit_tests_path) && File.directory?(unit_tests_path))
     File.open("#{unit_tests_path}#{prefix}Test.cs", 'w') {|f| f.write(filing.print_unit_tests) }
 
+	
   end
-
-  # sql
-  File.open("#{OutputPath}SQLScript.sql", 'w') {|f| f.write(sql) }
 
 end
 

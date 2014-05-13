@@ -1,0 +1,12 @@
+USE [<%= @database %>]
+GO
+
+DROP TABLE [dbo].[<%= print_sql_table_name %>]
+DROP PROCEDURE [dbo].[<%= print_sql_sp_name_load %>]
+DROP PROCEDURE [dbo].[<%= print_sql_sp_name_load_by_filingid %>]
+DROP PROCEDURE [dbo].[<%= print_sql_sp_name_save %>]
+DROP PROCEDURE [dbo].[<%= print_sql_sp_name_update %>]
+DROP PROCEDURE [dbo].[<%= print_sql_sp_name_delete %>]
+
+GO
+

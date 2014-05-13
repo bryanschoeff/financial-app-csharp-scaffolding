@@ -24,7 +24,7 @@ module FieldFormatable
   end
 
   def sql_parameter
-    "@#{clean name.gsub(' ', '')}"
+    "@#{(clean name).gsub(' ', '')}"
   end
 
   def display_name
@@ -35,19 +35,19 @@ module FieldFormatable
   end
 
   def csharp_name
-    clean name.gsub(' ', '')
+    (clean name).gsub(' ', '')
   end
 
   def sql_column
-    "[#{clean name.gsub(' ', '')}]"
+    "[#{(clean name).gsub(' ', '')}]"
   end
 
   def sql_column_name
-    clean name.gsub(' ', '')
+    (clean name).gsub(' ', '')
   end
 
   def calculated_name
-    clean cap(field).gsub(' ', '')
+    cap(clean field).gsub(' ', '')
   end
 
   def webform_textbox
@@ -55,12 +55,13 @@ module FieldFormatable
   end
 
   def view_field_id
-    clean name.gsub(' ', '_')
+    (clean name).gsub(' ', '_')
   end
 
   def cap words
     words = words.split(" ").map {|word| word.capitalize}.join(" ") if (words) 
     words.gsub!(/\((\w*?)(\)|\s)/) {|match| "(#{$1.capitalize}#{$2}" } 
+	words.gsub!(/-(\w+?)\b/) {|match| "-#{$1.capitalize}" }
     words
   end
 
@@ -69,6 +70,6 @@ module FieldFormatable
   end
 
   def clean words
-    words.gsub(/[,()]/,'')
+    words.gsub('-',' ').gsub(/[,()]/,'')
   end
 end
