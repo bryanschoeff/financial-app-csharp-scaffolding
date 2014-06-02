@@ -3,6 +3,8 @@ module FieldFormatable
   def csharp_type
     if @db_type.include? 'decimal'
       "decimal"
+	elsif @db_type.include? 'money'
+      "decimal"
     elsif @db_type.include? 'varchar'
       "string"
     elsif @db_type.include? 'int'

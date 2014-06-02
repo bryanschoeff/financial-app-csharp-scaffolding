@@ -165,6 +165,7 @@ def initialize_field line
   field.calculation_sign = "-" if line["Sign"] == "-"
   field.display_type = line["Type"] ? line["Type"] : "money"
   field.db_type = line["Type"] == "tax-rate" ? "money" : "int"
+  field.helps = line["HelpString"].split(",") if line["HelpString"]
   field
 end
 
