@@ -1,0 +1,8 @@
+,,,Page Description 1,Page Description 2,Column Description,Category,Subcategory,Tertiary Category,Field,Calculated,Next Item
+Statement of Net Position,,,Statement of Net Position,,,Assets,,,,Total Assets,Plus
+Statement of Net Position,,,Statement of Net Position,,,,,,,Total Deferred Outflows of Resources,Minus
+Statement of Net Position,,,Statement of Net Position,,,Liabilities,,,,Total Liabilities,Minus
+Statement of Net Position,,,Statement of Net Position,,,,,,,Total Deferred Inflows of Resources,Equal
+Statement of Net Position,,,Statement of Net Position,,,Net Position,,,,Total Net Position,End
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",,,"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",,,,,,,"Net Position, End of Year",Equal
+"STATEMENT OF REVENUES, EXPENSES AND CHANGES IN NET POSITION",,,Statement of Net Position,,,Net Position,,,,Total Net Position,End
