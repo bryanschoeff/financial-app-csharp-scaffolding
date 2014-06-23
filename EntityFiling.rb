@@ -7,6 +7,8 @@ class EntityFiling
     @tables = Array.new
     @calculations = Hash.new
     @template_erb_main_class = File.open('templates/TopLevelClass.cs.erb') { |f| f.read }
+	@template_erb_data_class = File.open('templates/Db.cs.erb') { |f| f.read }
+	@template_erb_api_class = File.open('templates/Api.cs.erb') { |f| f.read }
     @template_erb_mvcform = File.open('templates/View.html.cs.erb') { |f| f.read }
 	@template_erb_mvcform_readonly = File.open('templates/ReadOnlyView.cshtml.erb') { |f| f.read }
     @template_erb_javascript = File.open('templates/Javascript.js.erb') { |f| f.read }
@@ -35,6 +37,16 @@ class EntityFiling
 
   def print_csharp_main_class
     template = ERB.new @template_erb_main_class
+    template.result(get_binding)
+  end
+  
+  def print_csharp_data_class
+    template = ERB.new @template_erb_data_class
+    template.result(get_binding)
+  end
+  
+  def print_csharp_api_class
+    template = ERB.new @template_erb_api_class
     template.result(get_binding)
   end
 

@@ -191,11 +191,17 @@ def print_outputs filings
   sql = ""
   sql_down = ""
   sql_delete = ""
+  sql_grants = ""
 
   filings.each do |filing|
     webform = ""
     model_path = "#{OutputPath}models/#{filing.entity_type}/#{filing.filing_type}/"
+	data_path = "#{OutputPath}data/Db/#{filing.entity_type}/"
+	api_path = "#{OutputPath}data/Api/#{filing.entity_type}/"
+	
     FileUtils.mkpath(model_path) if !(File.exists?(model_path) && File.directory?(model_path))
+	FileUtils.mkpath(data_path) if !(File.exists?(data_path) && File.directory?(data_path))
+	FileUtils.mkpath(api_path) if !(File.exists?(api_path) && File.directory?(api_path))
 
 	
 	
@@ -207,6 +213,7 @@ def print_outputs filings
       sql += table.print_sql_script
 	  sql_down += table.print_sql_down_script
 	  sql_delete += table.print_sql_delete_script
+	  sql_grants += table.print_sql_grants_script
       #webform += table.print_webform_fields
       #mvcform += table.print_mvcform_fields
     end
@@ -222,13 +229,19 @@ def print_outputs filings
 	File.open("#{sql_path}#{prefix}Sql.sql", 'w') {|f| f.write(sql) }
 	File.open("#{sql_path}#{prefix}Sql-Down.sql", 'w') {|f| f.write(sql_down) }
 	File.open("#{sql_path}#{prefix}Sql-Delete.sql", 'w') {|f| f.write(sql_delete) }
+	File.open("#{sql_path}#{prefix}Sql-Grants.sql", 'w') {|f| f.write(sql_grants) }
 	
 	sql = ""
 	sql_down = ""
 	sql_delete = ""
+	sql_grants = ""
 	
     # main model
     File.open("#{model_path}Filing.cs", 'w') {|f| f.write(filing.print_csharp_main_class) }
+	#data context
+	File.open("#{data_path}#{filing.filing_type}Db.cs", 'w') {|f| f.write(filing.print_csharp_data_class) }
+	#data api
+	File.open("#{api_path}#{filing.filing_type}Api.cs", 'w') {|f| f.write(filing.print_csharp_api_class) }
     # views
     FileUtils.mkpath(view_path) if !(File.exists?(view_path) && File.directory?(view_path))
     File.open("#{view_path}Edit.cshtml", 'w') {|f| f.write(filing.print_mvcform) }

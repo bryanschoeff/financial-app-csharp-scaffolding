@@ -1,0 +1,38 @@
+using Online_Financial_Statements.Models;
+using Online_Financial_Statements.Models.<%= "#{@entity_type}.#{@filing_type}" %>;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+
+namespace <%= ApplicationName %>.Data.Db.<%= @entity_type %>
+{
+    public class <%= @filing_type %>Db : DbContext
+    {
+		public DbSet<EntityFiling> EntityFiling { get; set; }
+		<% @tables.each do |table| %>
+		public DbSet<<%= table.name %>> <%= table.name %> { get; set; }<% end %>
+        
+		static <%= @filing_type %>Db()
+        {
+            Database.SetInitializer<<%= @filing_type %>Db>(null);
+        }
+
+        public <%= @filing_type %>Db(string connection)
+        {
+            this.Database.Connection.ConnectionString = connection + ";initial catalog=OnlineFinancialStatements";
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add<EntityFiling>(new EntityFilingConfiguration());
+			
+			<% @tables.each do |table| %>
+			modelBuilder.Entity<<%= table.name %>>().ToTable("<%= "#{@entity_type}_#{@filing_type}_#{table.name}" %>");<% end %>
+			
+			<% @tables.each do |table| %>
+			modelBuilder.Entity<<%= table.name %>>().Property(p => p.ID).HasColumnName("<%= "#{table.name}ID" %>");<% end %>
+        }
+    }
+}

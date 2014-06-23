@@ -12,6 +12,7 @@ class ScaffoldingObject
     @template_erb_sql = File.open('templates/SQL.sql.erb') { |f| f.read }
 	@template_erb_sql_down = File.open('templates/SQL-Down.sql.erb') { |f| f.read }
 	@template_erb_sql_delete = File.open('templates/SQL-Delete.sql.erb') { |f| f.read }
+	@template_erb_sql_grants = File.open('templates/SQL-Grants.sql.erb') { |f| f.read }
     @template_erb_webform = File.open('templates/WebForm.aspx.erb') { |f| f.read }
   end
 
@@ -57,6 +58,11 @@ class ScaffoldingObject
   
   def print_sql_delete_script
     template = ERB.new @template_erb_sql_delete
+    template.result(get_binding)
+  end
+  
+  def print_sql_grants_script
+    template = ERB.new @template_erb_sql_grants
     template.result(get_binding)
   end
 

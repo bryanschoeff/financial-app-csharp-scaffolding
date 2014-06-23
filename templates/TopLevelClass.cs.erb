@@ -16,64 +16,6 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
 	  <% @tables.each do |table| %>
 	  <%= "this.#{table.name} = new #{table.name}();"  %><% end %> 
     }
-
-	public void Load(string Hash)
-	{
-		this.EntityFiling.Load(Hash);
-
-		int ID = this.EntityFiling.ID;
-		<% @tables.each do |table| %>
-        this.<%= table.name %>.LoadByFilingID(ID);<% end %>
-	}
-		
-	public void Load(int ID)
-    {     
-		this.EntityFiling.Load(ID);
-		
-		<% @tables.each do |table| %>
-        this.<%= table.name %>.LoadByFilingID(ID);<% end %>
-    }
-	
-	public void Save()
-	{
-		this.EntityFiling.Save();
-		SetID(this.EntityFiling.ID);
-		SaveChildren();
-		SaveJson();
-	}
-	
-	protected void SaveChildren()
-	{
-		<% @tables.each do |table| %>
-		<%= "this.#{table.name}.Save();"  %><% end %> 
-	}
-	
-	protected void SetID(int ID)
-	{
-		<% @tables.each do |table| %>
-        this.<%= table.name %>.FilingID = ID;<% end %>
-	}
-
-	protected void SaveJson()
-	{
-		using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString + ";initial catalog=<%= DatabaseName %>"))
-		{
-			SqlCommand command = new SqlCommand("FilingsJsonSave", connection);
-
-			command.CommandType = CommandType.StoredProcedure;
-			command.Parameters.AddWithValue("@FilingID", this.EntityFiling.ID);
-			command.Parameters.AddWithValue("@Data", this.ToJson());
-
-			connection.Open();
-			command.ExecuteNonQuery();
-			connection.Close();
-		}
   }
-
-  public string ToJson()
-  {
-     return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-  }
-  }
+    
 }
-
