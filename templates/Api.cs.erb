@@ -11,54 +11,63 @@ namespace <%= ApplicationName %>.Data.Api.<%= @entity_type %>
 {
     public class <%= @filing_type %>Api
     {
-		private <%= @filing_type %>Db Db { get; set; }
+        private <%= @filing_type %>Db Db { get; set; }
         
-		
+        
         public <%= @filing_type %>Api(string connection)
         {
             Db = new <%= @filing_type %>Db(connection);
         }
 
-		public Filing GetByHash(string hash)
-		{
-			var filing = new Filing();
-			
-			filing.EntityFiling = Db.EntityFiling.Single(f => f.Hash == hash);
-			<% @tables.each do |table| %>
-			filing.<%= table.name %> = Db.<%= table.name %>.SingleOrDefault(f => f.FilingID == filing.EntityFiling.ID);<% end %>
-			<% @tables.each do |table| %>
-			if (filing.<%= table.name %> == null)
+        public Filing GetByHash(string hash)
+        {
+            var filing = new Filing();
+            
+            filing.EntityFiling = Db.EntityFiling.Single(f => f.Hash == hash);
+            <% @tables.each do |table| %>
+            filing.<%= table.name %> = Db.<%= table.name %>.SingleOrDefault(f => f.FilingID == filing.EntityFiling.ID);<% end %>
+            <% @tables.each do |table| %>
+            if (filing.<%= table.name %> == null)
             {
                 filing.<%= table.name %> = new <%= table.name %>() { FilingID = filing.EntityFiling.ID };
                 Db.<%= table.name %>.Add(filing.<%= table.name %>);
                 Db.SaveChanges();
             }<% end %>
-			
-			return filing;
-			
-		}
-		
-		public Filing GetById(int id)
-		{
-			var filing = new Filing();
-			
-			filing.EntityFiling = Db.EntityFiling.Single(f => f.ID == id);
-			<% @tables.each do |table| %>
-			filing.<%= table.name %> = Db.<%= table.name %>.Single(f => f.FilingID == filing.EntityFiling.ID);<% end %>
-			
-			return filing;
-		}
-		
-		public void Save(Filing filing)
-		{
-			Db.EntityFiling.Attach(filing.EntityFiling);
-			<% @tables.each do |table| %>
-			Db.<%= table.name %>.Attach(filing.<%= table.name %>);<% end %>
-			<% @tables.each do |table| %>
-			Db.Entry(filing.<%= table.name %>).State = EntityState.Modified;<% end %>
-			
+            
+            return filing;
+            
+        }
+        
+        public Filing GetById(int id)
+        {
+            var filing = new Filing();
+            
+            filing.EntityFiling = Db.EntityFiling.Single(f => f.ID == id);
+            <% @tables.each do |table| %>
+            filing.<%= table.name %> = Db.<%= table.name %>.Single(f => f.FilingID == filing.EntityFiling.ID);<% end %>
+            
+            return filing;
+        }
+        
+        public void Save(Filing filing)
+        {
+            Db.EntityFiling.Attach(filing.EntityFiling);
+            <% @tables.each do |table| %>
+            Db.<%= table.name %>.Attach(filing.<%= table.name %>);<% end %>
+            <% @tables.each do |table| %>
+            Db.Entry(filing.<%= table.name %>).State = EntityState.Modified;<% end %>
+            
             Db.SaveChanges();
-		}
-		
+        }
+        
+        public void Delete(Filing filing)
+        {
+            Db.EntityFiling.Remove(filing.EntityFiling);
+            <% @tables.each do |table| %>
+            Db.<%= table.name %>.Remove(filing.<%= table.name %>);<% end %>
+            
+            Db.SaveChanges();
+        }
+        
     }
 }

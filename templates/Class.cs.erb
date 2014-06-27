@@ -9,19 +9,19 @@ namespace <%= ApplicationName %>.Models.<%= "#{@entity_type}.#{@filing_type}" %>
   {
     public int ID { get; set; }
     <% @fields.each do |field| %>
-	[Display(Name = "<%= field.display_name %>")]
+    [Display(Name = "<%= field.display_name %>")]
     public <%= "#{field.csharp_type} #{field.csharp_name} { get; set; }"  %><% end %>
-	public bool Unlocked { get; set; }
-	<% if not_applicableable? %>[Display(Name = "Not Applicable")]
-	public bool NotApplicable { get; set; } <% end %>
+    public bool Unlocked { get; set; }
+    <% if not_applicableable? %>[Display(Name = "Not Applicable")]
+    public bool NotApplicable { get; set; } <% end %>
 
-	// Derived Fields
-	<% @calculations.each do |calculation, fields| %>
-	public int <%= "#{calculation}" %>
-	{
-		get { return <% fields.each do |field| %><% if field.calculated %>(<%= "#{field.calculation_table}_#{field.calculated_name}" %><% if field.subtraction? %> * -1<% end %>)<% else %>(<%= field.csharp_name %><% if field.subtraction? %> * -1<% end %>)<% end %><%= (field == fields.last) ? ";" : " + " %><% end %> }
-	}
-	<% end %>
+    // Derived Fields
+    <% @calculations.each do |calculation, fields| %>
+    public int <%= "#{calculation}" %>
+    {
+        get { return <% fields.each do |field| %><% if field.calculated %>(<%= "#{field.calculation_table}_#{field.calculated_name}" %><% if field.subtraction? %> * -1<% end %>)<% else %>(<%= field.csharp_name %><% if field.subtraction? %> * -1<% end %>)<% end %><%= (field == fields.last) ? ";" : " + " %><% end %> }
+    }
+    <% end %>
     public <%= name %>()
     {
       this.ID = -1;

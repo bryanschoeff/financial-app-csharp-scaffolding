@@ -10,11 +10,11 @@ namespace <%= ApplicationName %>.Data.Db.<%= @entity_type %>
 {
     public class <%= @filing_type %>Db : DbContext
     {
-		public DbSet<EntityFiling> EntityFiling { get; set; }
-		<% @tables.each do |table| %>
-		public DbSet<<%= table.name %>> <%= table.name %> { get; set; }<% end %>
+        public DbSet<EntityFiling> EntityFiling { get; set; }
+        <% @tables.each do |table| %>
+        public DbSet<<%= table.name %>> <%= table.name %> { get; set; }<% end %>
         
-		static <%= @filing_type %>Db()
+        static <%= @filing_type %>Db()
         {
             Database.SetInitializer<<%= @filing_type %>Db>(null);
         }
@@ -27,12 +27,12 @@ namespace <%= ApplicationName %>.Data.Db.<%= @entity_type %>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add<EntityFiling>(new EntityFilingConfiguration());
-			
-			<% @tables.each do |table| %>
-			modelBuilder.Entity<<%= table.name %>>().ToTable("<%= "#{@entity_type}_#{@filing_type}_#{table.name}" %>");<% end %>
-			
-			<% @tables.each do |table| %>
-			modelBuilder.Entity<<%= table.name %>>().Property(p => p.ID).HasColumnName("<%= "#{table.name}ID" %>");<% end %>
+            
+            <% @tables.each do |table| %>
+            modelBuilder.Entity<<%= table.name %>>().ToTable("<%= "#{@entity_type}_#{@filing_type}_#{table.name}" %>");<% end %>
+            
+            <% @tables.each do |table| %>
+            modelBuilder.Entity<<%= table.name %>>().Property(p => p.ID).HasColumnName("<%= "#{table.name}ID" %>");<% end %>
         }
     }
 }

@@ -1,11 +1,11 @@
 @model <%= "#{ApplicationName}.Models.#{@entity_type}.#{@filing_type}.Filing" %>
-
-@section navigation {
-  <ul><% @tables.each do |table| %>
-      <li><a href="javascript:void(0);" id="nav-<%= table.name %>" class="filing-nav<%= " filing-nav-active" if table == @tables.first  %>"><%= table.display_name  %></a></li><% end %>
-  </ul>
+@{
+    Layout = "~/Views/Shared/_Layout-filing.cshtml";
 }
-<div id="content">
+@section navigation {
+
+}
+
 @using (Html.BeginForm()) {
 
 @Html.HiddenFor(model => model.EntityFiling.ID)
@@ -15,50 +15,51 @@
 @Html.HiddenFor(model => model.EntityFiling.FilingYear)
 @Html.HiddenFor(model => model.EntityFiling.Status)
 
-<table>
-<tr>
-<% @tables.each do |table| %>
-<td>
-<% current_group = "" %>
-<% current_subgroup = "" %>
-<!--
-################################################################
-# Fields for <%= table.name %>
-################################################################
--->
-<div id="<%= table.name %>" class="tabpage">
-<div class="tabpage-header"><h2><%= table.display_name %></h2></div>
-<div class="fieldset">@Html.HiddenFor(model => model.<%= table.name %>.ID)@Html.HiddenFor(model => model.<%= table.name %>.Unlocked)
-	<% if table.not_applicableable? %>
-		@Html.LabelFor(model => model.<%= "#{table.name}.NotApplicable" %>, new { @class = "statement-na-label" } )
-		@Html.CheckBoxFor(model => model.<%= "#{table.name}.NotApplicable" %>, new { @class = "statement-na-check" })
+<div class="filing-table">
+	<div class="filing-row">
+	<% @tables.each do |table| %>
+		<div class="filing-cell">
+		<% current_group = "" %>
+		<% current_subgroup = "" %>
+		<!--
+		################################################################
+		# Fields for <%= table.name %>
+		################################################################
+		-->
+		<div id="<%= table.name %>" class="tabpage">
+			<div class="tabpage-header"><h2><%= table.display_name %></h2></div>
+			<div class="fieldset">@Html.HiddenFor(model => model.<%= table.name %>.ID)@Html.HiddenFor(model => model.<%= table.name %>.Unlocked)
+				<% if table.not_applicableable? %>
+					@Html.LabelFor(model => model.<%= "#{table.name}.NotApplicable" %>, new { @class = "statement-na-label" } )
+					@Html.CheckBoxFor(model => model.<%= "#{table.name}.NotApplicable" %>, new { @class = "statement-na-check" })
+				<% end %>
+				<div class="tabpage-input">
+				<% table.fields_all.each do |field| %>
+				  <% if field.csharp_name == "FilingID" %>@Html.HiddenFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)<% else %><% if field.category != current_group %><h3><%= field.category %></h3><% current_group = field.category %><% end %>
+				  <% if (field.sub_category != current_subgroup) %><% if (field.sub_category) %>
+					<div class="fieldline"><%= field.sub_category %>:</div>
+					<% end %>
+				  <% current_subgroup = field.sub_category %><% end %><div class="<%= (field.calculated) ? "total-line" : "fieldline" %>"><% if field.calculated %><span class="statement-label"><%= field.display_name %></span><span class="dollar-sign">$</span><span class="statement-total" id="<%= "#{table.name}_#{field.calculated_name}" %>">@String.Format("{0:n0}", Model.<%= "#{table.name}.#{table.name}_#{field.calculated_name}" %>)</span><% else %>
+				  <span class="statement-label">@Html.LabelFor(model => Model.<%= "#{table.name}.#{field.csharp_name}" %>)</span>
+					<span class="dollar-sign">$</span><span class="statement-money">@String.Format("{0:n0}", Model.<%= "#{table.name}.#{field.csharp_name}" %>)</span>
+				  <% end %></div><% end %>
+				<% end %>
+				</div>
+				<br />
+			</div>
+		</div>
+
+		</div>
 	<% end %>
-<div class="tabpage-input">
-<% table.fields_all.each do |field| %>
-  <% if field.csharp_name == "FilingID" %>@Html.HiddenFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>)<% else %><% if field.category != current_group %><h3><%= field.category %></h3><% current_group = field.category %><% end %>
-  <% if (field.sub_category != current_subgroup) %><% if (field.sub_category) %>
-	<div class="fieldline"><%= field.sub_category %>:</div>
-	<% end %>
-  <% current_subgroup = field.sub_category %><% end %><div class="<%= (field.calculated) ? "total-line" : "fieldline" %>"><% if field.calculated %><span class="statement-label"><%= field.display_name %></span><span class="statement-total" id="<%= "#{table.name}_#{field.calculated_name}" %>"<%= " data-sum-group=\"#{field.calculation_group}\"" if field.calculation_group %><%="data-subtraction" if field.subtraction? %>>0</span><% else %>
-  <span class="statement-label">@Html.LabelFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-label<%= " sub-category" if field.sub_category %>" } )</span>
-  	@Html.TextBoxFor(model => model.<%= "#{table.name}.#{field.csharp_name}" %>, new { @class = "statement-money"<%= ", data_sum_group = \"#{field.calculation_group}\"" if field.calculation_group %> <%="data_subtraction = \"\"" if field.subtraction? %>})
-  <% end %></div><% end %>
-<% end %>
+	</div>
 </div>
-<br />
-</div>
-</div>
-</td>
-<% end %>
-</tr>
-</table>
 
 
 }
-</div>
+
 @section header {
 <h1>@Model.EntityFiling.EntityName</h1>
-<h2><%= "#{@filing_type}" %></h2>
+<h2>@Model.EntityFiling.FilingYear - <%= @filing_type %></h2>
 }
 
 @section scripts {
