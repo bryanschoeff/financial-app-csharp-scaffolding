@@ -68,7 +68,13 @@ module FieldFormatable
   end
 
   def clean_english words
-    words.gsub(' Of ', ' of ').gsub(' And ', ' and ').gsub(' In ', ' in ').gsub(' From ', ' from ').gsub(' To ', ' to ').gsub(' For ', ' for ')
+    words.gsub(' Of ', ' of ')
+		 .gsub(' And ', ' and ')
+		 .gsub(' In ', ' in ')
+		 .gsub(' From ', ' from ')
+		 .gsub(' To ', ' to ')
+		 .gsub(' For ', ' for ')
+		 .gsub(' On ', ' on ')
   end
 
   def clean words
