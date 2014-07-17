@@ -212,8 +212,6 @@ def print_outputs filings
       # views, webforms, sql
       sql += table.print_sql_script
 	  sql_down += table.print_sql_down_script
-	  sql_delete += table.print_sql_delete_script
-	  sql_grants += table.print_sql_grants_script
       #webform += table.print_webform_fields
       #mvcform += table.print_mvcform_fields
     end
@@ -228,8 +226,6 @@ def print_outputs filings
 	FileUtils.mkpath(sql_path) if !(File.exists?(sql_path) && File.directory?(sql_path))
 	File.open("#{sql_path}#{prefix}Sql.sql", 'w') {|f| f.write(sql) }
 	File.open("#{sql_path}#{prefix}Sql-Down.sql", 'w') {|f| f.write(sql_down) }
-	File.open("#{sql_path}#{prefix}Sql-Delete.sql", 'w') {|f| f.write(sql_delete) }
-	File.open("#{sql_path}#{prefix}Sql-Grants.sql", 'w') {|f| f.write(sql_grants) }
 	
 	sql = ""
 	sql_down = ""

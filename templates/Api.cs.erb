@@ -60,9 +60,16 @@ namespace <%= ApplicationName %>.Data.Api.<%= @entity_type %>
             Db.SaveChanges();
         }
         
-        public void Delete(Filing filing)
+        public void DeleteFilingData(Filing filing)
         {
-            Db.EntityFiling.Remove(filing.EntityFiling);
+            Db.EntityFiling.Attach(filing.EntityFiling);
+			
+            filing.EntityFiling.FilingType = "";
+            filing.EntityFiling.Status = "Not Started";
+            filing.EntityFiling.Filed = null;
+            filing.EntityFiling.FiledBy = "";
+            filing.EntityFiling.FiledByTitle = "";
+			
             <% @tables.each do |table| %>
             Db.<%= table.name %>.Remove(filing.<%= table.name %>);<% end %>
             
