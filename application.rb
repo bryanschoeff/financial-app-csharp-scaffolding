@@ -6,6 +6,7 @@ require_relative 'EditCheck.rb'
 require_relative 'EditChecks.rb'
 require_relative 'CheckField.rb'
 
+SourceFilter = "Library"
 
 RunDate = Time.new.strftime("%Y.%m.%d")
 ApplicationName = "Online_Financial_Statements"
@@ -28,7 +29,7 @@ def run_script filings, checks_list
 end
 
 def load_specs filings
-  files = Dir.glob("#{SourcePath}*.csv")
+  files = Dir.glob("#{SourcePath}*#{SourceFilter}*.csv")
   files.each do |file|
     next if File.directory? file
 
@@ -44,7 +45,7 @@ def load_specs filings
 end
 
 def load_check_lists checks_list
-  files = Dir.glob("#{ChecksSourcePath}*.csv")
+  files = Dir.glob("#{ChecksSourcePath}*#{SourceFilter}*.csv")
   files.each do |file|
     next if File.directory? file
 
@@ -81,9 +82,9 @@ def load_filing file, filing
     field = initialize_field line
     field.calculation_table = table.name
 
-    field.calculation_group = "#{table.name}_#{cap(line["SumGroup"]).gsub(/[\s,()]/, '')}" if line["SumGroup"]
-    filing.add_calculation "#{table.name}_#{cap(line["SumGroup"]).gsub(/[\s,()]/, '')}", field if line["SumGroup"]
-    table.add_calculation "#{table.name}_#{cap(line["SumGroup"]).gsub(/[\s,()]/, '')}", field if line["SumGroup"]
+    field.calculation_group = "#{table.name}_#{cap(line["SumGroup"].gsub('-', ' ')).gsub(/[\s,()]/, '')}" if line["SumGroup"]
+    filing.add_calculation "#{table.name}_#{cap(line["SumGroup"].gsub('-', ' ')).gsub(/[\s,()]/, '')}", field if line["SumGroup"]
+    table.add_calculation "#{table.name}_#{cap(line["SumGroup"].gsub('-', ' ')).gsub(/[\s,()]/, '')}", field if line["SumGroup"]
 		
     if (field.calculated)
       table.add_calculated field
@@ -212,6 +213,7 @@ def print_outputs filings
       # views, webforms, sql
       sql += table.print_sql_script
 	  sql_down += table.print_sql_down_script
+	  sql_grants += table.print_sql_grants_script
       #webform += table.print_webform_fields
       #mvcform += table.print_mvcform_fields
     end
@@ -226,6 +228,7 @@ def print_outputs filings
 	FileUtils.mkpath(sql_path) if !(File.exists?(sql_path) && File.directory?(sql_path))
 	File.open("#{sql_path}#{prefix}Sql.sql", 'w') {|f| f.write(sql) }
 	File.open("#{sql_path}#{prefix}Sql-Down.sql", 'w') {|f| f.write(sql_down) }
+	File.open("#{sql_path}#{prefix}Sql-Grants.sql", 'w') {|f| f.write(sql_grants) }
 	
 	sql = ""
 	sql_down = ""

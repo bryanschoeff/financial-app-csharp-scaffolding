@@ -48,15 +48,15 @@
 </div>
 <% end %>
 <div id="nav-page-control">
-<a href="javascript:void(0);" id="nav-previous" class="nav-button">&lt; previous</a><a href="javascript:void(0);" id="nav-next" class="nav-button">next &gt;</a><a href="javascript:void(0);" id="nav-submit" class="nav-button nav-submit">submit</a><a href="javascript:void(0);" id="nav-save-changes" class="nav-button">Save Changes</a>
+<a href="javascript:void(0);" id="nav-previous" class="nav-button">&lt; previous</a><a href="javascript:void(0);" id="nav-next" class="nav-button">next &gt;</a><a href="javascript:void(0);" id="nav-submit" class="nav-button">Next &gt;</a><a href="javascript:void(0);" id="nav-save-changes" class="nav-button">Save Changes</a>
 </div>
-
 
 }
 
 @section header {
 <h1>@Model.EntityFiling.EntityName</h1>
 <h2><%= "#{@filing_type}" %></h2>
+<div class="due-date">Due Date: @Model.EntityFiling.DueDate.ToString("MMMM d, yyyy")</div>
 }
 
 @section scripts {

@@ -64,6 +64,7 @@ module FieldFormatable
     words = words.split(" ").map {|word| word.capitalize}.join(" ") if (words) 
     words.gsub!(/\((\w*?)(\)|\s)/) {|match| "(#{$1.capitalize}#{$2}" } 
 	words.gsub!(/-(\w+?)\b/) {|match| "-#{$1.capitalize}" }
+	words.gsub!(/:(\w+?)\b/) {|match| ":#{$1.capitalize}" }
     words
   end
 
@@ -78,6 +79,6 @@ module FieldFormatable
   end
 
   def clean words
-    words.gsub('-',' ').gsub(/[,()]/,'')
+    words.gsub('-',' ').gsub("/",' ').gsub(':', ' ').gsub(/[,()$]/,'')
   end
 end
